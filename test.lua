@@ -155,3 +155,44 @@ local tpspawn = TPTab:CreateButton({
    end,
 })
 
+local tpcashier = TPTab:CreateButton({
+   Name = "Cashier",
+   Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(49, 5, 82)
+   end,
+})
+
+local tpcook = TPTab:CreateButton({
+   Name = "Cook",
+   Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(36, 5, 62)
+   end,
+})
+
+local tpboxer = TPTab:CreateButton({
+   Name = "Pizza Boxer",
+   Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(47, 4, 185)
+   end,
+})
+
+local tpdelivery = TPTab:CreateButton({
+   Name = "Delivery",
+   Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(55, 5, 18)
+   end,
+})
+
+local tpsupplier = TPTab:CreateButton({
+   Name = "Supplier",
+   Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(8, 14, -1033)
+   end,
+})
+
+local tpmanger = TPTab:CreateButton({
+   Name = "Manger",
+   Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(24, 5, 6)
+   end,
+})
