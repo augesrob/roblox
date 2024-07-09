@@ -1,8 +1,8 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "🔥 augesrob Script Hub 🔫",
-   LoadingTitle = "🔫 augesrob 💥",
+   Name = "augesrob's Hub",
+   LoadingTitle = "augesrob's Hub",
    LoadingSubtitle = "by augesrob",
    ConfigurationSaving = {
       Enabled = false,
@@ -16,13 +16,13 @@ local Window = Rayfield:CreateWindow({
    },
    KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
-      Title = "Key | Youtube Hub",
+      Title = "Key | augesrob's Hub",
       Subtitle = "Key System",
       Note = "Key In Discord Server",
       FileName = "YoutubeHubKey1", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
       SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"https://pastebin.com/raw/AtgzSPWK"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {"https://raw.githubusercontent.com/augesrob/roblox/main/key"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
 
@@ -31,7 +31,7 @@ local MainSection = MainTab:CreateSection("Main")
 
 Rayfield:Notify({
    Title = "You executed the script",
-   Content = "Very cool gui",
+   Content = "Enjoy This Script!",
    Duration = 5,
    Image = 13047715178,
    Actions = { -- Notification Buttons
@@ -55,7 +55,7 @@ if _G.infinJumpStarted == nil then
 	_G.infinJumpStarted = true
 	
 	--Notifies readiness
-	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+	game.StarterGui:SetCore("SendNotification", {Title="augesrob's Hub"; Text="Infinite Jump Activated!"; Duration=5;})
 
 	--The actual infinite jump
 	local plr = game:GetService('Players').LocalPlayer
@@ -120,21 +120,52 @@ local Input = MainTab:CreateInput({
 
 local OtherSection = MainTab:CreateSection("Other")
 
-local Toggle = MainTab:CreateToggle({
-   Name = "Auto Farm",
+
+local TPTab = Window:CreateTab("🏝 Jobs", nil) -- Title, Image
+
+local Toggle = TPTab:CreateToggle({
+   Name = "Auto Boxer",
    CurrentValue = false,
-   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-        print("FARMING")
-   end,
-})
-
-local TPTab = Window:CreateTab("🏝 Teleports", nil) -- Title, Image
-
-local Button1 = TPTab:CreateButton({
-   Name = "Starter Island",
-   Callback = function()
-        --Teleport1
+   Flag = "ToggleBoxer", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function FindBoxes()
+	local c,o,f
+	local children = workspace.AllBox:GetChildren()
+	for i=1,#children do
+		local b = children[i]
+		if ffc(b,"HasPizzaInside") or ffc(b,"Pizza") then
+			if c==nil and b.Name=="BoxClosed" and b.Anchored==false and not b.HasPizzaInside.Value then
+				c=b
+			elseif o==nil and b.Name=="BoxOpen" and b.Anchored==false and not b.Pizza.Value then
+				o=b
+			elseif f==nil and (b.Name=="BoxOpen" and b.Pizza.Value) or (b.Name=="BoxClosed" and b.HasPizzaInside.Value) then
+				f=b
+			end
+			if c and o and f then
+				return c,o,f
+			end
+		end
+	end
+	return c,o,f
+end
+	local function FindBoxingFoods()
+	local p,d
+	local children = workspace.BoxingRoom:GetChildren()
+	for i=1,#children do
+		local f = children[i]
+		if not f.Anchored then
+			if p==nil and f.Name=="Pizza" then
+				p=f
+			elseif d==nil and f.Name=="Dew" then
+				d=f
+			end
+			if p and d then
+				return p,d
+			end
+		end
+	end
+	return p,d
+end
+        print("Auto Boxer")
    end,
 })
 
