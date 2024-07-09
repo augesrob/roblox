@@ -123,12 +123,12 @@ local OtherSection = MainTab:CreateSection("Other")
 
 local TPTab = Window:CreateTab("🏝 Jobs", nil) -- Title, Image
 
-local Toggle = TPTab:CreateToggle({
+local Toggle = TPTab:CreateButton({
    Name = "Auto Farm",
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-        print("FARMING")
+   Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/augesrob/roblox/main/workingatpizzappace.lua'))()
    end,
 })
 
