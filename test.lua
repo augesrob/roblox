@@ -182,3 +182,11 @@ local tpmanger = TPTab:CreateButton({
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(24, 5, 6)
    end,
 })
+local ExploitTab = Window:CreateTab("🎲 Exploits", nil) -- Title, Image
+
+local exploittab = TPTab:CreateButton({
+   Name = "Remove Manager Door",
+   Callback = function()
+        game.Workspace.PizzaPlaceDoors.ManagerDoor:destroy()
+   end,
+})
