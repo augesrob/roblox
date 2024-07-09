@@ -146,4 +146,12 @@ local Button3 = TPTab:CreateButton({
    end,
 })
 
-local TPTab = Window:CreateTab("🎲 Misc", nil) -- Title, Image
+local TPTab = Window:CreateTab("🎲 Teleport", nil) -- Title, Image
+
+local tpspawn = TPTab:CreateButton({
+   Name = "Spawn",
+   Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(47, 4, 185)
+   end,
+})
+
