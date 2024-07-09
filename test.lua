@@ -142,14 +142,14 @@ local tpcook = TPTab:CreateButton({
 local tpboxer = TPTab:CreateButton({
    Name = "Pizza Boxer",
    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(47, 4, 185)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(55, 4, 31)
    end,
 })
 
 local tpdelivery = TPTab:CreateButton({
    Name = "Delivery",
    Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(55, 5, 18)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(64, 4, -17)
    end,
 })
 
