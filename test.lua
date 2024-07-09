@@ -30,13 +30,13 @@ local MainTab = Window:CreateTab("🏠 Home", nil) -- Title, Image
 local MainSection = MainTab:CreateSection("Main")
 
 Rayfield:Notify({
-   Title = "You executed the script",
-   Content = "Enjoy This Script!",
+   Title = "Welcome To augesrob's Hub",
+   Content = "If you have any issues join our discord!",
    Duration = 5,
    Image = 13047715178,
    Actions = { -- Notification Buttons
       Ignore = {
-         Name = "Okay!",
+         Name = "Sounds Great!",
          Callback = function()
          print("The user tapped Okay!")
       end
