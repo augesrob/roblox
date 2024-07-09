@@ -184,7 +184,7 @@ local tpmanger = TPTab:CreateButton({
 })
 local ExploitTab = Window:CreateTab("🎲 Exploits", nil) -- Title, Image
 
-local exploittab = TPTab:CreateButton({
+local Exploittabmangerdoor = ExploitTab:CreateButton({
    Name = "Remove Manager Door",
    Callback = function()
         game.Workspace.PizzaPlaceDoors.ManagerDoor:destroy()
