@@ -132,20 +132,6 @@ local Toggle = TPTab:CreateToggle({
    end,
 })
 
-local Button2 = TPTab:CreateButton({
-   Name = "Pirate Island",
-   Callback = function()
-        --Teleport2
-   end,
-})
-
-local Button3 = TPTab:CreateButton({
-   Name = "Pineapple Paradise",
-   Callback = function()
-        --Teleport3
-   end,
-})
-
 local TPTab = Window:CreateTab("🎲 Teleport", nil) -- Title, Image
 
 local tpspawn = TPTab:CreateButton({
