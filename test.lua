@@ -147,7 +147,7 @@ local Toggle = TPTab:CreateToggle({
 	end
 	return c,o,f
 end
-	local function FindBoxingFoods()
+	function FindBoxingFoods()
 	local p,d
 	local children = workspace.BoxingRoom:GetChildren()
 	for i=1,#children do
