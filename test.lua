@@ -190,3 +190,26 @@ local Exploittabmangerdoor = ExploitTab:CreateButton({
         game.Workspace.PizzaPlaceDoors.ManagerDoor:destroy()
    end,
 })
+
+local Exploittabteamspam = ExploitTab:CreateToggle({
+   Name = "Spam Team Change",
+   Callback = function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            game:GetService("ReplicatedStorage").PlayerChannel:FireServer("ChangeJob", "Cashier")
+            wait(0.2)
+            game:GetService("ReplicatedStorage").PlayerChannel:FireServer("ChangeJob", "Cook")
+            wait(0.2)
+            game:GetService("ReplicatedStorage").PlayerChannel:FireServer("ChangeJob", "Pizza Boxer")
+            wait(0.2)
+            game:GetService("ReplicatedStorage").PlayerChannel:FireServer("ChangeJob", "Delivery")
+            wait(0.2)
+            game:GetService("ReplicatedStorage").PlayerChannel:FireServer("ChangeJob", "Supplier")
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+})
+		   end,
+})
