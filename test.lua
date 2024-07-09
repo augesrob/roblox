@@ -98,17 +98,6 @@ local Slider = MainTab:CreateSlider({
    end,
 })
 
-local Dropdown = MainTab:CreateDropdown({
-   Name = "Select Area",
-   Options = {"Starter World","Pirate Island","Pineapple Paradise"},
-   CurrentOption = {"Starter World"},
-   MultipleOptions = false,
-   Flag = "dropdownarea", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Option)
-        print(Option)
-   end,
-})
-
 local Input = MainTab:CreateInput({
    Name = "Walkspeed",
    PlaceholderText = "1-500",
@@ -127,7 +116,7 @@ local Toggle = TPTab:CreateButton({
    end,
 })
 
-local TPTab = Window:CreateTab("🎲 Teleport", nil) -- Title, Image
+local TPTab = Window:CreateTab("🛸 Teleport", nil) -- Title, Image
 
 local tpspawn = TPTab:CreateButton({
    Name = "Spawn",
@@ -177,7 +166,7 @@ local tpmanger = TPTab:CreateButton({
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(24, 5, 6)
    end,
 })
-local ExploitTab = Window:CreateTab("🎲 Exploits", nil) -- Title, Image
+local ExploitTab = Window:CreateTab("☢️ Exploits", nil) -- Title, Image
 
 local Exploittabmangerdoor = ExploitTab:CreateButton({
    Name = "Remove Manager Door",
