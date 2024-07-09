@@ -16,7 +16,7 @@ local Window = Rayfield:CreateWindow({
    },
    KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
-      Title = "Key | augesrob's Hub",
+      Title = "augesrob's Hub",
       Subtitle = "Key System",
       Note = "Key In Discord Server",
       FileName = "YoutubeHubKey1", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
@@ -109,7 +109,7 @@ local Input = MainTab:CreateInput({
 
 local OtherSection = MainTab:CreateSection("Open Auto Farm Menu")
 
-local Toggle = TPTab:CreateButton({
+local Toggle = MainTab:CreateButton({
    Name = "Auto Farm",
    Callback = function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/augesrob/roblox/main/workingatpizzappace.lua'))()
