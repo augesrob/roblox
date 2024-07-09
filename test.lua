@@ -118,10 +118,7 @@ local Input = MainTab:CreateInput({
    end,
 })
 
-local OtherSection = MainTab:CreateSection("Other")
-
-
-local TPTab = Window:CreateTab("🏝 Jobs", nil) -- Title, Image
+local OtherSection = MainTab:CreateSection("Open Auto Farm Menu")
 
 local Toggle = TPTab:CreateButton({
    Name = "Auto Farm",
