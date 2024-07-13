@@ -30,8 +30,9 @@ submitButton.Position = UDim2.new(0, 10, 0, 70)
 submitButton.Text = "Submit"
 submitButton.Parent = frame
 
--- Add the ScreenGui to the player's PlayerGui
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+-- Ensure screenGui is parented to the player's PlayerGui
+local player = game.Players.LocalPlayer
+screenGui.Parent = player:WaitForChild("PlayerGui")
 
 --* Function to authenticate key *--
 local function authenticateKey(key)
