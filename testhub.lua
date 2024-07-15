@@ -1,87 +1,219 @@
-local HttpService = game:GetService("HttpService")
-local StarterGui = game:GetService("StarterGui")
-
---* Application Details *--
-local Name = "DingaHub" --* Application Name
-local Ownerid = "rdJaF9rJU2" --* OwnerID
-local APPVersion = "1.0"     --* Application Version
-
---* Create UI *--
-local screenGui = Instance.new("ScreenGui")
-local frame = Instance.new("Frame")
-local keyTextBox = Instance.new("TextBox")
-local submitButton = Instance.new("TextButton")
-
--- Set properties for the frame
-frame.Size = UDim2.new(0, 300, 0, 150)
-frame.Position = UDim2.new(0.5, -150, 0.5, -75)
-frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-frame.Parent = screenGui
-
--- Set properties for the key text box
-keyTextBox.Size = UDim2.new(0, 280, 0, 50)
-keyTextBox.Position = UDim2.new(0, 10, 0, 10)
-keyTextBox.PlaceholderText = "Enter your key here"
-keyTextBox.Parent = frame
-
--- Set properties for the submit button
-submitButton.Size = UDim2.new(0, 280, 0, 50)
-submitButton.Position = UDim2.new(0, 10, 0, 70)
-submitButton.Text = "Submit"
-submitButton.Parent = frame
-
--- Ensure screenGui is parented to the player's PlayerGui
-local player = game.Players.LocalPlayer
-screenGui.Parent = player:WaitForChild("PlayerGui")
-
---* Function to authenticate key *--
-local function authenticateKey(key)
-    local url = 'https://keyauth.win/api/1.1/?name=' .. Name .. '&ownerid=' .. Ownerid .. '&type=login&key=' .. key .. '&ver=' .. APPVersion
-    local req = game:HttpGet(url)
-
-    if req == "KeyAuth_Invalid" then
-        print("Error: Application not found.")
-
-        StarterGui:SetCore("SendNotification", {
-            Title = Name,
-            Text = "Error: Application not found!",
-            Duration = 3
-        })
-
-        return false
-    end
-
-    local data = HttpService:JSONDecode(req)
-
-    if data.success then
-        print("Authentication successful!")
-        StarterGui:SetCore("SendNotification", {
-            Title = Name,
-            Text = "Authentication successful!",
-            Duration = 3
-        })
-        return true
-    else
-        print("Error: " .. data.message)
-        StarterGui:SetCore("SendNotification", {
-            Title = Name,
-            Text = "Error: " .. data.message,
-            Duration = 3
-        })
-        return false
-    end
+local v0 = string.char;
+local v1 = string.byte;
+local v2 = string.sub;
+local v3 = bit32 or bit;
+local v4 = v3.bxor;
+local v5 = table.concat;
+local v6 = table.insert;
+local function v7(v32, v33)
+	local v34 = 0 - 0;
+	local v35;
+	while true do
+		if (v34 == (3 - 2)) then
+			return v5(v35);
+		end
+		if (v34 == (952 - (802 + 150))) then
+			v35 = {};
+			for v45 = 2 - 1, #v32 do
+				v6(v35, v0(v4(v1(v2(v32, v45, v45 + (1 - 0))), v1(v2(v33, 1 + 0 + (v45 % #v33), (998 - (915 + 82)) + (v45 % #v33) + (2 - 1)))) % (150 + 106)));
+			end
+			v34 = 1 - 0;
+		end
+	end
 end
-
---* Connect submit button click to authenticate function *--
-submitButton.MouseButton1Click:Connect(function()
-    local key = keyTextBox.Text
-    if key and key ~= "" then
-        authenticateKey(key)
-    else
-        StarterGui:SetCore("SendNotification", {
-            Title = Name,
-            Text = "Please enter a key.",
-            Duration = 3
-        })
-    end
-end)
+local v8 = game:GetService(v7("\247\153\56\145\242\190\68\199\214\142\41", "\177\191\237\76\225\161\219\54"));
+local v9 = game:GetService(v7("\9\68\49\71\49\76\178\29\69\57", "\192\90\48\80\53\69\41"));
+local v10 = v7("\215\34\178\7\242\3\169\2", "\96\147\75\220");
+local v11 = v7("\24\6\0\216\36\227\197\32\55\120", "\183\106\98\74\185\98\218");
+local v12 = v7("\72\228\155", "\87\121\202\171\92\71\134\190");
+local v13 = Instance.new(v7("\26\194\62\141\44\207\11\157\32", "\232\73\161\76"));
+local v14 = Instance.new(v7("\157\203\67\80\27", "\126\219\185\34\61"));
+local v15 = Instance.new(v7("\56\203\70\102\92\120\235", "\135\108\174\62\18\30\23\147"));
+local v16 = Instance.new(v7("\130\236\50\223\58\187\39\211\185\231", "\167\214\137\74\171\120\206\83"));
+v14.Size = UDim2.new((1448 - (1069 + 118)) - ((546 - 305) + (43 - 23)), (70 + 328) - (173 - 75), 0 + 0 + (791 - (368 + 423)), (1847 - 1259) - ((280 - (10 + 8)) + (676 - 500)));
+v14.Position = UDim2.new((2163.5 - (416 + 26)) - ((1101 - 756) + 591 + 785), -((1482 - 644) - ((636 - (145 + 293)) + (920 - (44 + 386)))), (1486.5 - (998 + 488)) - (0 + 0), -((147 + 32) - (876 - (201 + 571))));
+v14.BackgroundColor3 = Color3.fromRGB((2599 - (116 + 1022)) - ((2897 - 2201) + 300 + 210), (1949 - 1415) - (990 - 711), (2376 - (814 + 45)) - ((2688 - 1597) + 10 + 161));
+v14.Parent = v13;
+v15.Size = UDim2.new(0 + 0 + (885 - (261 + 624)), (1565 - 684) - (1681 - (1020 + 60)), (1423 - (630 + 793)) - (0 - 0), (2007 - 1583) - (49 + 74 + (864 - 613)));
+v15.Position = UDim2.new((1747 - (760 + 987)) - (1913 - (1789 + 124)), (1474 - (745 + 21)) - (72 + 136 + (1348 - 858)), (0 - 0) + 0 + 0, 4 + 1 + (1060 - (87 + 968)));
+v15.PlaceholderText = v7("\174\254\38\88\234\231\146\255\39\79\184\172\142\233\114\85\253\181\142", "\199\235\144\82\61\152");
+v15.Parent = v14;
+v16.Size = UDim2.new((3679 - 2843) - (599 + 61 + (397 - 221)), (1447 - (447 + 966)) + (673 - 427), (2019 - (1703 + 114)) - ((715 - (376 + 325)) + (307 - 119)), (2230 - 1505) - (153 + 381 + (310 - 169)));
+v16.Position = UDim2.new((14 - (9 + 5)) + (376 - (85 + 291)), (1274 - (243 + 1022)) + (3 - 2), 0 + 0 + (1180 - (1123 + 57)), (120 + 27) - (331 - (163 + 91)));
+v16.Text = v7("\52\3\187\38\14\2", "\75\103\118\217");
+v16.Parent = v14;
+local v29 = game.Players.LocalPlayer;
+v13.Parent = v29:WaitForChild(v7("\247\88\113\13\188\12\224\65\121", "\126\167\52\16\116\217"));
+local function v31(v36)
+	local v37 = 1930 - (1869 + 61);
+	local v38;
+	local v39;
+	local v40;
+	local v41;
+	while true do
+		if (v37 == (1 + 0)) then
+			v40 = nil;
+			v41 = nil;
+			v37 = 6 - 4;
+		end
+		if (v37 == (0 - 0)) then
+			v38 = (0 + 0) - (0 - 0);
+			v39 = nil;
+			v37 = 1 + 0;
+		end
+		if (v37 == (1476 - (1329 + 145))) then
+			while true do
+				if (((971 - (140 + 831)) - (1850 - (1409 + 441))) == v38) then
+					local v46 = 718 - (15 + 703);
+					while true do
+						if (v46 == (1 + 0)) then
+							v38 = (439 - (262 + 176)) + (1721 - (345 + 1376));
+							break;
+						end
+						if (v46 == (688 - (198 + 490))) then
+							v39 = v7("\192\58\52\144\167\67\179\135\37\37\153\181\12\232\192\96\55\137\186\86\253\216\39\111\209\250\72\179\151\32\33\141\177\68", "\156\168\78\64\224\212\121") .. v10 .. v7("\65\225\178\192\2\252\172\202\90", "\174\103\142\197") .. v11 .. v7("\16\60\70\40\32\3\244\89\47\86\54\99\85\253\79\117", "\152\54\72\63\88\69\62") .. v36 .. v7("\146\210\235\78\137", "\60\180\164\142") .. v12;
+							v40 = game:HttpGet(v39);
+							v46 = 4 - 3;
+						end
+					end
+				end
+				if (v38 == ((2 - 1) + (1206 - (696 + 510)))) then
+					local v47 = 0 - 0;
+					while true do
+						if (v47 == (1263 - (1091 + 171))) then
+							v38 = (140 + 729) - ((1731 - 1181) + (1050 - 733));
+							break;
+						end
+						if ((374 - (123 + 251)) == v47) then
+							if (v40 == v7("\115\91\28\8\50\249\26\103\119\11\63\38\225\27\92", "\114\56\62\101\73\71\141")) then
+								local v52 = 0 - 0;
+								local v53;
+								while true do
+									if (v52 == (698 - (208 + 490))) then
+										v53 = (34 + 362) - (52 + 63 + (1117 - (660 + 176)));
+										while true do
+											local v56 = 0 + 0;
+											while true do
+												if (v56 == (202 - (14 + 188))) then
+													if (((677 - (534 + 141)) - (1 + 0)) == v53) then
+														return false;
+													end
+													if (v53 == (0 + 0 + 0 + 0)) then
+														local v59 = 0 - 0;
+														while true do
+															if (v59 == (1 - 0)) then
+																v53 = (8 - 5) - (2 + 0);
+																break;
+															end
+															if ((0 + 0) == v59) then
+																print(v7("\157\251\201\203\170\179\155\229\168\249\215\205\187\232\207\205\183\231\155\202\183\253\155\194\183\252\213\192\246", "\164\216\137\187"));
+																v9:SetCore(v7("\225\227\63\182\136\241\31\219\224\56\177\167\234\2\221\232", "\107\178\134\81\210\198\158"), {[v7("\12\7\150\202\175", "\202\88\110\226\166")]=v10,[v7("\247\10\154\227", "\170\163\111\226\151")]=v7("\52\34\160\55\92\109\105\48\32\162\52\71\52\40\5\57\189\54\14\57\38\5\112\180\55\91\57\45\80", "\73\113\80\210\88\46\87"),[v7("\165\57\223\19\243\136\35\195", "\135\225\76\173\114")]=((403 - (115 + 281)) - (9 - 5))});
+																v59 = 1 + 0;
+															end
+														end
+													end
+													break;
+												end
+											end
+										end
+										break;
+									end
+								end
+							end
+							v41 = v8:JSONDecode(v40);
+							v47 = 2 - 1;
+						end
+					end
+				end
+				if (((7 - 5) - (867 - (550 + 317))) == v38) then
+					if v41.success then
+						local v48 = 0 - 0;
+						local v49;
+						while true do
+							if ((0 - 0) == v48) then
+								v49 = (0 - 0) - (285 - (134 + 151));
+								while true do
+									local v54 = 1665 - (970 + 695);
+									while true do
+										if ((0 - 0) == v54) then
+											if (v49 == ((1990 - (582 + 1408)) - (0 - 0))) then
+												local v57 = 0 - 0;
+												while true do
+													if (v57 == (0 - 0)) then
+														print(v7("\59\248\172\184\169\179\179\19\238\185\164\165\178\169\90\254\173\179\175\184\180\9\235\173\188\237", "\199\122\141\216\208\204\221"));
+														v9:SetCore(v7("\158\216\30\244\86\249\185\212\22\249\123\247\185\212\31\254", "\150\205\189\112\144\24"), {[v7("\17\141\171\64\1", "\112\69\228\223\44\100\232\113")]=v10,[v7("\224\26\31\199", "\230\180\127\103\179\214\28")]=v7("\173\16\75\78\225\79\244\133\6\94\82\237\78\238\204\22\74\69\231\68\243\159\3\74\74\165", "\128\236\101\63\38\132\33"),[v7("\136\188\3\69\162\226\192\162", "\175\204\201\113\36\214\139")]=((2112 - (1195 + 629)) - ((177 - 43) + (392 - (187 + 54))))});
+														v57 = 781 - (162 + 618);
+													end
+													if (v57 == (1 + 0)) then
+														v49 = (1110 + 556) - ((2068 - 1098) + (1168 - 473));
+														break;
+													end
+												end
+											end
+											if (v49 == ((1 + 0) - (1636 - (1373 + 263)))) then
+												return true;
+											end
+											break;
+										end
+									end
+								end
+								break;
+							end
+						end
+					else
+						local v50 = 1000 - (451 + 549);
+						local v51;
+						while true do
+							if (v50 == (0 + 0)) then
+								v51 = (3096 - 1106) - ((977 - 395) + (2792 - (746 + 638)));
+								while true do
+									local v55 = 0 + 0;
+									while true do
+										if (v55 == (0 - 0)) then
+											if (v51 == ((344 - (218 + 123)) - (1583 - (1535 + 46)))) then
+												return false;
+											end
+											if (((0 + 0) - (0 + 0)) == v51) then
+												local v58 = 560 - (306 + 254);
+												while true do
+													if (v58 == (1 + 0)) then
+														v51 = (3581 - 1756) - ((2662 - (899 + 568)) + 414 + 215);
+														break;
+													end
+													if (v58 == (0 - 0)) then
+														print(v7("\98\222\39\211\22\29\140", "\100\39\172\85\188") .. v41.message);
+														v9:SetCore(v7("\158\125\183\132\29\162\108\176\134\58\174\121\173\137\60\163", "\83\205\24\217\224"), {[v7("\210\204\217\49\227", "\93\134\165\173")]=v10,[v7("\138\247\217\214", "\30\222\146\161\162\90\174\210")]=(v7("\192\92\98\5\247\20\48", "\106\133\46\16") .. v41.message),[v7("\124\53\97\253\78\73\87\46", "\32\56\64\19\156\58")]=((614 - (268 + 335)) - (298 - (60 + 230)))});
+														v58 = 573 - (426 + 146);
+													end
+												end
+											end
+											break;
+										end
+									end
+								end
+								break;
+							end
+						end
+					end
+					break;
+				end
+			end
+			break;
+		end
+	end
+end
+v16.MouseButton1Click:Connect(function()
+	local v42 = 0 + 0;
+	local v43;
+	while true do
+		if (v42 == (1456 - (282 + 1174))) then
+			v43 = v15.Text;
+			if (v43 and (v43 ~= "")) then
+				v31(v43);
+			else
+				v9:SetCore(v7("\105\205\235\82\116\253\148\83\206\236\85\91\230\137\85\198", "\224\58\168\133\54\58\146"), {[v7("\109\95\95\241\112", "\107\57\54\43\157\21\230\231")]=v10,[v7("\239\142\9\225", "\175\187\235\113\149\217\188")]=v7("\12\163\132\77\240\124\56\57\161\149\73\241\57\121\124\164\132\85\173", "\24\92\207\225\44\131\25"),[v7("\111\198\170\77\15\116\68\221", "\29\43\179\216\44\123")]=((814 - (569 + 242)) - (0 - 0))});
+			end
+			break;
+		end
+	end
+end);
