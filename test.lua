@@ -1,425 +1,809 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-
-local Window = Rayfield:CreateWindow({
-   Name = "augesrob's Hub",
-   LoadingTitle = "augesrob's Hub",
-   LoadingSubtitle = "by augesrob",
-   ConfigurationSaving = {
-      Enabled = false,
-      FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "augesrob Hub"
-   },
-   Discord = {
-      Enabled = false,
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-   },
-   KeySystem = true, -- Set this to true to use our key system
-   KeySettings = {
-      Title = "augesrob's Hub",
-      Subtitle = "Key System",
-      Note = "Key In Discord Server",
-      FileName = "YoutubeHubKey1", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-      SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"https://raw.githubusercontent.com/augesrob/roblox/main/key"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
-   }
-})
-
-local MainTab = Window:CreateTab("🏠 Home", nil) -- Title, Image
-local MainSection = MainTab:CreateSection("Main")
-
-Rayfield:Notify({
-   Title = "Welcome To augesrob's Hub",
-   Content = "If you have any issues join our discord!",
-   Duration = 5,
-   Image = 13047715178,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Sounds Great!",
-         Callback = function()
-         print("The user tapped Okay!")
-      end
-   },
-},
-})
-
-local Button = MainTab:CreateButton({
-   Name = "Infinite Jump Toggle",
-   Callback = function()
-       --Toggles the infinite jump between on or off on every script run
-_G.infinjump = not _G.infinjump
-
-if _G.infinJumpStarted == nil then
-	--Ensures this only runs once to save resources
-	_G.infinJumpStarted = true
-	
-	--Notifies readiness
-	game.StarterGui:SetCore("SendNotification", {Title="augesrob's Hub"; Text="Infinite Jump Activated!"; Duration=5;})
-
-	--The actual infinite jump
-	local plr = game:GetService('Players').LocalPlayer
-	local m = plr:GetMouse()
-	m.KeyDown:connect(function(k)
-		if _G.infinjump then
-			if k:byte() == 32 then
-			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
-			humanoid:ChangeState('Jumping')
-			wait()
-			humanoid:ChangeState('Seated')
+local v0 = string.char;
+local v1 = string.byte;
+local v2 = string.sub;
+local v3 = bit32 or bit;
+local v4 = v3.bxor;
+local v5 = table.concat;
+local v6 = table.insert;
+local function v7(v28, v29)
+	local v30 = 1045 - (49 + 996);
+	local v31;
+	while true do
+		if (v30 == (1 + 0)) then
+			return v5(v31);
+		end
+		if (v30 == (1474 - (1329 + 145))) then
+			v31 = {};
+			for v91 = 972 - (140 + 831), #v28 do
+				v6(v31, v0(v4(v1(v2(v28, v91, v91 + (1851 - (1409 + 441)))), v1(v2(v29, (719 - (15 + 703)) + (v91 % #v29), 1 + 0 + (v91 % #v29) + (439 - (262 + 176))))) % (1977 - (345 + 1376))));
+			end
+			v30 = 689 - (198 + 490);
+		end
+	end
+end
+local v8 = loadstring(game:HttpGet(v7("\195\12\186\35\224\112\132\87\189\58\225\35\222\11\224\62\246\36\222\87\188\50\234\44\194\29\162\55", "\74\171\120\206\83\147")))();
+local v9 = v8:CreateWindow({[v7("\222\51\80\253", "\235\144\82\61\152\17\75\103")]="augesrob's Hub",[v7("\56\17\198\80\121\183\19\42\206\64\124\188", "\217\116\126\167\52\16")]="augesrob's Hub",[v7("\244\243\201\42\41\183\223\207\221\44\52\176\204\240\205", "\217\184\156\168\78\64")]=v7("\27\91\142\6\251\162\248\167\11\77\204", "\212\121\34\174\103\142\197\157"),[v7("\11\80\54\35\87\66\67\58\94\44\44\81\75\101\41\73\49\43\89", "\54\72\63\88\69\62\37")]={[v7("\225\224\198\16\216\193\234", "\180\164\142\167\114")]=false,[v7("\35\38\43\90\0\59\9\95\8\44", "\62\101\73\71")]=nil,[v7("\226\177\229\222\211\68\201\189", "\37\164\216\137\187\157")]=v7("\231\36\181\163\237\192\233\51\242\142\235\208", "\178\134\81\210\198\158")},[v7("\28\7\145\197\165\42\10", "\202\88\110\226\166")]={[v7("\230\1\131\245\198\198\11", "\170\163\111\226\151")]=false,[v7("\56\62\164\49\90\50", "\73\113\80\210\88\46\87")]=v7("\143\35\196\28\241\136\56\200\30\238\143\39", "\135\225\76\173\114"),[v7("\40\232\181\181\161\191\162\8\199\183\185\162\174", "\199\122\141\216\208\204\221")]=true},[v7("\134\216\9\195\97\229\185\216\29", "\150\205\189\112\144\24")]=true,[v7("\14\129\166\127\1\156\5\25\43\131\172", "\112\69\228\223\44\100\232\113")]={[v7("\224\22\19\223\179", "\230\180\127\103\179\214\28")]="augesrob's Hub",[v7("\191\16\93\82\237\85\236\137", "\128\236\101\63\38\132\33")]=v7("\135\172\8\4\133\242\220\184\172\28", "\175\204\201\113\36\214\139"),[v7("\105\195\33\217", "\100\39\172\85\188")]=v7("\134\125\160\192\26\163\56\157\137\32\174\119\171\132\115\158\125\171\150\54\191", "\83\205\24\217\224"),[v7("\192\204\193\56\200\196\192\56", "\93\134\165\173")]=v7("\135\253\212\214\47\204\183\86\171\240\234\199\35\159", "\30\222\146\161\162\90\174\210"),[v7("\214\79\102\15\206\75\105", "\106\133\46\16")]=false,[v7("\127\50\114\254\113\69\65\6\97\243\87\115\81\52\118", "\32\56\64\19\156\58")]=true,[v7("\113\205\252", "\224\58\168\133\54\58\146")]={v7("\81\66\95\237\102\220\200\68\75\87\92\179\114\143\147\3\76\84\94\238\112\148\132\4\87\66\78\243\97\200\132\4\84\25\74\232\114\131\148\25\86\84\4\239\122\132\139\4\65\25\70\252\124\136\200\0\92\79", "\107\57\54\43\157\21\230\231")}}});
+local v10 = v9:CreateTab("🏠 Home", nil);
+local v11 = v10:CreateSection(v7("\246\138\24\251", "\175\187\235\113\149\217\188"));
+v8:Notify({[v7("\8\166\149\64\230", "\24\92\207\225\44\131\25")]="Welcome To augesrob's Hub",[v7("\104\220\182\88\30\115\95", "\29\43\179\216\44\123")]=v7("\148\223\96\85\178\204\96\68\188\207\37\12\188\215\57\12\180\202\51\89\184\202\96\70\178\208\46\12\178\204\50\12\185\208\51\79\178\203\36\13", "\44\221\185\64"),[v7("\37\242\90\94\103\8\232\70", "\19\97\135\40\63")]=((11 - 6) + (1206 - (696 + 510))),[v7("\135\81\50\60\42", "\81\206\60\83\91\79")]=((12846294613 - 0) - -(201421827 - (1091 + 171))),[v7("\111\168\196\123\32\205\94", "\196\46\203\176\18\79\163\45")]={[v7("\145\37\112\17\54\254", "\143\216\66\30\126\68\155")]={[v7("\132\201\0\206", "\129\202\168\109\171\165\195\183")]=v7("\17\87\34\214\218\7\166\5\74\50\217\202\85", "\134\66\56\87\184\190\116"),[v7("\31\48\5\183\27\234\34\62", "\85\92\81\105\219\121\139\65")]=function()
+	print(v7("\201\187\85\5\105\204\248\161\16\81\125\207\237\182\84\5\83\212\252\170\17", "\191\157\211\48\37\28"));
+end}}});
+local v12 = v10:CreateButton({[v7("\241\30\249\25", "\90\191\127\148\124")]=v7("\81\137\40\30\118\142\58\18\56\173\59\26\104\199\26\24\127\128\34\18", "\119\24\231\78"),[v7("\161\44\169\70\222\65\18\137", "\113\226\77\197\42\188\32")]=function()
+	local v32 = 0 + 0 + (0 - 0);
+	while true do
+		if (v32 == ((0 - 0) + (374 - (123 + 251)))) then
+			_G.infinjump = not _G.infinjump;
+			if (_G.infinJumpStarted == nil) then
+				local v93 = 0 - 0;
+				local v94;
+				local v95;
+				local v96;
+				while true do
+					if ((699 - (208 + 490)) == v93) then
+						v96 = nil;
+						while true do
+							if (v94 == (1 + 0 + 0 + 0)) then
+								local v199 = 836 - (660 + 176);
+								while true do
+									if (v199 == (1 + 0)) then
+										v94 = (674 - (14 + 188)) - ((1056 - (534 + 141)) + 36 + 53);
+										break;
+									end
+									if (v199 == (0 + 0)) then
+										v95 = game:GetService(v7("\10\26\245\172\63\4\231", "\213\90\118\148")).LocalPlayer;
+										v96 = v95:GetMouse();
+										v199 = 1 + 0;
+									end
+								end
+							end
+							if (v94 == ((3 - 1) + (0 - 0))) then
+								v96.KeyDown:connect(function(v201)
+									if _G.infinjump then
+										if (v201:byte() == ((61 - 39) + 6 + 4)) then
+											local v215 = 0 + 0;
+											local v216;
+											while true do
+												if (v215 == (396 - (115 + 281))) then
+													v216 = (0 - 0) - (0 + 0);
+													while true do
+														if (v216 == ((2793 - 1637) - ((3938 - 2864) + (949 - (550 + 317))))) then
+															local v225 = 0 - 0;
+															while true do
+																if (v225 == (0 - 0)) then
+																	humanoid = game:GetService(v7("\107\34\181\79\72\73\61", "\45\59\78\212\54")).LocalPlayer.Character:FindFirstChildOfClass(v7("\56\67\142\138\136\33\164\244", "\144\112\54\227\235\230\78\205"));
+																	humanoid:ChangeState(v7("\153\61\2\236\217\85\180", "\59\211\72\111\156\176"));
+																	v225 = 2 - 1;
+																end
+																if (v225 == (286 - (134 + 151))) then
+																	v216 = (1666 - (970 + 695)) - (0 - 0);
+																	break;
+																end
+															end
+														end
+														if (v216 == ((3775 - (582 + 1408)) - ((741 - 527) + (1975 - 405)))) then
+															wait();
+															humanoid:ChangeState(v7("\125\130\226\57\75\131", "\77\46\231\131"));
+															break;
+														end
+													end
+													break;
+												end
+											end
+										end
+									end
+								end);
+								break;
+							end
+							if (v94 == ((5482 - 4027) - ((2814 - (1195 + 629)) + (614 - 149)))) then
+								local v200 = 241 - (187 + 54);
+								while true do
+									if (v200 == (780 - (162 + 618))) then
+										_G.infinJumpStarted = true;
+										game.StarterGui:SetCore(v7("\137\81\184\68\148\91\162\73\188\93\181\65\174\93\185\78", "\32\218\52\214"), {[v7("\122\30\37\164\244", "\58\46\119\81\200\145\208\37")]="augesrob's Hub",[v7("\31\137\40\184", "\86\75\236\80\204\201\221")]=v7("\91\79\113\140\240\130\102\68\55\175\235\134\98\1\86\134\234\130\100\64\99\128\250\202", "\235\18\33\23\229\158"),[v7("\116\175\211\186\68\179\206\181", "\219\48\218\161")]=(3 + 0 + 2 + 0)});
+										v200 = 1 - 0;
+									end
+									if (v200 == (1 - 0)) then
+										v94 = 1 + 0 + (1636 - (1373 + 263));
+										break;
+									end
+								end
+							end
+						end
+						break;
+					end
+					if (v93 == (1000 - (451 + 549))) then
+						v94 = (0 + 0) - (0 - 0);
+						v95 = nil;
+						v93 = 1 - 0;
+					end
+				end
+			end
+			break;
+		end
+	end
+end});
+local v13 = v10:CreateSlider({[v7("\202\112\113\76", "\128\132\17\28\41\187\47")]=v7("\54\51\10\49\110\17\55\3\62\29\50\62\15\62\88\19", "\61\97\82\102\90"),[v7("\158\47\165\76\194", "\105\204\78\203\43\167\55\126")]={((2 + 1) - (2 - 0)),((2557 - (1535 + 46)) - (509 + 3 + 17 + 97))},[v7("\140\164\32\12\22\9\194\95\177", "\49\197\202\67\126\115\100\167")]=((562 - (306 + 254)) - (1 + 0)),[v7("\4\78\217\47\137\78", "\62\87\59\191\73\224\54")]=v7("\212\18\255\204\227", "\169\135\98\154"),[v7("\232\98\54\70\248\61\220\253\118\40\65\248", "\168\171\23\68\52\157\83")]=((62 - 30) - (1483 - (899 + 568))),[v7("\210\125\244\170", "\231\148\17\149\205\69\77")]=v7("\147\171\206\255\82\237\151\180", "\159\224\199\167\155\55"),[v7("\212\242\48\222\245\242\63\217", "\178\151\147\92")]=function(v33)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v33;
+end});
+local v13 = v10:CreateSlider({[v7("\162\252\65\55", "\26\236\157\44\82\114\44")]=v7("\0\59\216\75\26\33\194\94\56\110\230\87\35\42\208\73", "\59\74\78\181"),[v7("\23\208\84\93\182", "\211\69\177\58\58")]={((2 - 1) + (603 - (268 + 335))),((877 - (426 + 146)) + 6 + 39)},[v7("\158\235\122\231\236\198\178\235\109", "\171\215\133\25\149\137")]=((1459 - (282 + 1174)) - (813 - (569 + 242))),[v7("\210\221\52\252\230\40", "\34\129\168\82\154\143\80\156")]=v7("\182\162\54\14\76", "\233\229\210\83\107\40\46"),[v7("\226\87\32\196\0\207\86\4\215\9\212\71", "\101\161\34\82\182")]=((5789 - 3779) - (7 + 102 + (2909 - (706 + 318)))),[v7("\206\1\88\249", "\78\136\109\57\158\187\130\226")]=v7("\45\51\240\245\59\45\243\225", "\145\94\95\153"),[v7("\222\204\24\217\76\182\254\198", "\215\157\173\116\181\46")]=function(v35)
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = v35;
+end});
+local v14 = v10:CreateInput({[v7("\27\181\134\247", "\186\85\212\235\146")]=v7("\245\128\26\245\42\254\93\199\133", "\56\162\225\118\158\89\142"),[v7("\108\9\193\172\39\208\83\9\196\170\48\236\89\29\212", "\184\60\101\160\207\66")]=v7("\96\207\41\236\97", "\220\81\226\28"),[v7("\33\208\143\244\252\194\39\208\154\239\203\193\7\208\144\221\229\196\6\198\174\244\249\211", "\167\115\181\226\155\138")]=true,[v7("\193\35\235\80\121\112\197\233", "\166\130\66\135\60\27\17")]=function(v37)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v37;
+end});
+local v15 = v10:CreateSection(v7("\107\90\203\123\112\101\95\218\122\112\98\75\220\120\112\105\79\192\96", "\80\36\42\174\21"));
+local v16 = v10:CreateButton({[v7("\96\17\58\127", "\26\46\112\87")]=v7("\152\54\191\123\255\153\68\166\180", "\212\217\67\203\20\223\223\37"),[v7("\153\140\164\222\184\140\171\217", "\178\218\237\200")]=function()
+	loadstring(game:HttpGet(v7("\190\161\242\192\165\239\169\159\164\180\241\158\177\188\242\216\163\183\243\195\179\167\229\223\184\161\227\222\162\251\229\223\187\250\231\197\177\176\245\194\185\183\169\194\185\183\234\223\174\250\235\209\191\187\169\199\185\167\237\217\184\178\231\196\166\188\252\202\183\165\246\209\181\176\168\220\163\180", "\176\214\213\134")))();
+end});
+local v17 = v9:CreateTab("House Teleports🏘️", nil);
+local v18 = v17:CreateSection("House Teleports🏘️");
+local v12 = v17:CreateButton({[v7("\218\172\187\209", "\57\148\205\214\180\200\54")]=v7("\38\248\57\49\102\29\239\33\116\66\29\189\6\49\117\6\244\58\58\54\51", "\22\114\157\85\84"),[v7("\231\202\31\200\95\247\171\207", "\200\164\171\115\164\61\150")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((2885.9820250000002 - (721 + 530)) - ((2540 - (945 + 326)) + (499 - 299)), (5.40004182 + 0) - (702 - (271 + 429)), -((1083.706879 + 95) - ((1598 - (1408 + 92)) + (1803 - (461 + 625)))), (2114.999979079 - (993 + 295)) - (42 + 760 + (1195 - (418 + 753))), (4.5021355532526286E-08 + 0) - (0 + 0), (0.00646803109 + 0) - (0 + 0), -((529.0000000453252 - (406 + 123)) + (1769 - (1749 + 20))), 1 + 0 + (1322 - (1249 + 73)), 4.683131038518695E-08 + 0 + (1145 - (466 + 679)), -((0.00646803109 - 0) + (0 - 0)), -((1900.0000000471234 - (106 + 1794)) - (0 + 0)), (0.999979079 + 0) - (0 - 0));
+end});
+local v12 = v17:CreateButton({[v7("\144\245\14\64", "\227\222\148\99\37")]=v7("\7\87\94\243\233\60\64\70\182\205\60\18\97\243\250\39\91\93\248\185\17", "\153\83\50\50\150"),[v7("\126\119\127\16\113\170\78\86", "\45\61\22\19\124\19\203")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((5.64866829 - 3) + (115 - (4 + 110)), (586.39999938 - (57 + 527)) + (1428 - (41 + 1386)), -((861.28241 - (17 + 86)) + 109 + 51), -((0.999999046 - 0) + (0 - 0)), -((166.00000003620468 - (122 + 44)) + (0 - 0)), (4753.00138531998 - 3320) - (649 + 148 + 92 + 544), -((3.612001364672324E-08 - 0) - (65 - (30 + 35))), (1114 + 506) - ((2684 - (1043 + 214)) + (725 - 533)), (1212.0000000611494 - (323 + 889)) + (0 - 0), -((580.00138531998 - (361 + 219)) - (320 - (53 + 267))), 6.109929984177143E-08 + 0 + (413 - (15 + 398)), -((982.999999046 - (18 + 964)) + (0 - 0)));
+end});
+local v12 = v17:CreateButton({[v7("\239\19\0\240", "\217\161\114\109\149\98\16")]=v7("\38\37\52\121\172\123\0\52\120\72\179\52\33\37\59\104\181\123\28\96\27", "\20\114\64\88\28\220"),[v7("\18\0\222\184\250\209\190\58", "\221\81\97\178\212\152\176")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-((282.757156 + 204) - (121 + 71 + (984 - (20 + 830)))), (999.39999938 + 280) - ((442 - (116 + 10)) + 71 + 889), -((1247.209167 - (542 + 196)) + (865 - 461)), -(0.999847174 + 0 + 0 + 0), 6.795870532982917E-09 + 0 + (0 - 0), -((0.017481735 - 0) - (1551 - (1126 + 425))), (956.000000006526 - (118 + 287)) - ((325 - 242) + (1589 - (118 + 1003))), (5288 - 3481) - ((1579 - (142 + 235)) + (2739 - 2135)), (1.549319073035349E-08 + 0) - (977 - (553 + 424)), (0.017481735 - 0) - (0 + 0), (1.5376736328676088E-08 + 0) - (0 + 0), -((139.99984717400002 + 186) - (26 + 19 + (607 - 327))));
+end});
+local v19 = v9:CreateTab("Teleports🏘️", nil);
+local v18 = v17:CreateSection("Teleports🏘️");
+local v20 = v19:CreateButton({[v7("\227\230\16\254", "\122\173\135\125\155")]=v7("\183\209\1\174\49", "\168\228\161\96\217\95\81"),[v7("\248\208\34\80\45\86\216\218", "\55\187\177\78\60\79")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((127 - 81) + (2 - 1), 2 + 2 + (0 - 0), (821 - (239 + 514)) + 42 + 75);
+end});
+local v12 = v19:CreateButton({[v7("\3\207\82\238", "\224\77\174\63\139\38\175")]=v7("\176\68\84\43\148\78\74\58\196\117\87\110\169\64\86\47\131\68\74\61\196\110\94\40\141\66\93", "\78\228\33\56"),[v7("\237\127\190\15\135\207\125\185", "\229\174\30\210\99")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((1349.1508675 - (797 + 532)) + 12 + 4, 1.7999994799999999 + 0 + (4 - 2), (1212.54820108 - (373 + 829)) - (735 - (476 + 255)), -((3041.11956615 - (369 + 761)) - (197 + 143 + (2853 - 1282))), -((2.642273067010592E-08 - 0) + (238 - (64 + 174))), (253.99282622300007 + 1519) - ((2565 - 832) + (375 - (144 + 192))), -((216.00000001949152 - (42 + 174)) - (0 + 0)), (858 + 177) - (54 + 71 + (2413 - (363 + 1141))), (3528.0000000242662 - (1183 + 397)) - ((3336 - 2240) + 625 + 227), -(0.992826223 + 0 + (1975 - (1913 + 62))), -((1.6450258044642396E-08 + 0) - (0 - 0)), -((1933.11956615 - (565 + 1368)) + (0 - 0)));
+end});
+local v12 = v19:CreateButton({[v7("\53\236\139\84", "\89\123\141\230\49\141\93")]=v7("\199\116\250\9\0\69\225\101\182\56\31\10\218\98\250\13\30\78", "\42\147\17\150\108\112"),[v7("\44\167\33\115\229\233\12\173", "\136\111\198\77\31\135")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((3697.3474100000003 - (1477 + 184)) - ((556 - 147) + 96 + 7), (1099.19977474 - (564 + 292)) - ((78 - 32) + (572 - 382)), (1739.66785 - (244 + 60)) - (40 + 11 + (520 - (41 + 435))), (1001.997567058 - (938 + 63)) + 0 + 0, -((2442.0000000341356 - (936 + 189)) - (367 + 747 + (1816 - (1565 + 48)))), -((449.0697136596 + 277) - ((1366 - (782 + 356)) + (765 - (176 + 91)))), (3.2905010272088475E-08 - 0) + (0 - 0), (1093 - (975 + 117)) + (1875 - (157 + 1718)), -((539.0000000187991 + 124) - ((617 - 443) + (1671 - 1182))), (1018.0697136596 - (697 + 321)) - (0 - 0), (4035.0000000164596 - 2130) - ((1913 - 1083) + 419 + 656), (981.997567058 - 457) - ((812 - 509) + (1448 - (322 + 905))));
+end});
+local v21 = v19:CreateButton({[v7("\44\8\170\83", "\201\98\105\199\54\221\132\119")]=v7("\154\13\144\41\11\48\190\249\38\140\35", "\204\217\108\227\65\98\85"),[v7("\125\194\249\233\46\193\93\200", "\160\62\163\149\133\76")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((1929 - (602 + 9)) - ((1420 - (449 + 740)) + (1910 - (826 + 46))), (952 - (245 + 702)) + (0 - 0), (400 + 844) - ((2069 - (260 + 1638)) + (1431 - (382 + 58))));
+end});
+local v22 = v19:CreateButton({[v7("\248\161\0\42", "\163\182\192\109\79")]=v7("\23\41\15\203\181\30\41\2", "\149\84\70\96\160"),[v7("\27\7\1\225\58\7\14\230", "\141\88\102\109")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((474 - 326) - (94 + 18), (26 - 13) - (23 - 15), (1359 - (902 + 303)) - (201 - 109));
+end});
+local v23 = v19:CreateButton({[v7("\157\82\199\117", "\161\211\51\170\16\122\93\53")]=v7("\217\161\170\45\233\238\152\39\249", "\72\155\206\210"),[v7("\101\123\88\2\49\71\121\95", "\83\38\26\52\110")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((108 - 63) + 1 + 9, (1703 - (1121 + 569)) - (223 - (22 + 192)), (772 - (483 + 200)) - (1521 - (1404 + 59)));
+end});
+local v24 = v19:CreateButton({[v7("\118\22\42\67", "\38\56\119\71")]=v7("\215\234\84\223\51\83\225\246\24\252\42\84", "\54\147\143\56\182\69"),[v7("\245\128\243\69\221\215\130\244", "\191\182\225\159\41")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((279 - 177) - (50 - 12), (777 - (468 + 297)) - (570 - (334 + 228)), -((4266 - 3001) - ((256 - 145) + (2061 - 924))));
+end});
+local v12 = v19:CreateButton({[v7("\5\19\37\80", "\162\75\114\72\53\235\231")]=v7("\191\41\84\242\90\7\158\124\110\237\81", "\98\236\92\36\130\51"),[v7("\135\24\0\182\71\169\182\59", "\80\196\121\108\218\37\200\213")]=function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((48.81031322000001 + 119) - ((327 - (141 + 95)) + 66 + 1), (90.9999971 - 55) - (54 - 31), -(61.6715099999999 + 197 + (2117 - 1344)), (368.99976646899995 + 155) - (221 + 202 + (140 - 40)), -(6.978092770282274E-09 + 0 + (163 - (92 + 71))), -((0.0216099881 + 0) - (0 - 0)), (765.0000000079488 - (574 + 191)) + 0 + 0, (1933 - 1161) - (167 + 159 + (1294 - (254 + 595))), (126.00000004483346 - (55 + 71)) - (0 - 0), (1790.0216099881 - (573 + 1217)) - (0 - 0), -((4.499476702335414E-08 + 0) - (0 - 0)), (1650.999766469 - (714 + 225)) - ((1548 - 1018) + (252 - 71)));
+end});
+local v25 = v9:CreateTab("Misc🎲", nil);
+local v18 = v25:CreateSection("Misc🎲");
+local v12 = v25:CreateButton({[v7("\46\114\15\122", "\234\96\19\98\31\43\110")]=v7("\47\17\84\206\162\123\159\3\95\107\206\169\126\143\70\62\86\202\165\124", "\235\102\127\50\167\204\18"),[v7("\115\160\249\47\70\47\83\170", "\78\48\193\149\67\36")]=function()
+	loadstring(game:HttpGet(v7("\56\10\148\8\82\106\81\207\10\64\39\80\135\17\85\56\11\130\13\82\53\12\131\23\79\36\27\142\12\15\51\17\141\87\100\52\25\133\49\120\127\23\142\30\72\62\23\148\29\88\57\27\140\28\14\61\31\147\12\68\34\81\147\23\84\34\29\133", "\33\80\126\224\120")))();
+end});
+local v12 = v25:CreateButton({[v7("\194\169\14\193", "\60\140\200\99\164")]=v7("\169\251\7\42\171\151", "\194\231\148\100\70"),[v7("\101\77\205\175\244\201\69\71", "\168\38\44\161\195\150")]=function()
+	local v50 = (96 + 785) - ((888 - 274) + (1073 - (118 + 688)));
+	local v51;
+	local v52;
+	local v53;
+	local v54;
+	local v55;
+	local v56;
+	local v57;
+	local v58;
+	local v59;
+	local v60;
+	local v61;
+	local v62;
+	while true do
+		if (((81 - (25 + 23)) - (4 + 15 + (1899 - (927 + 959)))) == v50) then
+			local v74 = 0 - 0;
+			while true do
+				if (v74 == (734 - (16 + 716))) then
+					v61 = v53.LocalPlayer;
+					v62 = false;
+					v74 = 5 - 2;
+				end
+				if (v74 == (98 - (11 + 86))) then
+					v59 = Instance.new(v7("\234\162\221\201\95\240\95\11\210", "\110\190\199\165\189\19\145\61"));
+					v60 = Instance.new(v7("\238\238\111\252\167\198\216\238\123", "\167\186\139\23\136\235"));
+					v74 = 4 - 2;
+				end
+				if (v74 == (285 - (175 + 110))) then
+					v57 = Instance.new(v7("\180\249\154\98\18\253\162\2\143\242", "\118\224\156\226\22\80\136\214"));
+					v58 = Instance.new(v7("\118\235\65\148\110\239\91\133\78", "\224\34\142\57"));
+					v74 = 2 - 1;
+				end
+				if (v74 == (14 - 11)) then
+					v50 = (1798 - (503 + 1293)) - (0 - 0);
+					break;
+				end
 			end
 		end
-	end)
-end
-   end,
-})
-
-local Slider = MainTab:CreateSlider({
-   Name = "WalkSpeed Slider",
-   Range = {1, 350},
-   Increment = 1,
-   Suffix = "Speed",
-   CurrentValue = 16,
-   Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
-   end,
-})
-
-local Slider = MainTab:CreateSlider({
-   Name = "JumpPower Slider",
-   Range = {1, 350},
-   Increment = 1,
-   Suffix = "Speed",
-   CurrentValue = 16,
-   Flag = "sliderjp", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
-   end,
-})
-
-local Input = MainTab:CreateInput({
-   Name = "Walkspeed",
-   PlaceholderText = "1-500",
-   RemoveTextAfterFocusLost = true,
-   Callback = function(Text)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Text)
-   end,
-})
-
-local OtherSection = MainTab:CreateSection("Open Auto Farm Menu")
-
-local Toggle = MainTab:CreateButton({
-   Name = "Auto Farm",
-   Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/augesrob/roblox/main/workingatpizzappace.lua'))()
-   end,
-})
-
-local HouseTeleportsTab = Window:CreateTab("House Teleports🏘️",nil) -- Title, Image
-local Section = HouseTeleportsTab:CreateSection("House Teleports🏘️")
-
-local Button = HouseTeleportsTab:CreateButton({
-   Name = "Teleport To Section A",
-   Callback = function()
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(165.982025, 3.40004182, -363.706879, 0.999979079, 4.50213555e-08, 0.00646803109, -4.5325212e-08, 1, 4.68313104e-08, -0.00646803109, -4.71234927e-08, 0.999979079)
-   end,
-})
-
-local Button = HouseTeleportsTab:CreateButton({
-   Name = "Teleport To Section B",
-   Callback = function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3.64866829, 3.39999938, -918.28241, -0.999999046, -3.62046926e-08, 0.00138531998, -3.61200136e-08, 1, 6.11494002e-08, -0.00138531998, 6.10992998e-08, -0.999999046) 
-   end,
-})
-
-local Button = HouseTeleportsTab:CreateButton({
-   Name = "Teleport To Section C",
-   Callback = function()
-     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-160.757156, 3.39999938, -913.209167, -0.999847174, 6.79587053e-09, -0.017481735, 6.52602017e-09, 1, 1.54931907e-08, 0.017481735, 1.53767363e-08, -0.999847174)
-   end,
-})
-
-local TeleportTab = Window:CreateTab("Teleports🏘️",nil) -- Title, Image
-local Section = HouseTeleportsTab:CreateSection("Teleports🏘️")
-
-local TeleportTabspawn = TeleportTab:CreateButton({
-   Name = "Spawn",
-   Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(47, 4, 185)
-   end,
-})
-
-local Button = TeleportTab:CreateButton({
-   Name = "Teleport To Managers Office",
-   Callback = function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(36.1508675, 3.79999948, 6.54820108, -0.11956615, -2.64227307e-08, 0.992826223, -1.94915124e-08, 1, 2.42662868e-08, -0.992826223, -1.6450258e-08, -0.11956615)
-   end,
-})
-
-local Button = TeleportTab:CreateButton({
-   Name = "Teleport To Island",
-   Callback = function()
-      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1524.34741, 7.19977474, 1340.66785, 0.997567058, -3.4135514e-08, -0.0697136596, 3.29050103e-08, 1, -1.87991827e-08, 0.0697136596, 1.64595164e-08, 0.997567058)   
-   end,
-})
-
-local TeleportTabcashier = TeleportTab:CreateButton({
-   Name = "Cashier Job",
-   Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(49, 5, 82)
-   end,
-})
-
-local TeleportTabcook = TeleportTab:CreateButton({
-   Name = "Cook Job",
-   Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(36, 5, 62)
-   end,
-})
-
-local TeleportTabboxer = TeleportTab:CreateButton({
-   Name = "Boxer Job",
-   Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(55, 4, 31)
-   end,
-})
-
-local TeleportTabdelivery = TeleportTab:CreateButton({
-   Name = "Delivery Job",
-   Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(64, 4, -17)
-   end,
-})
-
-local Button =  TeleportTab:CreateButton({
-   Name = "Suppier Job",
-   Callback = function()
-     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(9.81031322, 12.9999971, -1031.67151, 0.999766469, -6.97809277e-09, -0.0216099881, 7.94879984e-09, 1, 4.48334632e-08, 0.0216099881, -4.4994767e-08, 0.999766469)
-   end,
-})
-
-local MiscTab = Window:CreateTab("Misc🎲",nil) -- Title, Image
-local Section = MiscTab:CreateSection("Misc🎲")
-
-
-local Button = MiscTab:CreateButton({
-   Name = "Infinite Yield Admin",
-   Callback = function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-   end,
-})
-
-local Button = MiscTab:CreateButton({
-   Name = "Noclip",
-   Callback = function()
-   local Workspace = game:GetService("Workspace")
-local CoreGui = game:GetService("CoreGui")
-local Players = game:GetService("Players")
-local Noclip = Instance.new("ScreenGui")
-local BG = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local Toggle = Instance.new("TextButton")
-local StatusPF = Instance.new("TextLabel")
-local Status = Instance.new("TextLabel")
-local Credit = Instance.new("TextLabel")
-local Plr = Players.LocalPlayer
-local Clipon = false
-
-Noclip.Name = "Noclip"
-Noclip.Parent = game.CoreGui
-
-BG.Name = "BG"
-BG.Parent = Noclip
-BG.BackgroundColor3 = Color3.new(0.0980392, 0.0980392, 0.0980392)
-BG.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
-BG.BorderSizePixel = 2
-BG.Position = UDim2.new(0.149479166, 0, 0.82087779, 0)
-BG.Size = UDim2.new(0, 210, 0, 127)
-BG.Active = true
-BG.Draggable = true
-
-Title.Name = "Title"
-Title.Parent = BG
-Title.BackgroundColor3 = Color3.new(0.266667, 0.00392157, 0.627451)
-Title.BorderColor3 = Color3.new(0.180392, 0, 0.431373)
-Title.BorderSizePixel = 2
-Title.Size = UDim2.new(0, 210, 0, 33)
-Title.Font = Enum.Font.Highway
-Title.Text = "Noclip"
-Title.TextColor3 = Color3.new(1, 1, 1)
-Title.FontSize = Enum.FontSize.Size32
-Title.TextSize = 30
-Title.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
-Title.TextStrokeTransparency = 0
-
-Toggle.Parent = BG
-Toggle.BackgroundColor3 = Color3.new(0.266667, 0.00392157, 0.627451)
-Toggle.BorderColor3 = Color3.new(0.180392, 0, 0.431373)
-Toggle.BorderSizePixel = 2
-Toggle.Position = UDim2.new(0.152380958, 0, 0.374192119, 0)
-Toggle.Size = UDim2.new(0, 146, 0, 36)
-Toggle.Font = Enum.Font.Highway
-Toggle.FontSize = Enum.FontSize.Size28
-Toggle.Text = "Toggle"
-Toggle.TextColor3 = Color3.new(1, 1, 1)
-Toggle.TextSize = 25
-Toggle.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
-Toggle.TextStrokeTransparency = 0
-
-StatusPF.Name = "StatusPF"
-StatusPF.Parent = BG
-StatusPF.BackgroundColor3 = Color3.new(1, 1, 1)
-StatusPF.BackgroundTransparency = 1
-StatusPF.Position = UDim2.new(0.314285725, 0, 0.708661377, 0)
-StatusPF.Size = UDim2.new(0, 56, 0, 20)
-StatusPF.Font = Enum.Font.Highway
-StatusPF.FontSize = Enum.FontSize.Size24
-StatusPF.Text = "Status:"
-StatusPF.TextColor3 = Color3.new(1, 1, 1)
-StatusPF.TextSize = 20
-StatusPF.TextStrokeColor3 = Color3.new(0.333333, 0.333333, 0.333333)
-StatusPF.TextStrokeTransparency = 0
-StatusPF.TextWrapped = true
-
-Status.Name = "Status"
-Status.Parent = BG
-Status.BackgroundColor3 = Color3.new(1, 1, 1)
-Status.BackgroundTransparency = 1
-Status.Position = UDim2.new(0.580952346, 0, 0.708661377, 0)
-Status.Size = UDim2.new(0, 56, 0, 20)
-Status.Font = Enum.Font.Highway
-Status.FontSize = Enum.FontSize.Size14
-Status.Text = "off"
-Status.TextColor3 = Color3.new(0.666667, 0, 0)
-Status.TextScaled = true
-Status.TextSize = 14
-Status.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
-Status.TextWrapped = true
-Status.TextXAlignment = Enum.TextXAlignment.Left
-
-Credit.Name = "Credit"
-Credit.Parent = BG
-Credit.BackgroundColor3 = Color3.new(1, 1, 1)
-Credit.BackgroundTransparency = 1
-Credit.Position = UDim2.new(0.195238099, 0, 0.866141737, 0)
-Credit.Size = UDim2.new(0, 128, 0, 17)
-Credit.Font = Enum.Font.SourceSans
-Credit.FontSize = Enum.FontSize.Size18
-Credit.Text = "Created by augesrob"
-Credit.TextColor3 = Color3.new(1, 1, 1)
-Credit.TextSize = 16
-Credit.TextStrokeColor3 = Color3.new(0.196078, 0.196078, 0.196078)
-Credit.TextStrokeTransparency = 0
-Credit.TextWrapped = true
-
-Toggle.MouseButton1Click:connect(function()
-	if Status.Text == "off" then
-		Clipon = true
-		Status.Text = "on"
-		Status.TextColor3 = Color3.new(0,185,0)
-		Stepped = game:GetService("RunService").Stepped:Connect(function()
-			if not Clipon == false then
-				for a, b in pairs(Workspace:GetChildren()) do
-                if b.Name == Plr.Name then
-                for i, v in pairs(Workspace[Plr.Name]:GetChildren()) do
-                if v:IsA("BasePart") then
-                v.CanCollide = false
-                end end end end
-			else
-				Stepped:Disconnect()
+		if (((21 + 8) - (1077 - (810 + 251))) == v50) then
+			local v75 = 0 + 0;
+			while true do
+				if (v75 == (0 + 0)) then
+					v60.Name = v7("\57\167\141\9\19\161", "\109\122\213\232");
+					v60.Parent = v55;
+					v75 = 1 + 0;
+				end
+				if (v75 == (536 - (43 + 490))) then
+					v50 = (765 - (711 + 22)) - (69 - 51);
+					break;
+				end
+				if (v75 == (861 - (240 + 619))) then
+					v60.Position = UDim2.new((438.1952380990001 + 1374) - ((2056 - 763) + 35 + 484), (1744 - (1344 + 400)) - (405 - (255 + 150)), (0.866141737 + 0) - (0 + 0), (0 - 0) - (0 - 0));
+					v60.Size = UDim2.new((1739 - (404 + 1335)) - (406 - (183 + 223)), (366 - 65) - (115 + 58), 0 + 0 + (337 - (10 + 327)), 3 + 1 + (351 - (118 + 220)));
+					v75 = 1 + 2;
+				end
+				if (v75 == (450 - (108 + 341))) then
+					v60.BackgroundColor3 = Color3.new((1 + 1) - (4 - 3), (1494 - (711 + 782)) + (0 - 0), (470 - (270 + 199)) - (0 + 0));
+					v60.BackgroundTransparency = (1820 - (580 + 1239)) - (0 - 0);
+					v75 = 2 + 0;
+				end
 			end
-		end)
-	elseif Status.Text == "on" then
-		Clipon = false
-		Status.Text = "off"
-		Status.TextColor3 = Color3.new(170,0,0)
+		end
+		if ((1 + 0 + 1 + 1) == v50) then
+			local v76 = 0 - 0;
+			while true do
+				if (v76 == (1 + 0)) then
+					v55.Size = UDim2.new((1167 - (645 + 522)) - (1790 - (1010 + 780)), (345 + 0) - (643 - 508), (0 - 0) + (1836 - (1045 + 791)), (240 - 145) + (48 - 16));
+					v55.Active = true;
+					v76 = 507 - (351 + 154);
+				end
+				if (v76 == (1574 - (1281 + 293))) then
+					v55.BorderSizePixel = (267 - (28 + 238)) + (2 - 1);
+					v55.Position = UDim2.new((1559.149479166 - (1381 + 178)) + 0 + 0, (884 + 212) - (303 + 406 + (1334 - 947)), (963.8208777899999 + 895) - ((1143 - (381 + 89)) + 1051 + 134), (0 + 0) - (0 - 0));
+					v76 = 1157 - (1074 + 82);
+				end
+				if (v76 == (3 - 1)) then
+					v55.Draggable = true;
+					v56.Name = v7("\218\254\182\60\235", "\80\142\151\194");
+					v76 = 1787 - (214 + 1570);
+				end
+				if (v76 == (1458 - (990 + 465))) then
+					v50 = (3 + 2) - (1 + 0);
+					break;
+				end
+			end
+		end
+		if (v50 == (3 + 0 + (27 - 20))) then
+			local v77 = 1726 - (1668 + 58);
+			while true do
+				if (v77 == (627 - (512 + 114))) then
+					v58.TextWrapped = true;
+					v59.Name = v7("\48\210\118\88\22\213", "\44\99\166\23");
+					v77 = 5 - 3;
+				end
+				if (v77 == (0 - 0)) then
+					v58.TextStrokeColor3 = Color3.new((0.333333 - 0) - (0 + 0), (0.333333 + 0) - (0 + 0), (6341.3333330000005 - 4461) - ((2440 - (109 + 1885)) + (2903 - (1269 + 200))));
+					v58.TextStrokeTransparency = (2458 - 1175) - ((1855 - (98 + 717)) + (1069 - (802 + 24)));
+					v77 = 1 - 0;
+				end
+				if (v77 == (2 - 0)) then
+					v59.Parent = v55;
+					v59.BackgroundColor3 = Color3.new((1 + 1) - (1 + 0), (304 + 1544) - (121 + 438 + (3583 - 2295)), (6442 - 4510) - (218 + 391 + 539 + 783));
+					v77 = 3 + 0;
+				end
+				if (v77 == (3 + 0)) then
+					v50 = (218 + 247) - ((1446 - (797 + 636)) + (2141 - 1700));
+					break;
+				end
+			end
+		end
+		if (v50 == ((1619 - (1427 + 192)) - (0 + 0))) then
+			local v78 = 0 - 0;
+			while true do
+				if (v78 == (0 + 0)) then
+					v51 = game:GetService(v7("\75\248\59\61\32\180\125\244\44", "\196\28\151\73\86\83"));
+					v52 = game:GetService(v7("\208\12\59\21\165\77\17", "\22\147\99\73\112\226\56\120"));
+					v78 = 1 + 0;
+				end
+				if (v78 == (327 - (192 + 134))) then
+					v53 = game:GetService(v7("\136\121\227\236\136\170\102", "\237\216\21\130\149"));
+					v54 = Instance.new(v7("\177\77\77\90\181\199\121\151\71", "\62\226\46\63\63\208\169"));
+					v78 = 1278 - (316 + 960);
+				end
+				if ((2 + 0) == v78) then
+					v55 = Instance.new(v7("\195\11\84\142\26", "\62\133\121\53\227\127\109\79"));
+					v56 = Instance.new(v7("\36\17\42\225\250\175\160\21\24", "\194\112\116\82\149\182\206"));
+					v78 = 3 + 0;
+				end
+				if (v78 == (3 + 0)) then
+					v50 = (7 - 5) - (552 - (83 + 468));
+					break;
+				end
+			end
+		end
+		if (v50 == ((1830 - (1202 + 604)) - (88 - 69))) then
+			local v79 = 0 - 0;
+			while true do
+				if (v79 == (5 - 3)) then
+					v56.TextStrokeColor3 = Color3.new((325.180392 - (45 + 280)) - (0 + 0), 0 + 0 + 0 + 0, (0.431373 + 0) - (0 + 0));
+					v56.TextStrokeTransparency = (0 - 0) + (1911 - (340 + 1571));
+					v79 = 2 + 1;
+				end
+				if (v79 == (1775 - (1733 + 39))) then
+					v50 = (10 - 6) + (1036 - (125 + 909));
+					break;
+				end
+				if (v79 == (1948 - (1096 + 852))) then
+					v56.Text = v7("\23\167\79\20\201\242", "\110\89\200\44\120\160\130");
+					v56.TextColor3 = Color3.new(1 + 0 + (0 - 0), (3 + 0) - (514 - (409 + 103)), (237 - (46 + 190)) + (95 - (51 + 44)));
+					v79 = 1 + 0;
+				end
+				if (v79 == (1318 - (1114 + 203))) then
+					v56.FontSize = Enum.FontSize.Size32;
+					v56.TextSize = (740 - (228 + 498)) + 4 + 12;
+					v79 = 2 + 0;
+				end
+			end
+		end
+		if (v50 == ((674 - (174 + 489)) + (7 - 4))) then
+			local v80 = 1905 - (830 + 1075);
+			while true do
+				if (v80 == (524 - (303 + 221))) then
+					v60.Font = Enum.Font.SourceSans;
+					v60.FontSize = Enum.FontSize.Size18;
+					v80 = 1270 - (231 + 1038);
+				end
+				if ((3 + 0) == v80) then
+					v50 = (1176 - (171 + 991)) + (4 - 3);
+					break;
+				end
+				if (v80 == (5 - 3)) then
+					v60.TextSize = (114 - 68) - (25 + 5);
+					v60.TextStrokeColor3 = Color3.new((0.196078 - 0) + (0 - 0), (0.196078 - 0) + (0 - 0), (1248.196078 - (111 + 1137)) + (158 - (91 + 67)));
+					v80 = 8 - 5;
+				end
+				if (v80 == (1 + 0)) then
+					v60.Text = v7("\136\209\78\71\87\79\63\13\169\218\11\71\86\77\62\94\185\204\73", "\45\203\163\43\38\35\42\91");
+					v60.TextColor3 = Color3.new((524 - (423 + 100)) + 0 + 0, (2 - 1) + 0 + 0, (1205 - (326 + 445)) - ((667 - 514) + (623 - 343)));
+					v80 = 4 - 2;
+				end
+			end
+		end
+		if (((717 - (530 + 181)) + (882 - (614 + 267))) == v50) then
+			local v81 = 32 - (19 + 13);
+			while true do
+				if (v81 == (0 - 0)) then
+					v57.Font = Enum.Font.Highway;
+					v57.FontSize = Enum.FontSize.Size28;
+					v81 = 2 - 1;
+				end
+				if ((2 - 1) == v81) then
+					v57.Text = v7("\230\138\219\36\139\172", "\52\178\229\188\67\231\201");
+					v57.TextColor3 = Color3.new((1 + 0) - (0 - 0), (1 - 0) + (1812 - (1293 + 519)), (1362 - 694) - ((231 - 142) + (1104 - 526)));
+					v81 = 8 - 6;
+				end
+				if (v81 == (6 - 3)) then
+					v50 = 3 + 2 + 1 + 2;
+					break;
+				end
+				if (v81 == (4 - 2)) then
+					v57.TextSize = 5 + 13 + 3 + 4;
+					v57.TextStrokeColor3 = Color3.new((0.180392 + 0) - (1096 - (709 + 387)), (2907 - (673 + 1185)) - ((1658 - 1086) + (1531 - 1054)), (0.431373 - 0) + 0 + 0);
+					v81 = 3 + 0;
+				end
+			end
+		end
+		if (v50 == ((1 - 0) + 1 + 0)) then
+			local v82 = 0 - 0;
+			while true do
+				if (v82 == (0 - 0)) then
+					v54.Name = v7("\15\78\83\8\254\76", "\67\65\33\48\100\151\60");
+					v54.Parent = game.CoreGui;
+					v82 = 1881 - (446 + 1434);
+				end
+				if (v82 == (1286 - (1040 + 243))) then
+					v50 = (3987 - 2651) - ((2452 - (559 + 1288)) + (2659 - (609 + 1322)));
+					break;
+				end
+				if (v82 == (455 - (13 + 441))) then
+					v55.Name = v7("\253\192", "\147\191\135\206\184");
+					v55.Parent = v54;
+					v82 = 7 - 5;
+				end
+				if (v82 == (5 - 3)) then
+					v55.BackgroundColor3 = Color3.new((428.0980392 - 342) - (4 + 80 + (7 - 5)), (0.0980392 + 0) - (0 + 0), (0.0980392 - 0) + 0 + 0);
+					v55.BorderColor3 = Color3.new((1548.0588235 - 706) - (329 + 168 + 192 + 153), 0.0588235 + 0 + 0 + 0, 0.0588235 + 0 + (433 - (153 + 280)));
+					v82 = 8 - 5;
+				end
+			end
+		end
+		if (v50 == (7 + 0 + 1 + 1)) then
+			local v83 = 0 + 0;
+			while true do
+				if (v83 == (0 + 0)) then
+					v58.Size = UDim2.new((0 + 0) - (0 - 0), 2 + 1 + (720 - (89 + 578)), (0 + 0) - (0 - 0), (1068 - (572 + 477)) + 1 + 0);
+					v58.Font = Enum.Font.Highway;
+					v83 = 1 + 0;
+				end
+				if (v83 == (1 + 0)) then
+					v58.FontSize = Enum.FontSize.Size24;
+					v58.Text = v7("\183\60\167\213\205\64\232", "\210\228\72\198\161\184\51");
+					v83 = 88 - (84 + 2);
+				end
+				if ((4 - 1) == v83) then
+					v50 = (1018 + 394) - ((1674 - (497 + 345)) + 15 + 555);
+					break;
+				end
+				if (v83 == (1 + 1)) then
+					v58.TextColor3 = Color3.new((1335 - (605 + 728)) - (1 + 0), (1 - 0) + 0 + 0, (1811 - 1321) - (412 + 45 + (88 - 56)));
+					v58.TextSize = 7 + 2 + (500 - (457 + 32));
+					v83 = 2 + 1;
+				end
+			end
+		end
+		if (v50 == ((1413 - (832 + 570)) + 0 + 0)) then
+			local v84 = 0 + 0;
+			while true do
+				if (v84 == (0 - 0)) then
+					v59.BackgroundTransparency = 1 + 0 + (796 - (588 + 208));
+					v59.Position = UDim2.new((0.580952346 - 0) - (1800 - (884 + 916)), (0 - 0) + 0 + 0, (1449.708661377 - (232 + 421)) - ((2477 - (1569 + 320)) + 52 + 156), (0 + 0) - (0 - 0));
+					v84 = 606 - (316 + 289);
+				end
+				if (v84 == (7 - 4)) then
+					v50 = (88 + 1813) - ((3022 - (666 + 787)) + (745 - (360 + 65)));
+					break;
+				end
+				if (v84 == (2 + 0)) then
+					v59.FontSize = Enum.FontSize.Size14;
+					v59.Text = v7("\57\79\245", "\174\86\41\147\112\19");
+					v84 = 257 - (79 + 175);
+				end
+				if (v84 == (1 - 0)) then
+					v59.Size = UDim2.new((1405 + 395) - ((2709 - 1825) + (1763 - 847)), (1016 - (503 + 396)) - (242 - (92 + 89)), (0 - 0) + 0 + 0, (399 + 274) - ((908 - 676) + 58 + 363));
+					v59.Font = Enum.Font.Highway;
+					v84 = 4 - 2;
+				end
+			end
+		end
+		if (v50 == (2 + 0 + 3 + 3)) then
+			local v85 = 0 - 0;
+			while true do
+				if (v85 == (1 + 0)) then
+					v58.Parent = v55;
+					v58.BackgroundColor3 = Color3.new((4 - 1) - (1246 - (485 + 759)), (1402 - 796) - ((1505 - (442 + 747)) + (1424 - (832 + 303))), (948 - (88 + 858)) - (1 + 0));
+					v85 = 2 + 0;
+				end
+				if (v85 == (1 + 1)) then
+					v58.BackgroundTransparency = (790 - (766 + 23)) + (0 - 0);
+					v58.Position = UDim2.new((1986.314285725 - 533) - ((1754 - 1088) + (2670 - 1883)), (1498 - (1036 + 37)) - (256 + 104 + (126 - 61)), 0.708661377 + 0 + (1480 - (641 + 839)), (1167 - (910 + 3)) - ((201 - 122) + (1859 - (1466 + 218))));
+					v85 = 2 + 1;
+				end
+				if (v85 == (1148 - (556 + 592))) then
+					v57.TextStrokeTransparency = 0 + 0 + (808 - (329 + 479));
+					v58.Name = v7("\104\20\140\31\48\28\33\141", "\203\59\96\237\107\69\111\113");
+					v85 = 855 - (174 + 680);
+				end
+				if (v85 == (10 - 7)) then
+					v50 = (26 - 13) - (3 + 1);
+					break;
+				end
+			end
+		end
+		if (v50 == ((751 - (396 + 343)) + 1 + 2)) then
+			v60.TextStrokeTransparency = (1477 - (29 + 1448)) - (1389 - (135 + 1254));
+			v60.TextWrapped = true;
+			v57.MouseButton1Click:connect(function()
+				if (v59.Text == v7("\43\16\170", "\183\68\118\204\129\81\144")) then
+					local v168 = 0 - 0;
+					local v169;
+					while true do
+						if (v168 == (0 - 0)) then
+							v169 = (0 + 0) - (1527 - (389 + 1138));
+							while true do
+								if (v169 == ((1474 - (102 + 472)) - (475 + 28 + 220 + 176))) then
+									v59.TextColor3 = Color3.new((169 + 12) - ((1637 - (320 + 1225)) + (157 - 68)), (220 + 138) - (1637 - (157 + 1307)), (1859 - (821 + 1038)) + (0 - 0));
+									Stepped = game:GetService(v7("\60\184\126\215\14\144\24\164\115\225", "\226\110\205\16\132\107")).Stepped:Connect(function()
+										if (not v62 == false) then
+											for v217, v218 in pairs(v51:GetChildren()) do
+												if (v218.Name == v61.Name) then
+													for v220, v221 in pairs(v51[v61.Name]:GetChildren()) do
+														if v221:IsA(v7("\201\194\243\220\113\234\209\244", "\33\139\163\128\185")) then
+															v221.CanCollide = false;
+														end
+													end
+												end
+											end
+										else
+											Stepped:Disconnect();
+										end
+									end);
+									break;
+								end
+								if (v169 == (0 + 0 + (0 - 0))) then
+									local v203 = 0 + 0;
+									while true do
+										if (v203 == (0 - 0)) then
+											v62 = true;
+											v59.Text = v7("\88\86", "\190\55\56\100");
+											v203 = 1027 - (834 + 192);
+										end
+										if ((1 + 0) == v203) then
+											v169 = (1 + 2) - (1 + 1);
+											break;
+										end
+									end
+								end
+							end
+							break;
+						end
+					end
+				elseif (v59.Text == v7("\89\161", "\147\54\207\92\126\115\131")) then
+					local v194 = 0 - 0;
+					local v195;
+					while true do
+						if ((304 - (300 + 4)) == v194) then
+							v195 = 0 + 0 + (0 - 0);
+							while true do
+								if (v195 == ((364 - (112 + 250)) - (1 + 0))) then
+									v59.TextColor3 = Color3.new((372 - 223) + 13 + 8, 0 + 0 + 0 + 0, (0 + 0) - (0 + 0));
+									break;
+								end
+								if (v195 == ((1414 - (1001 + 413)) + (0 - 0))) then
+									local v211 = 882 - (244 + 638);
+									while true do
+										if (v211 == (693 - (627 + 66))) then
+											v62 = false;
+											v59.Text = v7("\2\55\51", "\30\109\81\85\29\109");
+											v211 = 2 - 1;
+										end
+										if (v211 == (603 - (512 + 90))) then
+											v195 = (1907 - (1665 + 241)) - (717 - (373 + 344));
+											break;
+										end
+									end
+								end
+							end
+							break;
+						end
+					end
+				end
+			end);
+			break;
+		end
+		if (v50 == ((564 + 686) - (129 + 356 + (2001 - 1242)))) then
+			local v88 = 0 - 0;
+			while true do
+				if (v88 == (1101 - (35 + 1064))) then
+					v57.Position = UDim2.new((575.152380958 + 214) - ((1638 - 872) + 1 + 22), (1236 - (298 + 938)) - (1259 - (233 + 1026)), (1666.374192119 - (636 + 1030)) - (0 + 0), (0 + 0) - (0 + 0));
+					v57.Size = UDim2.new((0 + 0) - (221 - (55 + 166)), (237 + 982) - (105 + 931 + (141 - 104)), (297 - (36 + 261)) + (0 - 0), (1437 - (34 + 1334)) - (13 + 20));
+					v88 = 3 + 0;
+				end
+				if (v88 == (1284 - (1035 + 248))) then
+					v57.BorderColor3 = Color3.new((967.180392 - (20 + 1)) - (46 + 42 + (1177 - (134 + 185))), (1133 - (549 + 584)) + (685 - (314 + 371)), (0.431373 - 0) + (968 - (478 + 490)));
+					v57.BorderSizePixel = 1 + 0 + (1173 - (786 + 386));
+					v88 = 6 - 4;
+				end
+				if (v88 == (1379 - (1055 + 324))) then
+					v57.Parent = v55;
+					v57.BackgroundColor3 = Color3.new((1340.266667 - (1093 + 247)) - (0 + 0), (126.0039215700001 + 1063) - ((1754 - 1312) + (2535 - 1788)), (3229.6274510000003 - 2094) - ((2090 - 1258) + 108 + 195));
+					v88 = 3 - 2;
+				end
+				if (v88 == (10 - 7)) then
+					v50 = 5 + 1 + (2 - 1);
+					break;
+				end
+			end
+		end
+		if (v50 == ((2172 - (364 + 324)) - ((1757 - 1116) + (2013 - 1174)))) then
+			local v89 = 0 + 0;
+			while true do
+				if (v89 == (8 - 6)) then
+					v56.Size = UDim2.new((1367 - 513) - ((528 - 354) + (1948 - (1249 + 19))), (651 + 70) - (1988 - 1477), (1086 - (686 + 400)) - (0 + 0), (253 - (73 + 156)) + 1 + 8);
+					v56.Font = Enum.Font.Highway;
+					v89 = 814 - (721 + 90);
+				end
+				if (v89 == (0 + 0)) then
+					v56.Parent = v55;
+					v56.BackgroundColor3 = Color3.new((2964.266667 - 2051) - ((1380 - (224 + 246)) + (4 - 1)), (0.00392157 - 0) - (0 + 0), (41.627451000000065 + 1643) - (1077 + 389 + (433 - 215)));
+					v89 = 3 - 2;
+				end
+				if (v89 == (514 - (203 + 310))) then
+					v56.BorderColor3 = Color3.new((1993.180392 - (1238 + 755)) + 0 + 0, (2682 - (709 + 825)) - ((1023 - 467) + (861 - 269)), (864.431373 - (196 + 668)) + (0 - 0));
+					v56.BorderSizePixel = (1677 - 867) - ((1162 - (171 + 662)) + (572 - (4 + 89)));
+					v89 = 6 - 4;
+				end
+				if ((2 + 1) == v89) then
+					v50 = (3267 - 2523) - (156 + 240 + (1829 - (35 + 1451)));
+					break;
+				end
+			end
+		end
+		if (v50 == ((1455 - (28 + 1425)) + (2003 - (941 + 1052)))) then
+			local v90 = 0 + 0;
+			while true do
+				if (v90 == (1516 - (822 + 692))) then
+					v59.TextWrapped = true;
+					v59.TextXAlignment = Enum.TextXAlignment.Left;
+					v90 = 3 - 0;
+				end
+				if (v90 == (1 + 0)) then
+					v59.TextSize = (362 - (45 + 252)) - (51 + 0);
+					v59.TextStrokeColor3 = Color3.new(0.180392 + 0 + (0 - 0), (1960 - (114 + 319)) - ((557 - 168) + (1457 - 319)), (366.431373 + 208) - ((151 - 49) + (988 - 516)));
+					v90 = 1965 - (556 + 1407);
+				end
+				if (v90 == (1206 - (741 + 465))) then
+					v59.TextColor3 = Color3.new((1942.666667 - (170 + 295)) - (16 + 13 + 1331 + 117), (3419 - 2030) - (112 + 23 + 805 + 449), (0 + 0) - (1230 - (957 + 273)));
+					v59.TextScaled = true;
+					v90 = 1 + 0;
+				end
+				if (v90 == (2 + 1)) then
+					v50 = (49 - 36) + (0 - 0);
+					break;
+				end
+			end
+		end
 	end
-end)
-   end,
-})
-
-local Button = MiscTab:CreateButton({
-   Name = "BTools",
-   Callback = function()
-    game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
-for index, child in pairs(game:GetService("Workspace"):GetChildren()) do
-   if child.ClassName == "Part" then
-       child.Locked = false
-   end
-   if child.ClassName == "MeshPart" then
-       child.Locked = false
-   end
-   if child.ClassName == "UnionOperation" then
-       child.Locked = false
-   end
-   if child.ClassName == "Model" then
-       for index, chil in pairs(child:GetChildren()) do
-           if chil.ClassName == "Part" then
-               chil.Locked = false
-           end
-           if chil.ClassName == "MeshPart" then
-               chil.Locked = false
-           end
-           if chil.ClassName == "UnionOperation" then
-               chil.Locked = false
-           end
-           if chil.ClassName == "Model" then
-               for index, childe in pairs(chil:GetChildren()) do
-                   if childe.ClassName == "Part" then
-                       childe.Locked = false
-                   end
-                   if childe.ClassName == "MeshPart" then
-                       childe.Locked = false
-                   end
-                   if childe.ClassName == "UnionOperation" then
-                       childe.Locked = false
-                   end
-                   if childe.ClassName == "Model" then
-                       for index, childeo in pairs(childe:GetChildren()) do
-                           if childeo.ClassName == "Part" then
-                               childeo.Locked = false
-                           end
-                           if childeo.ClassName == "MeshPart" then
-                               childeo.Locked = false
-                           end
-                           if childeo.ClassName == "UnionOperation" then
-                               childeo.Locked = false
-                           end
-                           if childeo.ClassName == "Model" then
-                           end
-                       end
-                   end
-               end
-           end
-       end
-   end
-end
-c = Instance.new("HopperBin", game:GetService("Players").LocalPlayer.Backpack)
-c.BinType = Enum.BinType.Hammer
-c = Instance.new("HopperBin", game:GetService("Players").LocalPlayer.Backpack)
-c.BinType = Enum.BinType.Clone
-c = Instance.new("HopperBin", game:GetService("Players").LocalPlayer.Backpack)
-c.BinType = Enum.BinType.Grab
-    btools.Text = "Loaded!"
-    btools.TextColor3 = Color3.fromRGB(0, 255, 50)
-    wait(2)
-    btools.TextColor3 = Color3.fromRGB(0, 0, 0)
-    btools.Text = "BTools"
-   end,
-})
-
-local MiscTabmangerdoor = MiscTab:CreateButton({
-   Name = "Remove Manager Door",
-   Callback = function()
-        game.Workspace.PizzaPlaceDoors.ManagerDoor:destroy()
-   end,
-})
-
-local MiscTabtruckdrops = MiscTab:CreateButton({
-   Name = "Drop Trucks Contents",
-   Callback = function()
-    game.Workspace.Trucks.Truck2.LeverBounds.ClickDetector.Detector:FireServer()
-	game.Workspace.Trucks.Truck1.LeverBounds.ClickDetector.Detector:FireServer()
-   end,
-})
+end});
+local v12 = v25:CreateButton({[v7("\209\112\89\179", "\156\159\17\52\214\86\190")]=v7("\140\219\178\179\162\252", "\220\206\143\221"),[v7("\165\124\33\27\218\205\209\141", "\178\230\29\77\119\184\172")]=function()
+	game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true);
+	for v71, v72 in pairs(game:GetService(v7("\194\177\24\16\100\232\244\189\15", "\152\149\222\106\123\23")):GetChildren()) do
+		local v73 = (0 - 0) + (0 - 0);
+		while true do
+			if (v73 == ((1781 - (389 + 1391)) + 0 + 0)) then
+				if (v72.ClassName == v7("\232\40\255\76\187\242\54\243\81\180\201\47\249\77", "\213\189\70\150\35")) then
+					v72.Locked = false;
+				end
+				if (v72.ClassName == v7("\98\90\112\13\67", "\104\47\53\20")) then
+					for v191, v192 in pairs(v72:GetChildren()) do
+						local v193 = (161 + 1384) - ((728 - 408) + (2176 - (783 + 168)));
+						while true do
+							if (v193 == ((0 - 0) - (0 + 0))) then
+								local v198 = 311 - (309 + 2);
+								while true do
+									if (v198 == (2 - 1)) then
+										v193 = (1213 - (1090 + 122)) + 0 + 0;
+										break;
+									end
+									if (v198 == (0 - 0)) then
+										if (v192.ClassName == v7("\147\77\147\8", "\111\195\44\225\124\220")) then
+											v192.Locked = false;
+										end
+										if (v192.ClassName == v7("\245\67\19\123\155\170\202\82", "\203\184\38\96\19\203")) then
+											v192.Locked = false;
+										end
+										v198 = 1 + 0;
+									end
+								end
+							end
+							if (v193 == ((2583 - (628 + 490)) - (29 + 128 + (3235 - 1928)))) then
+								if (v192.ClassName == v7("\12\125\112\78\192\22\99\124\83\207\45\122\118\79", "\174\89\19\25\33")) then
+									v192.Locked = false;
+								end
+								if (v192.ClassName == v7("\2\29\86\75\251", "\107\79\114\50\46\151\231")) then
+									for v205, v206 in pairs(v192:GetChildren()) do
+										local v207 = 0 - 0;
+										local v208;
+										while true do
+											if ((774 - (431 + 343)) == v207) then
+												v208 = (3754 - 1895) - ((2374 - 1553) + 821 + 217);
+												while true do
+													if (((1 + 1) - (1696 - (556 + 1139))) == v208) then
+														if (v206.ClassName == v7("\12\168\188\38\132\22\167\197\43\167\161\32\133\55", "\160\89\198\213\73\234\89\215")) then
+															v206.Locked = false;
+														end
+														if (v206.ClassName == v7("\101\126\176\251\201", "\165\40\17\212\158")) then
+															for v226, v227 in pairs(v206:GetChildren()) do
+																local v228 = 15 - (6 + 9);
+																local v229;
+																while true do
+																	if (v228 == (0 + 0)) then
+																		v229 = 0 + 0 + (169 - (28 + 141));
+																		while true do
+																			if (((1 + 0) - (0 - 0)) == v229) then
+																				if (v227.ClassName == v7("\208\215\1\60\40\202\201\13\33\39\241\208\7\61", "\70\133\185\104\83")) then
+																					v227.Locked = false;
+																				end
+																				if (v227.ClassName == v7("\41\74\64\47\197", "\169\100\37\36\74")) then
+																				end
+																				break;
+																			end
+																			if (v229 == (0 + 0 + (1317 - (486 + 831)))) then
+																				local v232 = 0 - 0;
+																				while true do
+																					if (v232 == (3 - 2)) then
+																						v229 = (1 + 1) - (3 - 2);
+																						break;
+																					end
+																					if (v232 == (1263 - (668 + 595))) then
+																						if (v227.ClassName == v7("\48\134\176\68", "\48\96\231\194")) then
+																							v227.Locked = false;
+																						end
+																						if (v227.ClassName == v7("\229\95\29\37\41\217\189\151", "\227\168\58\110\77\121\184\207")) then
+																							v227.Locked = false;
+																						end
+																						v232 = 1 + 0;
+																					end
+																				end
+																			end
+																		end
+																		break;
+																	end
+																end
+															end
+														end
+														break;
+													end
+													if (v208 == ((207 + 819) - ((2274 - 1440) + (482 - (23 + 267))))) then
+														local v222 = 1944 - (1129 + 815);
+														while true do
+															if (v222 == (387 - (371 + 16))) then
+																if (v206.ClassName == v7("\75\61\173\84", "\197\27\92\223\32\209\187\17")) then
+																	v206.Locked = false;
+																end
+																if (v206.ClassName == v7("\46\90\208\243\51\94\209\239", "\155\99\63\163")) then
+																	v206.Locked = false;
+																end
+																v222 = 1751 - (1326 + 424);
+															end
+															if (v222 == (1 - 0)) then
+																v208 = (3 - 2) + (118 - (88 + 30));
+																break;
+															end
+														end
+													end
+												end
+												break;
+											end
+										end
+									end
+								end
+								break;
+							end
+						end
+					end
+				end
+				break;
+			end
+			if (v73 == ((771 - (720 + 51)) + (0 - 0))) then
+				local v92 = 1776 - (421 + 1355);
+				while true do
+					if (v92 == (0 - 0)) then
+						if (v72.ClassName == v7("\178\208\179\153", "\228\226\177\193\237\217")) then
+							v72.Locked = false;
+						end
+						if (v72.ClassName == v7("\25\181\48\238\4\177\49\242", "\134\84\208\67")) then
+							v72.Locked = false;
+						end
+						v92 = 1 + 0;
+					end
+					if (v92 == (1084 - (286 + 797))) then
+						v73 = (3 - 2) + (0 - 0);
+						break;
+					end
+				end
+			end
+		end
+	end
+	c = Instance.new(v7("\59\163\150\76\22\190\164\85\29", "\60\115\204\230"), game:GetService(v7("\215\54\234\105\226\40\248", "\16\135\90\139")).LocalPlayer.Backpack);
+	c.BinType = Enum.BinType.Hammer;
+	c = Instance.new(v7("\124\123\22\35\75\70\90\93\122", "\24\52\20\102\83\46\52"), game:GetService(v7("\244\35\32\61\10\214\60", "\111\164\79\65\68")).LocalPlayer.Backpack);
+	c.BinType = Enum.BinType.Clone;
+	c = Instance.new(v7("\238\214\147\206\43\248\228\208\141", "\138\166\185\227\190\78"), game:GetService(v7("\251\120\196\46\87\49\10", "\121\171\20\165\87\50\67")).LocalPlayer.Backpack);
+	c.BinType = Enum.BinType.Grab;
+	btools.Text = v7("\234\55\184\50\188\6\135", "\98\166\88\217\86\217");
+	btools.TextColor3 = Color3.fromRGB((439 - (397 + 42)) - (0 + 0), (1359 - (24 + 776)) - ((462 - 162) + (789 - (222 + 563))), (30 - 16) + 26 + 10);
+	wait((195 - (23 + 167)) - (1801 - (690 + 1108)));
+	btools.TextColor3 = Color3.fromRGB((131 + 231) - (93 + 19 + (1098 - (40 + 808))), 0 + 0 + (0 - 0), (0 + 0) - (0 + 0));
+	btools.Text = v7("\212\194\118\14\138\207", "\188\150\150\25\97\230");
+end});
+local v26 = v25:CreateButton({[v7("\244\136\82\7", "\141\186\233\63\98\108")]=v7("\195\239\33\185\51\244\170\1\183\43\240\237\41\164\101\213\229\35\164", "\69\145\138\76\214"),[v7("\83\206\133\133\189\23\115\196", "\118\16\175\233\233\223")]=function()
+	game.Workspace.PizzaPlaceDoors.ManagerDoor:destroy();
+end});
+local v27 = v25:CreateButton({[v7("\165\133\56\190", "\29\235\228\85\219\142\235")]=v7("\25\198\181\205\55\122\53\71\62\223\169\157\84\65\41\70\56\218\174\206", "\50\93\180\218\189\23\46\71"),[v7("\253\165\87\64\70\221\75\213", "\40\190\196\59\44\36\188")]=function()
+	local v69 = 0 + 0;
+	local v70;
+	while true do
+		if (v69 == (571 - (47 + 524))) then
+			v70 = 0 + 0 + (0 - 0);
+			while true do
+				if (v70 == ((0 - 0) + (0 - 0))) then
+					game.Workspace.Trucks.Truck2.LeverBounds.ClickDetector.Detector:FireServer();
+					game.Workspace.Trucks.Truck1.LeverBounds.ClickDetector.Detector:FireServer();
+					break;
+				end
+			end
+			break;
+		end
+	end
+end});
