@@ -1,924 +1,1904 @@
-getupvalues = getupvalues or debug.getupvalues
-setupvalue = setupvalue or debug.setupvalue
-if not (getrawmetatable and getupvalues and setupvalue and (getreg or debug.getregistry)) then
-	local h = Instance.new("Hint",workspace)
-	h.Text = "Incompatible exploit."
-	wait(3)
-	h:Destroy()
-	return
+local obf_stringchar = string.char;
+local obf_stringbyte = string.byte;
+local obf_stringsub = string.sub;
+local obf_bitlib = bit32 or bit;
+local obf_XOR = obf_bitlib.bxor;
+local obf_tableconcat = table.concat;
+local obf_tableinsert = table.insert;
+local function LUAOBFUSACTOR_DECRYPT_STR_0(LUAOBFUSACTOR_STR, LUAOBFUSACTOR_KEY)
+	local result = {};
+	for i = 1, #LUAOBFUSACTOR_STR do
+		obf_tableinsert(result, obf_stringchar(obf_XOR(obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_STR, i, i + 1)), obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_KEY, 1 + (i % #LUAOBFUSACTOR_KEY), 1 + (i % #LUAOBFUSACTOR_KEY) + 1))) % 256));
+	end
+	return obf_tableconcat(result);
 end
-local settings = {refill_at=50, refill_end=97, deliver_at=24, stay_in_kitchen=true}
-local doCashier,doBoxer,doCook,doSupplier,doDelivery = true,true,true,true,true
+getupvalues = getupvalues or debug.getupvalues;
+setupvalue = setupvalue or debug.setupvalue;
+if not (getrawmetatable and getupvalues and setupvalue and (getreg or debug.getregistry)) then
+	local v141 = 0 + 0;
+	local v142;
+	while true do
+		if (v141 == (1931 - (1215 + 714))) then
+			return;
+		end
+		if (v141 == (922 - (337 + 585))) then
+			v142 = Instance.new(LUAOBFUSACTOR_DECRYPT_STR_0("\128\95\42\98", "\180\200\54\68\22\114\157\85"), workspace);
+			v142.Text = LUAOBFUSACTOR_DECRYPT_STR_0("\129\202\200\28\246\184\197\223\26\249\164\193\139\22\227\184\200\196\26\239\230", "\155\200\164\171\115");
+			v141 = 3 - 2;
+		end
+		if (v141 == (1 + 0)) then
+			wait(2 + 1);
+			v142:Destroy();
+			v141 = 497 - (152 + 343);
+		end
+	end
+end
+local v0 = {[LUAOBFUSACTOR_DECRYPT_STR_0("\228\47\133\183\248\15\98\247\62", "\61\150\74\227\222\148\99")]=(144 - 94),[LUAOBFUSACTOR_DECRYPT_STR_0("\235\54\84\38\245\63\109\42\247\55", "\79\153\83\50")]=(6 + 91),[LUAOBFUSACTOR_DECRYPT_STR_0("\223\72\81\255\205\72\79\201\218\89", "\150\187\45\61")]=(9 + 15),[LUAOBFUSACTOR_DECRYPT_STR_0("\15\103\170\106\35\122\165\76\23\122\191\112\20\118\165", "\19\124\19\203")]=true};
+local v1, v2, v3, v4, v5 = true, true, true, true, true;
 if readfile then
 	pcall(function()
-		local new = game:GetService("HttpService"):JSONDecode(readfile("PizzaFarm.txt"))
-		--corruption?
-		local doOverwrite=false
-		for k,v in pairs(new) do
-			if settings[k]==nil then
-				doOverwrite=true
-				new[k]=nil
+		local v164 = 0 - 0;
+		local v165;
+		local v166;
+		while true do
+			if (v164 == (591 - (396 + 195))) then
+				v165 = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\233\6\25\229\49\117\171\215\27\14\240", "\217\161\114\109\149\98\16")):JSONDecode(readfile(LUAOBFUSACTOR_DECRYPT_STR_0("\34\41\34\102\189\82\19\50\53\50\168\108\6", "\20\114\64\88\28\220")));
+				v166 = false;
+				v164 = 2 - 1;
+			end
+			if (v164 == (1763 - (440 + 1321))) then
+				if v166 then
+					local v284 = 1829 - (1059 + 770);
+					while true do
+						if (v284 == (0 - 0)) then
+							warn(LUAOBFUSACTOR_DECRYPT_STR_0("\2\4\198\160\241\222\186\34\65\221\162\253\194\170\35\8\198\160\253\222", "\221\81\97\178\212\152\176"));
+							writefile(LUAOBFUSACTOR_DECRYPT_STR_0("\253\238\7\225\27\235\230\15\246\84\217\255\9", "\122\173\135\125\155"), game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\172\213\20\169\12\52\218\146\200\3\188", "\168\228\161\96\217\95\81")):JSONEncode(v165));
+							break;
+						end
+					end
+				end
+				v0 = v165;
+				break;
+			end
+			if (v164 == (546 - (424 + 121))) then
+				for v274, v275 in pairs(v165) do
+					if (v0[v274] == nil) then
+						local v298 = 0 + 0;
+						while true do
+							if (v298 == (1347 - (641 + 706))) then
+								v166 = true;
+								v165[v274] = nil;
+								break;
+							end
+						end
+					end
+				end
+				for v276, v277 in pairs(v0) do
+					if (v165[v276] == nil) then
+						local v299 = 0 + 0;
+						while true do
+							if (v299 == (440 - (249 + 191))) then
+								v166 = true;
+								v165[v276] = v277;
+								break;
+							end
+						end
+					end
+				end
+				v164 = 8 - 6;
 			end
 		end
-		for k,v in pairs(settings) do
-			if new[k]==nil then
-				doOverwrite=true
-				new[k]=v
-			end
-		end
-		--use input
-		if doOverwrite then
-			warn("Settings overwritten")
-			writefile("PizzaFarm.txt",game:GetService("HttpService"):JSONEncode(new))
-		end
-		settings = new
-	end)
+	end);
 end
-
 if getconnections then
-	for _,c in next,getconnections(game:GetService("ScriptContext").Error) do
-		c:Disable()
+	for v167, v168 in next, getconnections(game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\232\210\60\85\63\67\248\222\32\72\42\79\207", "\55\187\177\78\60\79")).Error) do
+		v168:Disable();
 	end
 end
-
-local player = game:GetService("Players").LocalPlayer
-local ffc = game.FindFirstChild
-local RNG = Random.new()
-local network
-local character,root,humanoid
+local v6 = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\29\194\94\242\67\221\147", "\224\77\174\63\139\38\175")).LocalPlayer;
+local v7 = game.FindFirstChild;
+local v8 = Random.new();
+local v9;
+local v10, v11, v12;
 do
-	local reg = (getreg or debug.getregistry)()
-	for i=1,#reg do
-		local f = reg[i]
-		if type(f)=="function" then
-		    for k,v in next,getupvalues(f) do
-				if typeof(v)=="Instance" then
-				    if v.Name=="CashOut" then
-					    setupvalue(f,k,{MouseButton1Click={wait=function()end,Wait=function()end}})
-				    elseif v.Name=="StickerName" then
-				        setupvalue(f,k,nil)
-				    end
-				end
-			end
-    		if tostring(getfenv(f).script) == "Music" then
-    		    local consts = getconstants(f)
-    		    local loc=false
-		        for ci,c in next,consts do
-		            if c == "location changed" then
-		                loc=true
-		            elseif loc and c == "SendData" then
-		                setconstant(f,ci,"ExplodeString")
-		                break
-		            end
-		        end
-    		end
-		elseif type(f)=="table" and rawget(f,"FireServer") and rawget(f,"BindEvents") then
-			network = f
-		end
-	end
-end
-assert(network,"failed to find network")
---//gui
-Create = function(class,parent,props)
-	local new = Instance.new(class)
-	for k,v in next,props do
-		new[k]=v
-	end
-	new.Parent = parent
-	return new
-end
-gui=Create("ScreenGui",game.CoreGui,{Name="Farm", ZIndexBehavior="Sibling"})
-main=Create("Frame",gui,{Name="main", Draggable=true, Active=true, Size=UDim2.new(0,350,0,100), Position=UDim2.new(.335,0,0.02,0), BackgroundColor3=Color3.new(0.098,0.098,0.098)})
-topbar=Create("Frame",main,{Name="topbar", Size=UDim2.new(1,0,0.15,0), BackgroundColor3=Color3.new(0.255,0.255,0.255)})
-closeBtn=Create("TextButton",topbar,{Name="closeBtn", TextWrapped=true, Size=UDim2.new(0.03,0,1,0), TextColor3=Color3.new(1,1,1), Text="X", BackgroundTransparency=1, 
-	Font="GothamSemibold", Position=UDim2.new(0.96,0,0,0), TextSize=14, TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-titleLbl=Create("TextLabel",topbar,{Name="titleLbl", TextWrapped=true, Size=UDim2.new(0.5,0,1,0), Text="Work at a pizza place", TextSize=14, Font="GothamSemibold", 
-	BackgroundTransparency=1, Position=UDim2.new(0.25,0,0,0), TextColor3=Color3.new(1,1,1), BackgroundColor3=Color3.new(1,1,1)})
-saveBtn=Create("ImageButton",topbar,{Name="saveBtn", Image="rbxassetid://55687833", Size=UDim2.new(0.05,0,1,0), Position=UDim2.new(0.01,0,0,0), BackgroundTransparency=1, BackgroundColor3=Color3.new(), Visible=writefile~=nil})
-settings_1=Create("Frame",main,{Name="settings", BackgroundTransparency=1, Size=UDim2.new(0.97,0,0.75,0), Position=UDim2.new(0.025,0,0.2,0), BackgroundColor3=Color3.new(1,1,1)})
-Layout=Create("UIGridLayout",settings_1,{VerticalAlignment="Center", SortOrder="LayoutOrder", HorizontalAlignment="Center", CellPadding=UDim2.new(0.01,0,0.1,0), CellSize=UDim2.new(0.325,0,0.26,0)})
-cashier=Create("Frame",settings_1,{Name="cashier", LayoutOrder=4, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-Label=Create("TextLabel",cashier,{TextWrapped=true, Size=UDim2.new(0.6,0,1,0), Text="Cashier", TextSize=14, TextXAlignment="Left", Font="SourceSans", 
-	BackgroundTransparency=1, Position=UDim2.new(0.4,0,0,0), TextColor3=Color3.new(1,1,1), TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-cashierBtn=Create("ImageButton",cashier,{Name="cashierBtn", ImageTransparency=1, BorderSizePixel=0, Size=UDim2.new(0.38,0,1,0), BackgroundColor3=Color3.new(0.392,0.392,0.392)})
-cashierSlider=Create("Frame",cashierBtn,{Name="slider", Size=UDim2.new(0.5,-4,1,-4), Position=UDim2.new(doCashier and 0.5 or 0,2,0,2), BorderSizePixel=0, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-kitchen=Create("Frame",settings_1,{Name="kitchen", LayoutOrder=9, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-Label_2=Create("TextLabel",kitchen,{TextWrapped=true, Size=UDim2.new(0.6,0,1,0), Text="Deliver At:", TextSize=14, TextXAlignment="Right", Font="SourceSans", 
-	BackgroundTransparency=1, TextColor3=Color3.new(1,1,1), TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-deliverAtBox=Create("TextBox",kitchen,{Name="deliverAtBox", TextWrapped=true, Size=UDim2.new(0.25,0,1,0), Text=tostring(settings.deliver_at), TextSize=50, TextColor3=Color3.new(), 
-	Font="Code", Position=UDim2.new(0.62,0,0,0), TextScaled=true, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-refillEnd=Create("Frame",settings_1,{Name="refillEnd", LayoutOrder=8, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-refillEndBox=Create("TextBox",refillEnd,{Name="refillEndBox", TextWrapped=true, Size=UDim2.new(0.25,0,1,0), Text=tostring(settings.refill_end), TextSize=50, TextColor3=Color3.new(), 
-	Font="Code", Position=UDim2.new(0.62,0,0,0), TextScaled=true, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-Label_3=Create("TextLabel",refillEnd,{TextWrapped=true, Size=UDim2.new(0.6,0,1,0), Text="Refill End:", TextSize=14, TextXAlignment="Right", Font="SourceSans", 
-	BackgroundTransparency=1, TextColor3=Color3.new(1,1,1), TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-refillAt=Create("Frame",settings_1,{Name="refillAt", LayoutOrder=7, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-Label_4=Create("TextLabel",refillAt,{TextWrapped=true, Size=UDim2.new(0.5,0,1,0), Text="Refill At:", TextSize=14, TextXAlignment="Right", Font="SourceSans", 
-	BackgroundTransparency=1, TextColor3=Color3.new(1,1,1), TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-refillAtBox=Create("TextBox",refillAt,{Name="refillAtBox", TextWrapped=true, Size=UDim2.new(0.25,0,1,0), Text=tostring(settings.refill_at), TextSize=50, TextColor3=Color3.new(), 
-	Font="Code", Position=UDim2.new(0.52,0,0,0), TextScaled=true, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-supplier=Create("Frame",settings_1,{Name="supplier", LayoutOrder=6, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-Label_5=Create("TextLabel",supplier,{TextWrapped=true, Size=UDim2.new(0.6,0,1,0), Text="Supplier", TextSize=14, TextXAlignment="Left", Font="SourceSans", 
-	BackgroundTransparency=1, Position=UDim2.new(0.4,0,0,0), TextColor3=Color3.new(1,1,1), TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-supplierBtn=Create("ImageButton",supplier,{Name="supplierBtn", ImageTransparency=1, BorderSizePixel=0, Size=UDim2.new(0.38,0,1,0), BackgroundColor3=Color3.new(0.392,0.392,0.392)})
-supplierSlider=Create("Frame",supplierBtn,{Name="slider", Size=UDim2.new(0.5,-4,1,-4), Position=UDim2.new(doSupplier and 0.5 or 0,2,0,2), BorderSizePixel=0, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-delivery=Create("Frame",settings_1,{Name="delivery", LayoutOrder=5, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-Label_6=Create("TextLabel",delivery,{TextWrapped=true, Size=UDim2.new(0.6,0,1,0), Text="Delivery", TextSize=14, TextXAlignment="Left", Font="SourceSans", 
-	BackgroundTransparency=1, Position=UDim2.new(0.4,0,0,0), TextColor3=Color3.new(1,1,1), TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-deliveryBtn=Create("ImageButton",delivery,{Name="deliveryBtn", ImageTransparency=1, BorderSizePixel=0, Size=UDim2.new(0.38,0,1,0), BackgroundColor3=Color3.new(0.392,0.392,0.392)})
-deliverySlider=Create("Frame",deliveryBtn,{Name="slider", Size=UDim2.new(0.5,-4,1,-4), Position=UDim2.new(doDelivery and 0.5 or 0,2,0,2), BorderSizePixel=0, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-boxer=Create("Frame",settings_1,{Name="boxer", LayoutOrder=2, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-boxerLbl=Create("TextLabel",boxer,{TextWrapped=true, Size=UDim2.new(0.6,0,1,0), Text="Boxer", TextSize=14, TextXAlignment="Left", Font="SourceSans", 
-	BackgroundTransparency=1, Position=UDim2.new(0.4,0,0,0), TextColor3=Color3.new(1,1,1), TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-boxerBtn=Create("ImageButton",boxer,{Name="boxerBtn", ImageTransparency=1, BorderSizePixel=0, Size=UDim2.new(0.38,0,1,0), BackgroundColor3=Color3.new(0.392,0.392,0.392)})
-boxerSlider=Create("Frame",boxerBtn,{Name="slider", Size=UDim2.new(0.5,-4,1,-4), Position=UDim2.new(doBoxer and 0.5 or 0,2,0,2), BorderSizePixel=0, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-cook=Create("Frame",settings_1,{Name="cook", LayoutOrder=3, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-cookLbl=Create("TextLabel",cook,{TextWrapped=true, Size=UDim2.new(0.6,0,1,0), Text="Cook", TextSize=14, TextXAlignment="Left", Font="SourceSans", 
-	BackgroundTransparency=1, Position=UDim2.new(0.4,0,0,0), TextColor3=Color3.new(1,1,1), TextScaled=true, BackgroundColor3=Color3.new(1,1,1)})
-cookBtn=Create("ImageButton",cook,{Name="cookBtn", ImageTransparency=1, BorderSizePixel=0, Size=UDim2.new(0.38,0,1,0), BackgroundColor3=Color3.new(0.392,0.392,0.392)})
-cookSlider=Create("Frame",cookBtn,{Name="slider", Size=UDim2.new(0.5,-4,1,-4), Position=UDim2.new(doCook and 0.5 or 0,2,0,2), BorderSizePixel=0, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-toggleAll=Create("Frame",settings_1,{Name="toggleAll", LayoutOrder=1, BackgroundTransparency=1, Size=UDim2.new(0,100,0,100), BackgroundColor3=Color3.new(1,1,1)})
-switch=Create("Frame",toggleAll,{Name="switch", BackgroundTransparency=1, Size=UDim2.new(0.75,0,1,0), BackgroundColor3=Color3.new(1,1,1)})
-allOffBtn=Create("ImageButton",switch,{Name="allOffBtn", ImageTransparency=1, BorderSizePixel=0, Size=UDim2.new(0.5,0,1,0), BackgroundColor3=Color3.new(0.235,0.235,0.235)})
-allOnBtn=Create("ImageButton",switch,{Name="allOnBtn", ImageTransparency=1, BorderSizePixel=0, Size=UDim2.new(0.5,0,1,0), Position=UDim2.new(0.5,0,0,0), BackgroundColor3=Color3.new(0.333,0.333,0.333)})
-toggleAllSlider=Create("Frame",switch,{Name="slider", Size=UDim2.new(0.1,0,1,4), Position=UDim2.new(0.45,0,0,-2), BorderSizePixel=0, BackgroundColor3=Color3.new(0.784,0.784,0.784)})
-messageLbl=Create("TextLabel",topbar,{Name="messageLbl", Size=UDim2.new(0.5,0,1,0), Text="Saved.", TextSize=14, Font="GothamSemibold", BackgroundTransparency=1, 
-	Position=UDim2.new(0.07,0,0,0), TextColor3=Color3.new(1,1,1), Visible=false, TextXAlignment="Left"})
-camframe=Create("Frame",gui,{Name="camframe", BackgroundTransparency=1, Size=UDim2.new(0,120,0,40), Position=UDim2.new(0.5,-320,0,-38), BackgroundColor3=Color3.new(0.118,0.118,0.118)})
-rightCamBtn=Create("ImageButton",camframe,{Name="rightCamBtn", Image="rbxassetid://144168163", Size=UDim2.new(0.333,0,1,0), Rotation=180, Position=UDim2.new(0.666,0,0,0), BackgroundTransparency=1, 
-	BackgroundColor3=Color3.new(1,1,1)})
-leftCamBtn=Create("ImageButton",camframe,{Name="leftCamBtn", Image="rbxassetid://144168163", Size=UDim2.new(0.333,0,1,0), BackgroundTransparency=1, BackgroundColor3=Color3.new(1,1,1)})
-centerCamBtn=Create("ImageButton",camframe,{Name="centerCamBtn", Image="rbxassetid://58282192", Size=UDim2.new(0.333,0,1,0), Position=UDim2.new(0.333,0,0,0), BackgroundTransparency=1, BackgroundColor3=Color3.new(1,1,1)})
-creditLbl=Create("TextLabel",main,{Position=UDim2.new(0,0,1,5),Size=UDim2.new(0,100,0,15),BackgroundTransparency=1,TextColor3=Color3.new(1,1,1),Text="by augesrob",TextScaled=true,TextStrokeTransparency=.8})
-
-local function toggleCashier(bool)
-	if bool~=nil then
-		doCashier=bool
-	else
-		doCashier = not doCashier
-	end
-	cashierSlider:TweenPosition(UDim2.new(doCashier and 0.5 or 0,2,0,2),nil,"Sine",0.1,true)
-end
-local function toggleCook(bool)
-	if bool~=nil then
-		doCook=bool
-	else
-		doCook = not doCook
-	end
-	cookSlider:TweenPosition(UDim2.new(doCook and 0.5 or 0,2,0,2),nil,"Sine",0.1,true)
-end
-local function toggleBoxer(bool)
-	if bool~=nil then
-		doBoxer=bool
-	else
-		doBoxer = not doBoxer
-	end
-	boxerSlider:TweenPosition(UDim2.new(doBoxer and 0.5 or 0,2,0,2),nil,"Sine",0.1,true)
-end
-local function toggleDelivery(bool)
-	if bool~=nil then
-		doDelivery=bool
-	else
-		doDelivery = not doDelivery
-	end
-	deliverySlider:TweenPosition(UDim2.new(doDelivery and 0.5 or 0,2,0,2),nil,"Sine",0.1,true)
-end
-local function toggleSupplier(bool)
-	if bool~=nil then
-		doSupplier=bool
-	else
-		doSupplier = not doSupplier
-	end
-	supplierSlider:TweenPosition(UDim2.new(doSupplier and 0.5 or 0,2,0,2),nil,"Sine",0.1,true)
-end
-cashierBtn.MouseButton1Click:Connect(toggleCashier)
-cookBtn.MouseButton1Click:Connect(toggleCook)
-boxerBtn.MouseButton1Click:Connect(toggleBoxer)
-deliveryBtn.MouseButton1Click:Connect(toggleDelivery)
-supplierBtn.MouseButton1Click:Connect(toggleSupplier)
-allOffBtn.InputBegan:Connect(function()
-	if game:GetService("UserInputService"):IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then
-		toggleCashier(false)
-		toggleCook(false)
-		toggleBoxer(false)
-		toggleDelivery(false)
-		toggleSupplier(false)
-		toggleAllSlider:TweenPosition(UDim2.new(0,0,0,-2),nil,"Sine",0.1,true)
-		wait(1)
-		if toggleAllSlider.Position.X.Scale<.01 then
-			toggleAllSlider:TweenPosition(UDim2.new(0.45,0,0,-2),nil,"Sine",0.1,true)
-		end
-	end
-end)
-allOnBtn.InputBegan:Connect(function()
-	if game:GetService("UserInputService"):IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then
-		toggleCashier(true)
-		toggleCook(true)
-		toggleBoxer(true)
-		toggleDelivery(true)
-		toggleSupplier(true)
-		toggleAllSlider:TweenPosition(UDim2.new(0.9,0,0,-2),nil,"Sine",0.1,true)
-		wait(1)
-		if toggleAllSlider.Position.X.Scale>.88 then
-			toggleAllSlider:TweenPosition(UDim2.new(0.45,0,0,-2),nil,"Sine",0.1,true)
-		end
-	end
-end)
-local oldRefillAt=refillAtBox.Text
-refillAtBox:GetPropertyChangedSignal("Text"):Connect(function()
-	if #refillAtBox.Text>2 or refillAtBox.Text:match("%D") then
-		refillAtBox.Text = oldRefillAt
-	end
-	oldRefillAt = refillAtBox.Text
-end)
-refillAtBox.FocusLost:Connect(function()
-	if tonumber(refillAtBox.Text) then
-		settings.refill_at=tonumber(refillAtBox.Text)
-	end
-	refillAtBox.Text=tostring(settings.refill_at)
-end)
-local oldRefillEnd=refillEndBox.Text
-refillEndBox:GetPropertyChangedSignal("Text"):Connect(function()
-	if #refillEndBox.Text>2 or refillEndBox.Text:match("%D") then
-		refillEndBox.Text = oldRefillEnd
-	end
-	oldRefillEnd = refillEndBox.Text
-end)
-refillEndBox.FocusLost:Connect(function()
-	if tonumber(refillEndBox.Text) then
-		settings.refill_end=tonumber(refillEndBox.Text)
-	end
-	refillEndBox.Text=tostring(settings.refill_end)
-end)
-local oldDeliverAt=deliverAtBox.Text
-deliverAtBox:GetPropertyChangedSignal("Text"):Connect(function()
-	if #deliverAtBox.Text>2 or deliverAtBox.Text:match("%D") then
-		deliverAtBox.Text = oldDeliverAt
-	end
-	oldDeliverAt = deliverAtBox.Text
-end)
-deliverAtBox.FocusLost:Connect(function()
-	if tonumber(deliverAtBox.Text) then
-		settings.deliver_at=tonumber(deliverAtBox.Text)
-	end
-	deliverAtBox.Text=tostring(settings.deliver_at)
-end)
-closeBtn.MouseButton1Click:Connect(function()
-    gui:Destroy()
-    doCashier,doBoxer,doCook,doSupplier,doDelivery = false,false,false,false,false
-end)
-closeBtn.MouseEnter:Connect(function() closeBtn.TextColor3=Color3.new(.9,0,0) end)
-closeBtn.MouseLeave:Connect(function() closeBtn.TextColor3=Color3.new(1,1,1) end)
-saveBtn.MouseButton1Click:Connect(function()
-	if writefile and messageLbl.Visible==false then
-		writefile("PizzaFarm.txt",game:GetService("HttpService"):JSONEncode(settings))
-		messageLbl.Visible=true
-		wait(2)
-		messageLbl.Visible=false
-	end
-end)
-local cameraArray = {CFrame.new(23,14,65,0.629,0.386,-0.674,-0,0.867,0.497,0.777,-0.313,0.545),CFrame.new(39,15,83,-0.571,0.392,-0.720,-0,0.878,0.478,0.820,0.273,-0.502),CFrame.new(40,20,-38,-0.801,-0.229,0.552,-0,0.923,0.384,-0.598,0.307,-0.739),CFrame.new(51,15,-25,-0.707,0.338,-0.620,0,0.878,0.478,0.707,0.338,-0.620),CFrame.new(47,12,21,0.026,0.323,-0.945,-0,0.946,0.323,0.999,-0.008,0.024)}
-local cameraIndex = 0
-centerCamBtn.MouseButton1Click:Connect(function()
-	cameraIndex = 0
-	workspace.CurrentCamera.CameraType = "Custom"
-end)
-leftCamBtn.MouseButton1Click:Connect(function()
-	cameraIndex = cameraIndex - 1
-	if cameraIndex < 0 then
-		cameraIndex = #cameraArray
-	end
-	if cameraIndex == 0 then
-		workspace.CurrentCamera.CameraType="Custom"
-	else
-		local cf = cameraArray[cameraIndex]
-		workspace.CurrentCamera.CameraType="Scriptable"
-		workspace.CurrentCamera:Interpolate(cf,cf+cf.lookVector*10,0.5)
-	end
-end)
-rightCamBtn.MouseButton1Click:Connect(function()
-	cameraIndex = cameraIndex + 1
-	if cameraIndex > #cameraArray then
-		cameraIndex = 0
-		workspace.CurrentCamera.CameraType="Custom"
-	else
-		local cf = cameraArray[cameraIndex]
-		workspace.CurrentCamera.CameraType="Scriptable"
-		workspace.CurrentCamera:Interpolate(cf,cf+cf.lookVector*10,0.5)
-	end
-end)
-
---//subroutines
-local supplyCounts = {TomatoSauce=99,Cheese=99,Sausage=99,Pepperoni=99,Dough=99,Box=99,Dew=99}
-for name in pairs(supplyCounts) do
-	local lbl = workspace.SupplyCounters.Model[name=="Dew" and "CounterMountainDew" or "Counter"..name].a.SG.Counter
-	supplyCounts[name]=tonumber(lbl.Text)
-	lbl.Changed:Connect(function()
-		supplyCounts[name]=tonumber(lbl.Text)
-	end)
-end
-
-local function FindFirstCustomer()
-	local children = workspace.Customers:GetChildren()
-	for i=1,#children do
-		local c = children[i]
-		if ffc(c,"Head") and ffc(c,"Humanoid") and c.Head.CFrame.Z<102 and ffc(c.Head,"Dialog") and ffc(c.Head.Dialog,"Correct") and ((c.Humanoid.SeatPart and c.Humanoid.SeatPart.Anchored) or (c.Humanoid.SeatPart==nil and (c.Head.Velocity.Z^2)^.5<.0001)) then
-			local dialog = c.Head.Dialog.Correct.ResponseDialog or ''
-			local order = "MountainDew"
-			if dialog:sub(-8)=="instead." then
-				dialog = dialog:sub(-30)
-			end
-			if dialog:find("pepperoni",1,true) then
-				order = "PepperoniPizza"
-			elseif dialog:find("sausage",1,true) then
-				order = "SausagePizza"
-			elseif dialog:find("cheese",1,true) then
-				order = "CheesePizza"
-			end
-			return c,order
-		end
-	end
-end
-
-local boxPtick=0
-local boxDtick=0
-local function FindBoxes()
-	local c,o,f
-	local children = workspace.AllBox:GetChildren()
-	for i=1,#children do
-		local b = children[i]
-		if ffc(b,"HasPizzaInside") or ffc(b,"Pizza") then
-			if c==nil and b.Name=="BoxClosed" and b.Anchored==false and not b.HasPizzaInside.Value then
-				c=b
-			elseif o==nil and b.Name=="BoxOpen" and b.Anchored==false and not b.Pizza.Value then
-				o=b
-			elseif f==nil and (b.Name=="BoxOpen" and b.Pizza.Value) or (b.Name=="BoxClosed" and b.HasPizzaInside.Value) then
-				f=b
-			end
-			if c and o and f then
-				return c,o,f
-			end
-		end
-	end
-	return c,o,f
-end
-local function FindBoxingFoods()
-	local p,d
-	local children = workspace.BoxingRoom:GetChildren()
-	for i=1,#children do
-		local f = children[i]
-		if not f.Anchored then
-			if p==nil and f.Name=="Pizza" then
-				p=f
-			elseif d==nil and f.Name=="Dew" then
-				d=f
-			end
-			if p and d then
-				return p,d
-			end
-		end
-	end
-	return p,d
-end
-
-local orderDict={["3540529228"]="Cheese",["3540530535"]="Sausage",["3540529917"]="Pepperoni",["2512571151"]="Dew",["2512441325"]="Dew"}
-local cookingDict = {Cheese=0,Sausage=0,Pepperoni=0,Dew=0}
-local cookPtick=0
-local cookDtick=0
-local cookWarned=false
-local boxerWarned=false
-local function getOrders()
-	local orders={}
-	local tempCookingDict = {}
-	for i,v in pairs(cookingDict) do tempCookingDict[i]=v end
-	local children = workspace.Orders:GetChildren()
-	for i=1,#children do
-		local o = orderDict[children[i].SG.ImageLabel.Image:match("%d+$")]
-		if o then
-			if tempCookingDict[o]>0 then
-				--ignores oven pizzas, so new orders are priority
-				tempCookingDict[o]=tempCookingDict[o]-1
-			elseif (o=="Dew" and #workspace.AllMountainDew:GetChildren()>0) or (supplyCounts[o]>0 and supplyCounts.TomatoSauce>0 and supplyCounts.Cheese>0) then
-				--need supplies
-				orders[#orders+1]=o
-			end
-		end
-	end
-	return orders
-end
-local function FindFirstDew()
-	local children = workspace.AllMountainDew:GetChildren()
-	for i=1,#children do
-		local d = children[i]
-		if (ffc(d,"IsBurned")==nil or d.IsBurned.Value==false) and not d.Anchored then
-			return d
-		end
-	end
-end
-local function FindBadDew()
-	local children = workspace.AllMountainDew:GetChildren()
-	for i=1,#children do
-		local d = children[i]
-		if (ffc(d,"IsBurned")==nil or d.IsBurned.Value==false) and d.Position.X > 53 and d.Position.Z > 50 and not d.Anchored then
-			return d
-		end
-	end
-end
-local function FindDoughAndWithout(str)
-	local goodraw,p,raw,trash
-	local children = workspace.AllDough:GetChildren()
-	for i = #children, 2, -1 do --shuffle
-		local j = RNG:NextInteger(1, i)
-		children[j], children[i] = children[i], children[j]
-	end
-	for i=1,#children do
-		local d = children[i]
-		if d.Anchored==false and #d:GetChildren()>9 then
-			if d.IsBurned.Value or d.HasBugs.Value or d.Cold.Value or (d.BrickColor.Name=="Bright orange" and ffc(d,"XBillboard")) then
-				if trash==nil and d.Position.Y > 0 and ((d.Position*Vector3.new(1,0,1))-Vector3.new(47.90, 0, 72.49)).Magnitude > 1 then
-					trash=d
-				end
-			elseif p==nil and d.BrickColor.Name=="Bright orange" then
-				p=d
-			elseif goodraw==nil and d.Position.X<55 and d.BrickColor.Name=="Brick yellow" and ((str and not ffc(d.SG.Frame,str)) or (str==nil and ffc(d.SG.Frame,"Sausage")==nil and ffc(d.SG.Frame,"Pepperoni")==nil)) then
-				--prefers flat
-				if d.Mesh.Scale.Y<1.1 then
-					goodraw=d
-				else
-					raw=d
-				end
-			end
-			if goodraw and p and trash then
-				return goodraw,p,trash
-			end
-		end
-	end
-	return goodraw or raw,p,trash
-end
-local function getOvenNear(pos)
-	local children = workspace.Ovens:GetChildren()
-	for i=1,#children do
-		if ffc(children[i],"Bottom") and (children[i].Bottom.Position-pos).magnitude < 1.5 then
-			return children[i]
-		end
-	end
-end
-local function getDoughNear(pos)
-	local children = workspace.AllDough:GetChildren()
-	for i=1,#children do
-		if (children[i].Position-pos).magnitude < 1.5 then
-			return children[i]
-		end
-	end
-end
-local function isFullyOpen(oven)
-	return oven.IsOpen.Value==true and (oven.Door.Meter.RotVelocity.Z^2)^.5<.0001
-end
-
-local bcolorToSupply = {["Dark orange"]="Sausage",["Bright blue"]="Pepperoni",["Bright yellow"]="Cheese",["Bright red"]="TomatoSauce",["Dark green"]="Dew",["Brick yellow"]="Dough",["Light stone grey"]="Box",["Really black"]="Dew"}
-local supplyButtons = {}
-for i,v in ipairs(workspace.SupplyButtons:GetChildren()) do
-	supplyButtons[i] = v.Unpressed
-end
-table.sort(supplyButtons,function(a,b) return a.Position.X < b.Position.X end)
-local delTick = 0
-local function FindAllDeliveryTools(parent)
-	local t = {}
-	local children = parent:GetChildren()
-	for i=1,#children do
-		local v = children[i]
-		if v.ClassName=="Tool" and v.Name:match("^%u%d$") and ffc(v,"Handle") and ffc(v,"House") and (parent~=workspace or (v.Handle.Position-Vector3.new(54.45, 4.02, -16.56)).Magnitude < 30) then
-			t[#t+1] = v
-		end
-	end
-	return t
-end
-local function getHousePart(address)
-    local houses = workspace.Houses:GetChildren()
-    for i=1,#houses do
-        local h = houses[i]
-        if ffc(h,"Address") and h.Address.Value==address and ffc(h,"GivePizza",true) then
-            return ffc(h,"GivePizza",true)
-        end
-    end
-end
-local function onCharacterAdded(char)
-	if not char then return end
-	character=char
-	root = character:WaitForChild("HumanoidRootPart")
-	humanoid = character:WaitForChild("Humanoid")
-	humanoid:SetStateEnabled("FallingDown",false)
-end
-onCharacterAdded(player.Character or player.CharacterAdded:Wait())
-player.CharacterAdded:Connect(onCharacterAdded)
-
-local function smoothTP2(cf)
-	local cf0 = (cf-cf.p) + root.Position + Vector3.new(0,4,0)
-	local diff = cf.p - root.Position
-	local oldg = workspace.Gravity
-	workspace.Gravity = 0
-	for i=0,diff.Magnitude,0.9 do
-		humanoid.Sit=false
-		root.CFrame = cf0 + diff.Unit * i
-		root.Velocity,root.RotVelocity=Vector3.new(),Vector3.new()
-		wait()
-	end
-	root.CFrame = cf
-	workspace.Gravity = oldg
-end
-local function smoothTP(cf)
-    if (cf.p-root.Position).Magnitude > 95 then
-        local btns = workspace.JobButtons:GetChildren()
-        if player:FindFirstChild("House") and player.House.Value then
-            btns[#btns+1] = player.House.Value:FindFirstChild("Marker") 
-        end
-        table.sort(btns,function(a,b) return (a.Position-cf.p).Magnitude < (b.Position-cf.p).Magnitude end)
-        if (btns[1].Position-cf.p).Magnitude < (cf.p-root.Position).Magnitude then
-            game:GetService("ReplicatedStorage").PlayerChannel:FireServer("TeleportToJob", ((btns[1].Name == "Marker") and "House" or btns[1].Name))
-            wait(0.7)
-            if (cf.p-root.Position).Magnitude < 8 then
-                return
-            end
-        end
-    end
-    smoothTP2(cf)
-end
-for _,o in ipairs(workspace.Ovens:GetChildren()) do
-	if ffc(o,"Bottom") then
-		o.Bottom.CanTouch = false
-	end
-end
-local function tryCook()
-	for zz=1,18 do
-		local order = getOrders()[1]
-		local topping
-		if order=="Pepperoni" or order=="Sausage" then topping=order end
-		local cookD = FindFirstDew()
-		local badD = FindBadDew()
-		local raw,cookP,trash
-		if topping then
-			--pepperoni order avoids sausage dough and vice verca
-			raw,cookP,trash = FindDoughAndWithout(topping=="Pepperoni" and "Sausage" or "Pepperoni")
-		else
-			raw,cookP,trash = FindDoughAndWithout()
-		end
-		local ovens = workspace.Ovens:GetChildren()
-		for i=#ovens,1,-1 do
-		    if #ovens[i]:GetChildren() < 10 then
-		        table.remove(ovens,i)
-		    end
-		end
-		for i = #ovens, 2, -1 do --shuffle
-			local j = RNG:NextInteger(1, i)
-			ovens[j], ovens[i] = ovens[i], ovens[j]
-		end
-		if doCook then
-			local didsomething=false
-			--move final pizza
-			if cookP and tick()-cookPtick>0.8 then
-				local oven = getOvenNear(cookP.Position)
-				if oven==nil or oven.IsOpen.Value then
-					cookPtick=tick()
-					didsomething=true
-					if (root.Position-Vector3.new(36.64, 3.80, 54.11)).magnitude>9 then  smoothTP(CFrame.new(36.64, 3.80, 54.11)) wait(.1) end
-					network:FireServer("UpdateProperty", cookP, "CFrame", CFrame.new(RNG:NextNumber(56,57),4.1,38))
-				end
-			end
-			if order then
-				if order=="Dew" and cookD and tick()-cookDtick>0.8 then
-					--move dew if ordered
-					cookDtick=tick()
-					didsomething=true
-					if (root.Position-Vector3.new(36.64, 3.80, 54.11)).magnitude>9 then  smoothTP(CFrame.new(36.64, 3.80, 54.11)) wait(.1) end
-					network:FireServer("UpdateProperty", cookD, "CFrame", CFrame.new(53,4.68,36.5))
-				elseif order~="Dew" and raw and raw.Parent and supplyCounts[order]>0 and supplyCounts.TomatoSauce>0 and supplyCounts.Cheese>0 then
-					--make pizza
-					if raw.Mesh.Scale.Y>1.5 then
-						if (root.Position-Vector3.new(36.64, 3.80, 54.11)).magnitude>9 then  smoothTP(CFrame.new(36.64, 3.80, 54.11)) wait(.1) end
-						didsomething=true
-						network:FireServer("UpdateProperty", raw, "CFrame", CFrame.new(RNG:NextNumber(29.6,44.6),3.7,RNG:NextNumber(42.5,48.5)))
-						wait()
-						network:FireServer("SquishDough", raw)
-					else
-						--make sure it will have an oven
-						local oven
-						for _,o in ipairs(ovens) do
-							if isFullyOpen(o) then
-								local other = getDoughNear(o.Bottom.Position)
-								if other==nil or not (other.BrickColor.Name=="Bright orange" and ffc(other.SG.Frame,"TomatoSauce") and ffc(other.SG.Frame,"MeltedCheese")) then
-									if other then
-										--replace mistaken dough
-										didsomething=true
-										if (root.Position-Vector3.new(36.64, 3.80, 54.11)).magnitude>9 then  smoothTP(CFrame.new(36.64, 3.80, 54.11)) wait(.1) end
-										network:FireServer("UpdateProperty", other, "CFrame", CFrame.new(RNG:NextNumber(29.6,44.6),3.7,RNG:NextNumber(42.5,48.5)))
-										wait()
+	local v51 = 0 + 0;
+	local v52;
+	while true do
+		if (v51 == (0 - 0)) then
+			v52 = (getreg or debug.getregistry)();
+			for v202 = 428 - (183 + 244), #v52 do
+				local v203 = 0 + 0;
+				local v204;
+				while true do
+					if (v203 == (730 - (434 + 296))) then
+						v204 = v52[v202];
+						if (type(v204) == LUAOBFUSACTOR_DECRYPT_STR_0("\130\84\86\45\144\72\87\32", "\78\228\33\56")) then
+							local v320 = 0 - 0;
+							while true do
+								if (v320 == (512 - (169 + 343))) then
+									for v355, v356 in next, getupvalues(v204) do
+										if (typeof(v356) == LUAOBFUSACTOR_DECRYPT_STR_0("\231\112\161\23\132\192\125\183", "\229\174\30\210\99")) then
+											if (v356.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\56\236\149\89\194\40\45", "\89\123\141\230\49\141\93")) then
+												setupvalue(v204, v355, {[LUAOBFUSACTOR_DECRYPT_STR_0("\222\126\227\31\21\104\230\101\226\3\30\27\208\125\255\15\27", "\42\147\17\150\108\112")]={[LUAOBFUSACTOR_DECRYPT_STR_0("\24\167\36\107", "\136\111\198\77\31\135")]=function()
+												end,[LUAOBFUSACTOR_DECRYPT_STR_0("\53\8\174\66", "\201\98\105\199\54\221\132\119")]=function()
+												end}});
+											elseif (v356.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\138\24\138\34\9\48\190\151\13\142\36", "\204\217\108\227\65\98\85")) then
+												setupvalue(v204, v355, nil);
+											end
+										end
 									end
-									oven=o
-									break
+									if (tostring(getfenv(v204).script) == LUAOBFUSACTOR_DECRYPT_STR_0("\115\214\230\236\47", "\160\62\163\149\133\76")) then
+										local v361 = 0 + 0;
+										local v362;
+										local v363;
+										while true do
+											if (v361 == (1 - 0)) then
+												for v381, v382 in next, v362 do
+													if (v382 == LUAOBFUSACTOR_DECRYPT_STR_0("\218\175\14\46\215\223\175\3\111\192\222\161\3\40\198\210", "\163\182\192\109\79")) then
+														v363 = true;
+													elseif (v363 and (v382 == LUAOBFUSACTOR_DECRYPT_STR_0("\7\35\14\196\209\53\50\1", "\149\84\70\96\160"))) then
+														setconstant(v204, v381, LUAOBFUSACTOR_DECRYPT_STR_0("\29\30\29\225\55\2\8\222\44\20\4\227\63", "\141\88\102\109"));
+														break;
+													end
+												end
+												break;
+											end
+											if (v361 == (0 - 0)) then
+												v362 = getconstants(v204);
+												v363 = false;
+												v361 = 1 + 0;
+											end
+										end
+									end
+									break;
 								end
 							end
+						elseif ((type(v204) == LUAOBFUSACTOR_DECRYPT_STR_0("\167\82\200\124\31", "\161\211\51\170\16\122\93\53")) and rawget(v204, LUAOBFUSACTOR_DECRYPT_STR_0("\221\167\160\45\200\171\160\62\254\188", "\72\155\206\210")) and rawget(v204, LUAOBFUSACTOR_DECRYPT_STR_0("\100\115\90\10\22\80\127\90\26\32", "\83\38\26\52\110"))) then
+							v9 = v204;
 						end
-						if oven and raw.Parent==workspace.AllDough then
-							--make
-							if (root.Position-Vector3.new(36.64, 3.80, 54.11)).magnitude>9 then  smoothTP(CFrame.new(36.64, 3.80, 54.11)) wait(.1) end
-							didsomething=true
-							network:FireServer("AddIngredientToPizza", raw,"TomatoSauce")
-							network:FireServer("AddIngredientToPizza", raw,"Cheese")
-							network:FireServer("AddIngredientToPizza", raw,topping)
-							network:FireServer("UpdateProperty", raw, "CFrame", oven.Bottom.CFrame+Vector3.new(0,0.7,0))
-							oven.Door.ClickDetector.Detector:FireServer()
-							--mark as cooking
-							cookingDict[order]=cookingDict[order]+1
-							local revoked=false
-							spawn(function()
-								raw.AncestryChanged:Wait()
-								if not revoked then
-									cookingDict[order]=cookingDict[order]-1
-									revoked=true
-								end
-							end)
-							delay(40, function()
-								if not revoked then
-									cookingDict[order]=cookingDict[order]-1
-									revoked=true
-								end
-							end)
-						end
+						break;
 					end
 				end
 			end
-			--open unnecessarily closed ovens
-			for _,o in ipairs(ovens) do
-				local bar = o.Door.Meter.SurfaceGui.ProgressBar.Bar
-				if o.IsOpen.Value==false and (o.IsCooking.Value==false or (Vector3.new(bar.ImageColor3.r,bar.ImageColor3.g,bar.ImageColor3.b)-Vector3.new(.871,.518,.224)).magnitude>.1) then
-					didsomething=true
-					if (root.Position-Vector3.new(36.64, 3.80, 54.11)).magnitude>9 then  smoothTP(CFrame.new(36.64, 3.80, 54.11)) wait(.1) end
-					o.Door.ClickDetector.Detector:FireServer()
-					break
-				end
-			end
-			--trash
-			if badD then
-				didsomething=true
-				if (root.Position-Vector3.new(36.64, 3.80, 54.11)).magnitude>9 then  smoothTP(CFrame.new(36.64, 3.80, 54.11)) wait(.1) end
-				network:FireServer("UpdateProperty", badD, "CFrame", CFrame.new(RNG:NextNumber(28,30), 1.7, RNG:NextNumber(55,57)))
-			end
-			if trash and (trash.IsBurned.Value==false or getOvenNear(trash.Position)==nil or getOvenNear(trash.Position).IsOpen.Value) then
-				--closed oven breaks if you take burnt out of it
-				didsomething=true
-				if (root.Position-Vector3.new(36.64, 3.80, 54.11)).magnitude>9 then  smoothTP(CFrame.new(36.64, 3.80, 54.11)) wait(.1) end
-				network:FireServer("UpdateProperty", trash, "CFrame", CFrame.new(47.90, 7.00, 72.49, 1, 0, -0, 0, 0, 1, 0, -1, 0))
-			end
-			if didsomething then wait(0.5) else break end
-		else
-			break
+			break;
 		end
 	end
 end
-wait(1)
---//main loop
-while gui.Parent do
-	wait(0.9)
-	humanoid.Sit=false
-	if RNG:NextInteger(1,20)==1 then
-        game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-        wait()
-        game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-	end
-	for zz=1,3 do
-		local c,order = FindFirstCustomer()
-		if doCashier and c and order then
-			local reg = 3
-			if c.Head.Position.X < 50 then
-			    reg = 2
-			elseif c.Head.Position.X < 70 then
-			    reg = 1
+assert(v9, LUAOBFUSACTOR_DECRYPT_STR_0("\94\22\46\74\93\19\103\82\87\87\33\79\86\19\103\72\93\3\48\73\74\28", "\38\56\119\71"));
+function Create(v53, v54, v55)
+	local v56 = 0 - 0;
+	local v57;
+	while true do
+		if (v56 == (1123 - (651 + 472))) then
+			v57 = Instance.new(v53);
+			for v205, v206 in next, v55 do
+				v57[v205] = v206;
 			end
-			if (root.Position-Vector3.new(50.30, 3.80, 83.24)).magnitude>9 then smoothTP(CFrame.new(50.30, 3.80, 83.24)) wait(.1) end
-			network:FireServer("OrderComplete", c, order, workspace["Register"..reg])
-			wait(0.3)
-		else
-			break
+			v56 = 1 + 0;
+		end
+		if (v56 == (1 + 0)) then
+			v57.Parent = v54;
+			return v57;
 		end
 	end
-	tryCook()
-	for zz=1,7 do
-		if doBoxer then
-			local didsomething = false
-			local boxP,boxD = FindBoxingFoods()
-			local closedBox,openBox,fullBox = FindBoxes()
-			if boxD and tick()-boxDtick>0.8 then
-				boxDtick=tick()
-				didsomething=true
-				if (root.Position-Vector3.new(58.74, 3.80, 12.400)).magnitude>9 then  smoothTP(CFrame.new(58.74, 3.80, 12.40))wait(.1) continue end
-				network:FireServer("UpdateProperty", boxD, "CFrame", CFrame.new(63,4.9,-1,-1,0,0,0,1,0,0,0,-1))
+end
+gui = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\192\236\74\211\32\88\212\250\81", "\54\147\143\56\182\69"), game.CoreGui, {[LUAOBFUSACTOR_DECRYPT_STR_0("\248\128\242\76", "\191\182\225\159\41")]=LUAOBFUSACTOR_DECRYPT_STR_0("\13\19\58\88", "\162\75\114\72\53\235\231"),[LUAOBFUSACTOR_DECRYPT_STR_0("\182\21\74\230\86\26\174\57\76\227\69\11\131\46", "\98\236\92\36\130\51")]=LUAOBFUSACTOR_DECRYPT_STR_0("\151\16\14\182\76\166\178", "\80\196\121\108\218\37\200\213")});
+main = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\38\97\3\114\78", "\234\96\19\98\31\43\110"), gui, {[LUAOBFUSACTOR_DECRYPT_STR_0("\40\30\95\194", "\235\102\127\50\167\204\18")]=LUAOBFUSACTOR_DECRYPT_STR_0("\93\160\252\45", "\78\48\193\149\67\36"),[LUAOBFUSACTOR_DECRYPT_STR_0("\20\12\129\31\70\49\28\140\29", "\33\80\126\224\120")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\205\171\23\205\74\233", "\60\140\200\99\164")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\180\253\30\35", "\194\231\148\100\70")]=UDim2.new(0 - 0, 833 - (397 + 86), 876 - (423 + 453), 11 + 89),[LUAOBFUSACTOR_DECRYPT_STR_0("\118\67\210\170\226\193\73\66", "\168\38\44\161\195\150")]=UDim2.new(0.335 + 0, 0 + 0, 0.02 + 0, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\162\253\129\125\55\250\185\3\142\248\161\121\60\231\164\69", "\118\224\156\226\22\80\136\214")]=Color3.new(1190.098 - (50 + 1140), 0.098 + 0, 0.098 + 0)});
+topbar = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\100\252\88\141\71", "\224\34\142\57"), main, {[LUAOBFUSACTOR_DECRYPT_STR_0("\240\166\200\216", "\110\190\199\165\189\19\145\61")]=LUAOBFUSACTOR_DECRYPT_STR_0("\206\228\103\234\138\213", "\167\186\139\23\136\235"),[LUAOBFUSACTOR_DECRYPT_STR_0("\41\188\146\8", "\109\122\213\232")]=UDim2.new(1 + 0, 0 - 0, 0.15 + 0, 596 - (157 + 439)),[LUAOBFUSACTOR_DECRYPT_STR_0("\204\246\161\59\233\229\173\37\224\243\129\63\226\248\176\99", "\80\142\151\194")]=Color3.new(0.255 - 0, 0.255 - 0, 0.255 - 0)});
+closeBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\55\195\111\88\33\211\99\88\12\200", "\44\99\166\23"), topbar, {[LUAOBFUSACTOR_DECRYPT_STR_0("\82\246\36\51", "\196\28\151\73\86\83")]=LUAOBFUSACTOR_DECRYPT_STR_0("\240\15\38\3\135\122\12\120", "\22\147\99\73\112\226\56\120"),[LUAOBFUSACTOR_DECRYPT_STR_0("\140\112\250\225\186\170\116\242\229\136\188", "\237\216\21\130\149")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\177\71\69\90", "\62\226\46\63\63\208\169")]=UDim2.new(918.03 - (782 + 136), 855 - (112 + 743), 1172 - (1026 + 145), 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\209\28\77\151\60\2\35\81\247\74", "\62\133\121\53\227\127\109\79")]=Color3.new(719 - (493 + 225), 3 - 2, 1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\36\17\42\225", "\194\112\116\82\149\182\206")]="X",[LUAOBFUSACTOR_DECRYPT_STR_0("\27\169\79\19\199\240\1\44\166\72\44\210\227\0\42\184\77\10\197\236\13\32", "\110\89\200\44\120\160\130")]=(2 - 1),[LUAOBFUSACTOR_DECRYPT_STR_0("\141\204\69\82", "\45\203\163\43\38\35\42\91")]=LUAOBFUSACTOR_DECRYPT_STR_0("\245\138\200\43\134\164\103\215\136\213\33\136\165\80", "\52\178\229\188\67\231\201"),[LUAOBFUSACTOR_DECRYPT_STR_0("\17\78\67\13\227\85\44\47", "\67\65\33\48\100\151\60")]=UDim2.new(0.96 + 0, 0 - 0, 0 + 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\235\226\182\204\192\214\253\171", "\147\191\135\206\184")]=(1609 - (210 + 1385)),[LUAOBFUSACTOR_DECRYPT_STR_0("\176\45\190\213\235\80\179\136\45\162", "\210\228\72\198\161\184\51")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\20\72\240\27\116\220\57\92\253\20\80\193\58\70\225\67", "\174\86\41\147\112\19")]=Color3.new(1690 - (1201 + 488), 1 + 0, 1 - 0)});
+titleLbl = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\111\5\149\31\9\14\19\174\87", "\203\59\96\237\107\69\111\113"), topbar, {[LUAOBFUSACTOR_DECRYPT_STR_0("\10\23\161\228", "\183\68\118\204\129\81\144")]=LUAOBFUSACTOR_DECRYPT_STR_0("\26\164\100\232\14\174\12\161", "\226\110\205\16\132\107"),[LUAOBFUSACTOR_DECRYPT_STR_0("\223\198\248\205\118\249\194\240\201\68\239", "\33\139\163\128\185")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\100\81\30\219", "\190\55\56\100")]=UDim2.new(0.5 - 0, 585 - (352 + 233), 2 - 1, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\98\170\36\10", "\147\54\207\92\126\115\131")]=LUAOBFUSACTOR_DECRYPT_STR_0("\58\62\39\118\77\127\25\113\52\61\29\119\23\43\52\61\29\114\12\50\48", "\30\109\81\85\29\109"),[LUAOBFUSACTOR_DECRYPT_STR_0("\203\116\76\162\5\215\230\250", "\156\159\17\52\214\86\190")]=(39 - 25),[LUAOBFUSACTOR_DECRYPT_STR_0("\136\224\179\168", "\220\206\143\221")]=LUAOBFUSACTOR_DECRYPT_STR_0("\161\114\57\31\217\193\225\131\112\36\21\215\192\214", "\178\230\29\77\119\184\172"),[LUAOBFUSACTOR_DECRYPT_STR_0("\215\191\9\16\112\234\250\171\4\31\67\234\244\176\25\11\118\234\240\176\9\2", "\152\149\222\106\123\23")]=(575 - (489 + 85)),[LUAOBFUSACTOR_DECRYPT_STR_0("\237\41\229\74\161\212\41\248", "\213\189\70\150\35")]=UDim2.new(1501.25 - (277 + 1224), 1493 - (663 + 830), 0 + 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\123\80\108\28\108\90\120\7\93\6", "\104\47\53\20")]=Color3.new(876 - (461 + 414), 1 + 0, 1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\129\77\130\23\187\29\172\89\143\24\159\0\175\67\147\79", "\111\195\44\225\124\220")]=Color3.new(1 + 0, 1 + 0, 251 - (172 + 78))});
+saveBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\241\75\1\116\174\137\205\82\20\124\165", "\203\184\38\96\19\203"), topbar, {[LUAOBFUSACTOR_DECRYPT_STR_0("\23\114\116\68", "\174\89\19\25\33")]=LUAOBFUSACTOR_DECRYPT_STR_0("\60\19\68\75\213\147\5", "\107\79\114\50\46\151\231"),[LUAOBFUSACTOR_DECRYPT_STR_0("\16\171\180\46\143", "\160\89\198\213\73\234\89\215")]=LUAOBFUSACTOR_DECRYPT_STR_0("\90\115\172\255\214\91\116\160\247\193\18\62\251\171\144\30\41\227\166\150\27", "\165\40\17\212\158"),[LUAOBFUSACTOR_DECRYPT_STR_0("\214\208\18\54", "\70\133\185\104\83")]=UDim2.new(0.05 - 0, 0 + 0, 1 - 0, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\52\74\87\35\221\13\74\74", "\169\100\37\36\74")]=UDim2.new(0.01 + 0, 0 - 0, 0 - 0, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\34\134\161\91\7\149\173\69\14\131\150\66\1\137\177\64\1\149\167\94\3\158", "\48\96\231\194")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\234\91\13\38\30\202\160\150\198\94\45\34\21\215\189\208", "\227\168\58\110\77\121\184\207")]=Color3.new(),[LUAOBFUSACTOR_DECRYPT_STR_0("\77\53\172\73\179\215\116", "\197\27\92\223\32\209\187\17")]=(writefile ~= nil)});
+settings_1 = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\37\77\194\246\6", "\155\99\63\163"), main, {[LUAOBFUSACTOR_DECRYPT_STR_0("\172\208\172\136", "\228\226\177\193\237\217")]=LUAOBFUSACTOR_DECRYPT_STR_0("\39\181\55\242\61\190\36\245", "\134\84\208\67"),[LUAOBFUSACTOR_DECRYPT_STR_0("\49\173\133\87\20\190\137\73\29\168\178\78\18\162\149\76\18\190\131\82\16\181", "\60\115\204\230")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\212\51\241\117", "\16\135\90\139")]=UDim2.new(0.97 - 0, 0 - 0, 0.75 + 0, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\100\123\21\58\90\93\119\90", "\24\52\20\102\83\46\52")]=UDim2.new(447.025 - (133 + 314), 0 + 0, 213.2 - (199 + 14), 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\230\46\34\47\8\214\32\52\42\11\231\32\45\43\29\151", "\111\164\79\65\68")]=Color3.new(1550 - (647 + 902), 2 - 1, 234 - (85 + 148))});
+Layout = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\243\240\164\204\39\238\234\216\154\209\59\254", "\138\166\185\227\190\78"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\253\113\215\35\91\32\24\199\85\201\62\85\45\20\206\122\209", "\121\171\20\165\87\50\67")]=LUAOBFUSACTOR_DECRYPT_STR_0("\229\61\183\34\188\16", "\98\166\88\217\86\217"),[LUAOBFUSACTOR_DECRYPT_STR_0("\197\249\107\21\169\206\242\243\107", "\188\150\150\25\97\230")]=LUAOBFUSACTOR_DECRYPT_STR_0("\246\136\70\13\25\249\245\155\91\7\30", "\141\186\233\63\98\108"),[LUAOBFUSACTOR_DECRYPT_STR_0("\217\229\62\191\63\254\228\56\183\41\208\230\37\177\43\252\239\34\162", "\69\145\138\76\214")]=LUAOBFUSACTOR_DECRYPT_STR_0("\83\202\135\157\186\4", "\118\16\175\233\233\223"),[LUAOBFUSACTOR_DECRYPT_STR_0("\168\129\57\183\222\138\121\143\141\59\188", "\29\235\228\85\219\142\235")]=UDim2.new(1289.01 - (426 + 863), 0 - 0, 1654.1 - (873 + 781), 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\30\209\182\209\68\71\61\87", "\50\93\180\218\189\23\46\71")]=UDim2.new(0.325 - 0, 0 + 0, 0.26 - 0, 0 - 0)});
+cashier = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\248\182\90\65\65", "\40\190\196\59\44\36\188"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\18\68\209\177", "\109\92\37\188\212\154\29")]=LUAOBFUSACTOR_DECRYPT_STR_0("\7\238\183\203\56\95\22", "\58\100\143\196\163\81"),[LUAOBFUSACTOR_DECRYPT_STR_0("\54\67\58\172\42\93\202\28\30\71\49", "\110\122\34\67\195\95\41\133")]=(11 - 7),[LUAOBFUSACTOR_DECRYPT_STR_0("\87\176\88\65\209\103\190\78\68\210\65\163\90\68\197\101\176\73\79\216\118\168", "\182\21\209\59\42")]=(1948 - (414 + 1533)),[LUAOBFUSACTOR_DECRYPT_STR_0("\132\94\223\24", "\222\215\55\165\125\65")]=UDim2.new(0 + 0, 655 - (443 + 112), 1479 - (888 + 591), 258 - 158),[LUAOBFUSACTOR_DECRYPT_STR_0("\14\208\197\17\245\211\226\95\34\213\229\21\254\206\255\25", "\42\76\177\166\122\146\161\141")]=Color3.new(1 + 0, 3 - 2, 1 + 0)});
+Label = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\145\143\29\218\85\119\167\143\9", "\22\197\234\101\174\25"), cashier, {[LUAOBFUSACTOR_DECRYPT_STR_0("\25\49\189\200\65\189\214\150\61\49\161", "\230\77\84\197\188\22\207\183")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\202\29\220\249", "\85\153\116\166\156\236\193\144")]=UDim2.new(0.6 + 0, 0 + 0, 1 - 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\144\229\85\167", "\96\196\128\45\211\132")]=LUAOBFUSACTOR_DECRYPT_STR_0("\22\140\104\87\219\170\166", "\184\85\237\27\63\178\207\212"),[LUAOBFUSACTOR_DECRYPT_STR_0("\60\92\17\75\59\80\19\90", "\63\104\57\105")]=(1692 - (136 + 1542)),[LUAOBFUSACTOR_DECRYPT_STR_0("\63\130\188\80\51\166\168\77\12\137\169\65\5\147", "\36\107\231\196")]=LUAOBFUSACTOR_DECRYPT_STR_0("\113\176\164\147", "\231\61\213\194"),[LUAOBFUSACTOR_DECRYPT_STR_0("\47\162\51\103", "\19\105\205\93")]=LUAOBFUSACTOR_DECRYPT_STR_0("\154\7\203\147\60\172\59\223\143\44", "\95\201\104\190\225"),[LUAOBFUSACTOR_DECRYPT_STR_0("\141\202\194\197\168\217\206\219\161\207\245\220\174\197\210\222\174\217\196\192\172\210", "\174\207\171\161")]=(3 - 2),[LUAOBFUSACTOR_DECRYPT_STR_0("\221\241\30\250\236\222\226\240", "\183\141\158\109\147\152")]=UDim2.new(0.4 + 0, 0 - 0, 0 + 0, 486 - (68 + 418)),[LUAOBFUSACTOR_DECRYPT_STR_0("\24\12\254\24\15\6\234\3\62\90", "\108\76\105\134")]=Color3.new(2 - 1, 1 - 0, 1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\223\192\169\245\253\232\196\189\228\202", "\174\139\165\209\129")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\129\178\225\202\193\17\127\109\173\183\193\206\202\12\98\43", "\24\195\211\130\161\166\99\16")]=Color3.new(1093 - (770 + 322), 1 + 0, 1 + 0)});
+cashierBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\111\14\232\43\86\52\83\23\253\35\93", "\118\38\99\137\76\51"), cashier, {[LUAOBFUSACTOR_DECRYPT_STR_0("\211\39\8\23", "\64\157\70\101\114\105")]=LUAOBFUSACTOR_DECRYPT_STR_0("\67\169\180\235\25\69\186\133\247\30", "\112\32\200\199\131"),[LUAOBFUSACTOR_DECRYPT_STR_0("\5\93\93\191\198\159\48\45\94\79\168\194\185\39\34\83\69", "\66\76\48\60\216\163\203")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\152\137\107\247\90\220\23\179\156\124\195\86\214\33\182", "\68\218\230\25\147\63\174")]=(0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\158\35\73\73", "\214\205\74\51\44")]=UDim2.new(0.38 - 0, 0 - 0, 3 - 2, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\216\77\225\247\112\232\67\247\242\115\217\67\238\243\101\169", "\23\154\44\130\156")]=Color3.new(0.392 - 0, 0.392 + 0, 0.392 + 0)});
+cashierSlider = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\55\180\172\163\51", "\115\113\198\205\206\86"), cashierBtn, {[LUAOBFUSACTOR_DECRYPT_STR_0("\170\86\243\95", "\58\228\55\158")]=LUAOBFUSACTOR_DECRYPT_STR_0("\167\133\217\42\57\191", "\85\212\233\176\78\92\205"),[LUAOBFUSACTOR_DECRYPT_STR_0("\121\81\146\231", "\130\42\56\232")]=UDim2.new(0.5 + 0, -(14 - 10), 1 - 0, -(2 + 2)),[LUAOBFUSACTOR_DECRYPT_STR_0("\218\186\55\234\84\54\229\187", "\95\138\213\68\131\32")]=UDim2.new((v1 and (0.5 - 0)) or (0 - 0), 1 + 1, 0 - 0, 833 - (762 + 69)),[LUAOBFUSACTOR_DECRYPT_STR_0("\8\39\179\71\115\56\27\168\89\115\26\33\185\70\122", "\22\74\72\193\35")]=(0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\14\120\231\83\43\107\235\77\34\125\199\87\32\118\246\11", "\56\76\25\132")]=Color3.new(0.784 + 0, 0.784 + 0, 0.784 - 0)});
+kitchen = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\120\211\170\43\202", "\175\62\161\203\70"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\18\220\206\22", "\85\92\189\163\115")]=LUAOBFUSACTOR_DECRYPT_STR_0("\34\165\36\59\33\169\62", "\88\73\204\80"),[LUAOBFUSACTOR_DECRYPT_STR_0("\2\130\9\73\60\206\1\145\20\67\59", "\186\78\227\112\38\73")]=(3 + 6),[LUAOBFUSACTOR_DECRYPT_STR_0("\222\86\254\94\84\104\243\66\243\81\103\104\253\89\238\69\82\104\249\89\254\76", "\26\156\55\157\53\51")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\191\209\12\220", "\48\236\184\118\185\216")]=UDim2.new(0 - 0, 257 - (8 + 149), 1320 - (1199 + 121), 169 - 69),[LUAOBFUSACTOR_DECRYPT_STR_0("\199\188\84\59\200\38\234\168\89\52\236\59\233\178\69\99", "\84\133\221\55\80\175")]=Color3.new(2 - 1, 1 + 0, 3 - 2)});
+Label_2 = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\137\226\60\178\235\93\191\226\40", "\60\221\135\68\198\167"), kitchen, {[LUAOBFUSACTOR_DECRYPT_STR_0("\218\184\224\151\117\203\239\173\232\134\70", "\185\142\221\152\227\34")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\107\204\77\255", "\151\56\165\55\154\35\83")]=UDim2.new(0.6 - 0, 0 + 0, 1808 - (518 + 1289), 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\148\70\29\250", "\142\192\35\101")]=LUAOBFUSACTOR_DECRYPT_STR_0("\242\112\37\170\241\137\190\86\247\97\115", "\118\182\21\73\195\135\236\204"),[LUAOBFUSACTOR_DECRYPT_STR_0("\60\57\2\84\55\4\231\13", "\157\104\92\122\32\100\109")]=(2 + 12),[LUAOBFUSACTOR_DECRYPT_STR_0("\151\163\215\222\5\6\129\162\164\168\194\207\51\51", "\203\195\198\175\170\93\71\237")]=LUAOBFUSACTOR_DECRYPT_STR_0("\28\66\57\221\69", "\156\78\43\94\181\49\113"),[LUAOBFUSACTOR_DECRYPT_STR_0("\84\231\202\183", "\25\18\136\164\195\107\35")]=LUAOBFUSACTOR_DECRYPT_STR_0("\219\34\188\93\113\185\242\185\230\62", "\216\136\77\201\47\18\220\161"),[LUAOBFUSACTOR_DECRYPT_STR_0("\15\237\40\209\15\206\141\56\226\47\238\26\221\140\62\252\42\200\13\210\129\52", "\226\77\140\75\186\104\188")]=(1 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\141\203\200\43\108\182\194\223\45\28", "\47\217\174\176\95")]=Color3.new(1 + 0, 470 - (304 + 165), 1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\140\216\110\22\129\87\121\42\189\217", "\70\216\189\22\98\210\52\24")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\248\222\160\140\212\200\208\182\137\215\249\208\175\136\193\137", "\179\186\191\195\231")]=Color3.new(161 - (54 + 106), 1970 - (1618 + 351), 1 + 0)});
+deliverAtBox = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\205\58\0\240\219\48\0", "\132\153\95\120"), kitchen, {[LUAOBFUSACTOR_DECRYPT_STR_0("\159\179\3\40", "\192\209\210\110\77\151\186")]=LUAOBFUSACTOR_DECRYPT_STR_0("\228\6\46\224\233\193\242\34\54\203\240\220", "\164\128\99\66\137\159"),[LUAOBFUSACTOR_DECRYPT_STR_0("\52\140\241\170\55\155\232\174\16\140\237", "\222\96\233\137")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\138\186\189\26", "\144\217\211\199\127\232\147")]=UDim2.new(1016.25 - (10 + 1006), 0 + 0, 1 + 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\204\42\38\60", "\36\152\79\94\72\181\37\98")]=tostring(v0.deliver_at),[LUAOBFUSACTOR_DECRYPT_STR_0("\227\221\95\43\228\209\93\58", "\95\183\184\39")]=(1083 - (912 + 121)),[LUAOBFUSACTOR_DECRYPT_STR_0("\129\58\255\50\119\143\14\186\45\180", "\98\213\95\135\70\52\224")]=Color3.new(),[LUAOBFUSACTOR_DECRYPT_STR_0("\216\172\199\99", "\52\158\195\169\23")]=LUAOBFUSACTOR_DECRYPT_STR_0("\89\179\54\113", "\235\26\220\82\20\230\85\27"),[LUAOBFUSACTOR_DECRYPT_STR_0("\184\174\250\203\96\129\174\231", "\20\232\193\137\162")]=UDim2.new(0.62 + 0, 1289 - (1140 + 149), 0 + 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\22\218\221\178\212\143\22\125\39\219", "\17\66\191\165\198\135\236\119")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\45\174\173\24\248\250\227\196\1\171\141\28\243\231\254\130", "\177\111\207\206\115\159\136\140")]=Color3.new(0.784 + 0, 0.784 - 0, 0.784 - 0)});
+refillEnd = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\35\155\17\25\209", "\63\101\233\112\116\180\47"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\237\58\224\23", "\86\163\91\141\114\152")]=LUAOBFUSACTOR_DECRYPT_STR_0("\65\14\114\122\54\95\46\122\119", "\90\51\107\20\19"),[LUAOBFUSACTOR_DECRYPT_STR_0("\161\241\156\224\40\153\223\151\235\56\159", "\93\237\144\229\143")]=(2 + 6),[LUAOBFUSACTOR_DECRYPT_STR_0("\55\247\243\18\12\84\26\227\254\29\63\84\20\248\227\9\10\84\16\248\243\0", "\38\117\150\144\121\107")]=(3 - 2),[LUAOBFUSACTOR_DECRYPT_STR_0("\30\178\244\63", "\90\77\219\142")]=UDim2.new(186 - (165 + 21), 211 - (61 + 50), 0 + 0, 476 - 376),[LUAOBFUSACTOR_DECRYPT_STR_0("\196\5\34\50\75\21\117\243\10\37\26\67\11\117\244\87", "\26\134\100\65\89\44\103")]=Color3.new(1 - 0, 1 + 0, 1461 - (1295 + 165))});
+refillEndBox = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\197\230\40\55\134\254\251", "\196\145\131\80\67"), refillEnd, {[LUAOBFUSACTOR_DECRYPT_STR_0("\48\177\11\13", "\136\126\208\102\104\120")]=LUAOBFUSACTOR_DECRYPT_STR_0("\106\143\200\74\163\94\24\95\124\168\193\91", "\49\24\234\174\35\207\50\93"),[LUAOBFUSACTOR_DECRYPT_STR_0("\56\247\229\156\70\30\243\237\152\116\8", "\17\108\146\157\232")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\120\202\14\232", "\200\43\163\116\141\79")]=UDim2.new(0.25 + 0, 0 + 0, 1398 - (819 + 578), 1402 - (331 + 1071)),[LUAOBFUSACTOR_DECRYPT_STR_0("\139\51\37\151", "\131\223\86\93\227\208\148")]=tostring(v0.refill_end),[LUAOBFUSACTOR_DECRYPT_STR_0("\215\64\174\162\46\188\249\64", "\213\131\37\214\214\125")]=(793 - (588 + 155)),[LUAOBFUSACTOR_DECRYPT_STR_0("\18\46\61\171\194\41\39\42\173\178", "\129\70\75\69\223")]=Color3.new(),[LUAOBFUSACTOR_DECRYPT_STR_0("\96\196\253\253", "\143\38\171\147\137\28")]=LUAOBFUSACTOR_DECRYPT_STR_0("\243\141\189\246", "\180\176\226\217\147\99\131"),[LUAOBFUSACTOR_DECRYPT_STR_0("\227\182\60\14\199\176\32\9", "\103\179\217\79")]=UDim2.new(1282.62 - (546 + 736), 1937 - (1834 + 103), 0 + 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\126\178\4\193\114\143\162\70\178\24", "\195\42\215\124\181\33\236")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\47\88\52\53\34\234\2\76\57\58\6\247\1\86\37\109", "\152\109\57\87\94\69")]=Color3.new(1766.784 - (1536 + 230), 491.784 - (128 + 363), 0.784 + 0)});
+Label_3 = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\205\210\18\183\146\211\86\173\245", "\200\153\183\106\195\222\178\52"), refillEnd, {[LUAOBFUSACTOR_DECRYPT_STR_0("\6\230\144\41\126\72\51\243\152\56\77", "\58\82\131\232\93\41")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\176\94\202\16", "\95\227\55\176\117\61")]=UDim2.new(0.6 - 0, 0 + 0, 1 - 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\44\123\59\95", "\203\120\30\67\43")]=LUAOBFUSACTOR_DECRYPT_STR_0("\195\32\75\230\213\253\101\104\225\221\171", "\185\145\69\45\143"),[LUAOBFUSACTOR_DECRYPT_STR_0("\190\26\1\178\239\131\5\28", "\188\234\127\121\198")]=(33 - 19),[LUAOBFUSACTOR_DECRYPT_STR_0("\12\55\11\151\0\19\31\138\63\60\30\134\54\38", "\227\88\82\115")]=LUAOBFUSACTOR_DECRYPT_STR_0("\113\22\189\175\22", "\19\35\127\218\199\98"),[LUAOBFUSACTOR_DECRYPT_STR_0("\58\244\4\246", "\130\124\155\106")]=LUAOBFUSACTOR_DECRYPT_STR_0("\230\196\227\189\160\243\79\190\219\216", "\223\181\171\150\207\195\150\28"),[LUAOBFUSACTOR_DECRYPT_STR_0("\110\59\224\165\14\94\53\246\160\13\120\40\226\160\26\92\59\241\171\7\79\35", "\105\44\90\131\206")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\203\229\170\173\43\49\243\239\160\234", "\94\159\128\210\217\104")]=Color3.new(1010 - (615 + 394), 1 + 0, 1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\100\252\30\171\108\124\248\118\85\253", "\26\48\153\102\223\63\31\153")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\32\65\238\248\5\82\226\230\12\68\206\252\14\79\255\160", "\147\98\32\141")]=Color3.new(2 - 1, 4 - 3, 652 - (59 + 592))});
+refillAt = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\62\81\226\199\3", "\43\120\35\131\170\102\54"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\122\7\138\179", "\228\52\102\231\214\197\208")]=LUAOBFUSACTOR_DECRYPT_STR_0("\12\229\115\195\230\135\56\194", "\182\126\128\21\170\138\235\121"),[LUAOBFUSACTOR_DECRYPT_STR_0("\167\219\44\233\147\7\31\20\143\223\39", "\102\235\186\85\134\230\115\80")]=(15 - 8),[LUAOBFUSACTOR_DECRYPT_STR_0("\117\13\61\84\117\198\45\66\2\58\107\96\213\44\68\28\63\77\119\218\33\78", "\66\55\108\94\63\18\180")]=(1 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\39\132\159\50", "\57\116\237\229\87\71")]=UDim2.new(0 + 0, 271 - (70 + 101), 0 - 0, 71 + 29),[LUAOBFUSACTOR_DECRYPT_STR_0("\136\176\238\236\112\252\72\191\191\233\196\120\226\72\184\226", "\39\202\209\141\135\23\142")]=Color3.new(2 - 1, 242 - (123 + 118), 1 + 0)});
+Label_4 = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\203\54\17\30\30\249\253\54\5", "\152\159\83\105\106\82"), refillAt, {[LUAOBFUSACTOR_DECRYPT_STR_0("\181\195\73\230\254\78\128\214\65\247\205", "\60\225\166\49\146\169")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\28\23\53\47", "\103\79\126\79\74\97")]=UDim2.new(0.5 + 0, 1399 - (653 + 746), 1 - 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\142\122\203\103", "\122\218\31\179\19\62")]=LUAOBFUSACTOR_DECRYPT_STR_0("\129\211\203\200\197\173\5\146\194\151", "\37\211\182\173\161\169\193"),[LUAOBFUSACTOR_DECRYPT_STR_0("\195\63\85\205\27\114\163\242", "\217\151\90\45\185\72\27")]=(37 - 23),[LUAOBFUSACTOR_DECRYPT_STR_0("\247\121\255\6\110\226\112\238\21\88\206\121\233\6", "\54\163\28\135\114")]=LUAOBFUSACTOR_DECRYPT_STR_0("\26\210\90\138\90", "\31\72\187\61\226\46"),[LUAOBFUSACTOR_DECRYPT_STR_0("\229\9\77\198", "\68\163\102\35\178\39\30")]=LUAOBFUSACTOR_DECRYPT_STR_0("\141\127\207\213\0\176\176\16\176\99", "\113\222\16\186\167\99\213\227"),[LUAOBFUSACTOR_DECRYPT_STR_0("\12\15\248\253\41\28\244\227\32\10\207\228\47\0\232\230\47\28\254\248\45\23", "\150\78\110\155")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\177\192\63\245\135\17\179\79\151\150", "\32\229\165\71\129\196\126\223")]=Color3.new(1 + 0, 1 + 0, 1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\247\140\220\149\178\214\194\133\193\133", "\181\163\233\164\225\225")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\114\138\61\124\87\153\49\98\94\143\29\120\92\132\44\36", "\23\48\235\94")]=Color3.new(1 + 0, 2 - 1, 1 + 0)});
+refillAtBox = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\72\223\192\73\117\60\202", "\178\28\186\184\61\55\83"), refillAt, {[LUAOBFUSACTOR_DECRYPT_STR_0("\234\204\74\57", "\149\164\173\39\92\146\110")]=LUAOBFUSACTOR_DECRYPT_STR_0("\225\34\22\22\22\23\210\51\50\16\2", "\123\147\71\112\127\122"),[LUAOBFUSACTOR_DECRYPT_STR_0("\248\200\154\101\113\222\204\146\97\67\200", "\38\172\173\226\17")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\126\24\54\234", "\143\45\113\76")]=UDim2.new(0.25 - 0, 1234 - (885 + 349), 1 + 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\140\189\4\40", "\92\216\216\124")]=tostring(v0.refill_at),[LUAOBFUSACTOR_DECRYPT_STR_0("\111\55\180\84\206\82\40\169", "\157\59\82\204\32")]=(145 - 95),[LUAOBFUSACTOR_DECRYPT_STR_0("\12\59\251\238\202\229\223\190\42\109", "\209\88\94\131\154\137\138\179")]=Color3.new(),[LUAOBFUSACTOR_DECRYPT_STR_0("\14\174\202\104", "\66\72\193\164\28\126\67\81")]=LUAOBFUSACTOR_DECRYPT_STR_0("\196\35\172\93", "\22\135\76\200\56\70"),[LUAOBFUSACTOR_DECRYPT_STR_0("\189\63\235\45\73\232\130\62", "\129\237\80\152\68\61")]=UDim2.new(968.52 - (915 + 53), 801 - (768 + 33), 0 - 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\101\173\28\231\47\20\89\93\173\0", "\56\49\200\100\147\124\119")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\238\63\188\251\203\44\176\229\194\58\156\255\192\49\173\163", "\144\172\94\223")]=Color3.new(328.784 - (287 + 41), 847.784 - (638 + 209), 0.784 + 0)});
+supplier = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\2\29\163\74\33", "\39\68\111\194"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\248\167\234\194", "\215\182\198\135\167\25")]=LUAOBFUSACTOR_DECRYPT_STR_0("\158\92\250\88\129\64\239\90", "\40\237\41\138"),[LUAOBFUSACTOR_DECRYPT_STR_0("\235\117\227\247\95\211\91\232\252\79\213", "\42\167\20\154\152")]=(1692 - (96 + 1590)),[LUAOBFUSACTOR_DECRYPT_STR_0("\104\255\161\73\118\51\69\235\172\70\69\51\75\240\177\82\112\51\79\240\161\91", "\65\42\158\194\34\17")]=(1673 - (741 + 931)),[LUAOBFUSACTOR_DECRYPT_STR_0("\41\46\72\9", "\142\122\71\50\108\77\141\123")]=UDim2.new(0 + 0, 284 - 184, 0 - 0, 43 + 57),[LUAOBFUSACTOR_DECRYPT_STR_0("\55\163\252\19\60\7\173\234\22\63\54\173\243\23\41\70", "\91\117\194\159\120")]=Color3.new(1 + 0, 1 + 0, 3 - 2)});
+Label_5 = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\46\24\38\12\25\240\38\31\17", "\68\122\125\94\120\85\145"), supplier, {[LUAOBFUSACTOR_DECRYPT_STR_0("\35\25\215\74\255\203\187\7\12\202\90", "\218\119\124\175\62\168\185")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\150\249\82\193", "\164\197\144\40")]=UDim2.new(0.6 + 0, 0 + 0, 4 - 3, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\183\245\178\159", "\214\227\144\202\235\189")]=LUAOBFUSACTOR_DECRYPT_STR_0("\222\176\151\107\28\186\86\46", "\92\141\197\231\27\112\211\51"),[LUAOBFUSACTOR_DECRYPT_STR_0("\210\250\146\183\226\239\229\143", "\177\134\159\234\195")]=(508 - (64 + 430)),[LUAOBFUSACTOR_DECRYPT_STR_0("\137\238\39\180\241\156\231\54\167\199\176\238\49\180", "\169\221\139\95\192")]=LUAOBFUSACTOR_DECRYPT_STR_0("\242\142\121\43", "\70\190\235\31\95\66"),[LUAOBFUSACTOR_DECRYPT_STR_0("\156\237\20\242", "\133\218\130\122\134")]=LUAOBFUSACTOR_DECRYPT_STR_0("\15\240\246\214\223\166\11\61\241\240", "\88\92\159\131\164\188\195"),[LUAOBFUSACTOR_DECRYPT_STR_0("\162\47\188\64\208\249\210\149\32\187\127\197\234\211\147\62\190\89\210\229\222\153", "\189\224\78\223\43\183\139")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\30\243\153\31\213\39\243\132", "\161\78\156\234\118")]=UDim2.new(363.4 - (106 + 257), 0 + 0, 721 - (496 + 225), 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\147\178\209\200\132\184\197\211\181\228", "\188\199\215\169")]=Color3.new(4 - 3, 1659 - (256 + 1402), 1900 - (30 + 1869)),[LUAOBFUSACTOR_DECRYPT_STR_0("\200\12\71\111\219\255\8\83\126\236", "\136\156\105\63\27")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\57\141\122\63\28\158\118\33\21\136\90\59\23\131\107\103", "\84\123\236\25")]=Color3.new(1370 - (213 + 1156), 189 - (96 + 92), 1 + 0)});
+supplierBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\217\134\171\16\169\151\229\159\190\24\162", "\213\144\235\202\119\204"), supplier, {[LUAOBFUSACTOR_DECRYPT_STR_0("\13\25\211\47", "\45\67\120\190\74\72\67")]=LUAOBFUSACTOR_DECRYPT_STR_0("\51\55\253\181\245\129\235\251\2\54\227", "\137\64\66\141\197\153\232\142"),[LUAOBFUSACTOR_DECRYPT_STR_0("\42\221\35\161\141\55\194\35\168\155\19\209\48\163\134\0\201", "\232\99\176\66\198")]=(900 - (142 + 757)),[LUAOBFUSACTOR_DECRYPT_STR_0("\206\46\58\2\126\159\202\37\246\36\24\15\99\136\245", "\76\140\65\72\102\27\237\153")]=(0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\121\211\12\215", "\222\42\186\118\178\183\97")]=UDim2.new(0.38 + 0, 79 - (32 + 47), 1978 - (1053 + 924), 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\127\237\71\129\90\254\75\159\83\232\103\133\81\227\86\217", "\234\61\140\36")]=Color3.new(0.392 - 0, 1648.392 - (685 + 963), 0.392 - 0)});
+supplierSlider = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\7\207\187\127\10", "\111\65\189\218\18"), supplierBtn, {[LUAOBFUSACTOR_DECRYPT_STR_0("\109\74\22\48", "\207\35\43\123\85\107\60")]=LUAOBFUSACTOR_DECRYPT_STR_0("\99\166\169\238\124\98", "\25\16\202\192\138"),[LUAOBFUSACTOR_DECRYPT_STR_0("\206\194\183\231", "\148\157\171\205\130\201")]=UDim2.new(0.5 - 0, -(1713 - (541 + 1168)), 1598 - (645 + 952), -(842 - (669 + 169))),[LUAOBFUSACTOR_DECRYPT_STR_0("\19\219\103\32\197\255\44\218", "\150\67\180\20\73\177")]=UDim2.new((v4 and (0.5 - 0)) or (0 - 0), 1 + 1, 0 + 0, 767 - (181 + 584)),[LUAOBFUSACTOR_DECRYPT_STR_0("\175\23\8\73\136\10\41\68\151\29\42\68\149\29\22", "\45\237\120\122")]=(1395 - (665 + 730)),[LUAOBFUSACTOR_DECRYPT_STR_0("\245\233\161\39\208\250\173\57\217\236\129\35\219\231\176\127", "\76\183\136\194")]=Color3.new(0.784 - 0, 0.784 - 0, 1350.784 - (540 + 810))});
+delivery = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\92\244\228\53\85", "\116\26\134\133\88\48\47"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\48\192\173\225", "\18\126\161\192\132\221")]=LUAOBFUSACTOR_DECRYPT_STR_0("\91\45\162\13\64\90\58\183", "\54\63\72\206\100"),[LUAOBFUSACTOR_DECRYPT_STR_0("\228\88\92\117\240\111\231\75\65\127\247", "\27\168\57\37\26\133")]=(19 - 14),[LUAOBFUSACTOR_DECRYPT_STR_0("\15\171\127\163\208\63\165\105\166\211\25\184\125\166\196\61\171\110\173\217\46\179", "\183\77\202\28\200")]=(2 - 1),[LUAOBFUSACTOR_DECRYPT_STR_0("\36\58\147\13", "\104\119\83\233")]=UDim2.new(0 + 0, 303 - (166 + 37), 1881 - (22 + 1859), 1872 - (843 + 929)),[LUAOBFUSACTOR_DECRYPT_STR_0("\215\249\36\41\68\231\247\50\44\71\214\247\43\45\81\166", "\35\149\152\71\66")]=Color3.new(263 - (30 + 232), 2 - 1, 778 - (55 + 722))});
+Label_6 = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\45\237\90\164\22\24\234\71\188", "\90\121\136\34\208"), delivery, {[LUAOBFUSACTOR_DECRYPT_STR_0("\243\11\77\10\240\28\84\14\215\11\81", "\126\167\110\53")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\14\25\52\253", "\95\93\112\78\152\188")]=UDim2.new(0.6 - 0, 1675 - (78 + 1597), 1 + 0, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\245\240\157\1", "\178\161\149\229\117\132\222")]=LUAOBFUSACTOR_DECRYPT_STR_0("\172\222\209\165\183\19\180\58", "\67\232\187\189\204\193\118\198"),[LUAOBFUSACTOR_DECRYPT_STR_0("\191\43\173\52\8\11\245\142", "\143\235\78\213\64\91\98")]=(12 + 2),[LUAOBFUSACTOR_DECRYPT_STR_0("\185\77\156\253\72\151\129\65\131\231\125\179\131\92", "\214\237\40\228\137\16")]=LUAOBFUSACTOR_DECRYPT_STR_0("\169\230\233\205", "\198\229\131\143\185\99"),[LUAOBFUSACTOR_DECRYPT_STR_0("\119\131\166\103", "\19\49\236\200")]=LUAOBFUSACTOR_DECRYPT_STR_0("\205\56\227\165\231\191\205\54\248\164", "\218\158\87\150\215\132"),[LUAOBFUSACTOR_DECRYPT_STR_0("\217\31\218\233\49\48\194\238\16\221\214\36\35\195\232\14\216\240\51\44\206\226", "\173\155\126\185\130\86\66")]=(550 - (305 + 244)),[LUAOBFUSACTOR_DECRYPT_STR_0("\213\169\169\206\156\229\234\168", "\140\133\198\218\167\232")]=UDim2.new(0.4 + 0, 105 - (95 + 10), 0 + 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\129\43\172\105\167\186\34\187\111\215", "\228\213\78\212\29")]=Color3.new(1 - 0, 763 - (592 + 170), 3 - 2),[LUAOBFUSACTOR_DECRYPT_STR_0("\179\73\174\17\216\132\77\186\0\239", "\139\231\44\214\101")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\251\238\5\85\23\163\62\3\215\235\37\81\28\190\35\69", "\118\185\143\102\62\112\209\81")]=Color3.new(2 - 1, 1 + 0, 1 + 0)});
+deliveryBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\117\125\40\225\160\55\9\44\72\127\39", "\88\60\16\73\134\197\117\124"), delivery, {[LUAOBFUSACTOR_DECRYPT_STR_0("\126\235\245\205", "\33\48\138\152\168")]=LUAOBFUSACTOR_DECRYPT_STR_0("\118\19\60\88\215\50\96\15\18\69\207", "\87\18\118\80\49\161"),[LUAOBFUSACTOR_DECRYPT_STR_0("\101\19\219\167\181\120\12\219\174\163\92\31\200\165\190\79\7", "\208\44\126\186\192")]=(2 - 1),[LUAOBFUSACTOR_DECRYPT_STR_0("\213\21\182\194\17\238\250\71\237\31\148\207\12\249\197", "\46\151\122\196\166\116\156\169")]=(0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\214\228\92\31", "\155\133\141\38\122")]=UDim2.new(0.38 - 0, 507 - (353 + 154), 1 - 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\7\43\175\74\72\109\170\48\36\168\98\64\115\170\55\121", "\197\69\74\204\33\47\31")]=Color3.new(0.392 + 0, 0.392 + 0, 0.392 + 0)});
+deliverySlider = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\214\93\91\138\245", "\231\144\47\58"), deliveryBtn, {[LUAOBFUSACTOR_DECRYPT_STR_0("\156\217\215\112", "\89\210\184\186\21\120\93\175")]=LUAOBFUSACTOR_DECRYPT_STR_0("\162\95\117\209\124\40", "\90\209\51\28\181\25"),[LUAOBFUSACTOR_DECRYPT_STR_0("\227\114\77\235", "\223\176\27\55\142")]=UDim2.new(0.5 - 0, -(7 - 3), 2 - 1, -(90 - (7 + 79))),[LUAOBFUSACTOR_DECRYPT_STR_0("\20\180\221\188\48\178\193\187", "\213\68\219\174")]=UDim2.new((v5 and (0.5 + 0)) or (181 - (24 + 157)), 3 - 1, 0 - 0, 1 + 1),[LUAOBFUSACTOR_DECRYPT_STR_0("\41\239\49\227\47\215\12\118\17\229\19\238\50\192\51", "\31\107\128\67\135\74\165\95")]=(0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\250\233\255\70\70\163\215\253\242\73\98\190\212\231\238\30", "\209\184\136\156\45\33")]=Color3.new(380.784 - (262 + 118), 1083.784 - (1038 + 45), 0.784 - 0)});
+boxer = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\33\218\116\5\189", "\216\103\168\21\104"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\86\172\78\161", "\196\24\205\35")]=LUAOBFUSACTOR_DECRYPT_STR_0("\44\132\251\3\60", "\102\78\235\131"),[LUAOBFUSACTOR_DECRYPT_STR_0("\214\47\45\75\82\45\152\38\254\43\38", "\84\154\78\84\36\39\89\215")]=(232 - (19 + 211)),[LUAOBFUSACTOR_DECRYPT_STR_0("\223\224\85\83\2\239\238\67\86\1\201\243\87\86\22\237\224\68\93\11\254\248", "\101\157\129\54\56")]=(114 - (88 + 25)),[LUAOBFUSACTOR_DECRYPT_STR_0("\46\160\144\174", "\25\125\201\234\203\67")]=UDim2.new(0 - 0, 50 + 50, 0 + 0, 1136 - (1007 + 29)),[LUAOBFUSACTOR_DECRYPT_STR_0("\91\245\27\8\19\53\28\108\250\28\32\27\43\28\107\167", "\115\25\148\120\99\116\71")]=Color3.new(1 + 0, 2 - 1, 4 - 3)});
+boxerLbl = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\56\56\161\48\109\13\63\188\40", "\33\108\93\217\68"), boxer, {[LUAOBFUSACTOR_DECRYPT_STR_0("\239\78\185\185\236\89\160\189\203\78\165", "\205\187\43\193")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\205\123\31\218", "\191\158\18\101")]=UDim2.new(0.6 + 0, 811 - (340 + 471), 2 - 1, 589 - (276 + 313)),[LUAOBFUSACTOR_DECRYPT_STR_0("\241\198\159\163", "\207\165\163\231\215")]=LUAOBFUSACTOR_DECRYPT_STR_0("\228\246\225\83\54", "\16\166\153\153\54\68"),[LUAOBFUSACTOR_DECRYPT_STR_0("\230\182\216\82\7\40\227\215", "\153\178\211\160\38\84\65")]=(34 - 20),[LUAOBFUSACTOR_DECRYPT_STR_0("\182\14\66\63\186\42\86\34\133\5\87\46\140\31", "\75\226\107\58")]=LUAOBFUSACTOR_DECRYPT_STR_0("\116\219\23\110", "\173\56\190\113\26\113\162"),[LUAOBFUSACTOR_DECRYPT_STR_0("\237\209\35\17", "\151\171\190\77\101")]=LUAOBFUSACTOR_DECRYPT_STR_0("\246\32\237\187\251\120\56\196\33\235", "\107\165\79\152\201\152\29"),[LUAOBFUSACTOR_DECRYPT_STR_0("\117\79\235\192\83\109\88\91\230\207\96\109\86\64\251\219\85\109\82\64\235\210", "\31\55\46\136\171\52")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\225\39\207\253\197\33\211\250", "\148\177\72\188")]=UDim2.new(0.4 + 0, 0 + 0, 1972 - (495 + 1477), 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\146\179\79\199\133\185\91\220\180\229", "\179\198\214\55")]=Color3.new(1 + 0, 404 - (342 + 61), 1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\196\9\106\98\118\208\241\0\119\114", "\179\144\108\18\22\37")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\228\162\24\130\200\212\172\14\135\203\229\172\23\134\221\149", "\175\166\195\123\233")]=Color3.new(166 - (4 + 161), 1 + 0, 3 - 2)});
+boxerBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\198\207\92\78\245\205\215\73\93\255\225", "\144\143\162\61\41"), boxer, {[LUAOBFUSACTOR_DECRYPT_STR_0("\206\210\16\85", "\83\128\179\125\48\18\231")]=LUAOBFUSACTOR_DECRYPT_STR_0("\95\184\235\216\85\60\73\185", "\126\61\215\147\189\39"),[LUAOBFUSACTOR_DECRYPT_STR_0("\81\242\28\66\125\203\15\68\118\236\13\68\106\250\19\70\97", "\37\24\159\125")]=(2 - 1),[LUAOBFUSACTOR_DECRYPT_STR_0("\248\169\103\70\223\180\70\75\192\163\69\75\194\163\121", "\34\186\198\21")]=(497 - (322 + 175)),[LUAOBFUSACTOR_DECRYPT_STR_0("\203\1\223\88", "\162\152\104\165\61")]=UDim2.new(563.38 - (173 + 390), 0 + 0, 315 - (203 + 111), 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\239\46\177\118\119\247\194\58\188\121\83\234\193\32\160\46", "\133\173\79\210\29\16")]=Color3.new(0.392 + 0, 0.392 - 0, 0.392 + 0)});
+boxerSlider = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\171\110\236\38\136", "\75\237\28\141"), boxerBtn, {[LUAOBFUSACTOR_DECRYPT_STR_0("\242\94\193\180", "\129\188\63\172\209\79\123\135")]=LUAOBFUSACTOR_DECRYPT_STR_0("\83\232\239\201\69\246", "\173\32\132\134"),[LUAOBFUSACTOR_DECRYPT_STR_0("\125\18\18\234", "\173\46\123\104\143\206\81")]=UDim2.new(706.5 - (57 + 649), -(388 - (328 + 56)), 1 + 0, -(516 - (433 + 79))),[LUAOBFUSACTOR_DECRYPT_STR_0("\132\18\49\131\81\138\14\186", "\97\212\125\66\234\37\227")]=UDim2.new((v2 and (0.5 + 0)) or (0 + 0), 6 - 4, 0 - 0, 2 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\168\236\164\49\27\152\208\191\47\27\186\234\174\48\18", "\126\234\131\214\85")]=(0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\166\212\74\81\72\150\218\92\84\75\167\218\69\85\93\215", "\47\228\181\41\58")]=Color3.new(1036.784 - (562 + 474), 0.784 - 0, 0.784 - 0)});
+cook = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\128\238\216\54\6", "\127\198\156\185\91\99\80"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\219\27\193\245", "\190\149\122\172\144\199\107\89")]=LUAOBFUSACTOR_DECRYPT_STR_0("\49\10\254\245", "\158\82\101\145\158"),[LUAOBFUSACTOR_DECRYPT_STR_0("\92\255\27\25\81\100\209\16\18\65\98", "\36\16\158\98\118")]=(908 - (76 + 829)),[LUAOBFUSACTOR_DECRYPT_STR_0("\226\23\192\240\95\250\40\240\206\18\247\233\89\230\52\245\193\4\198\245\91\241", "\133\160\118\163\155\56\136\71")]=(1674 - (1506 + 167)),[LUAOBFUSACTOR_DECRYPT_STR_0("\197\171\107\247", "\213\150\194\17\146\214\127")]=UDim2.new(0 - 0, 366 - (58 + 208), 0 + 0, 72 + 28),[LUAOBFUSACTOR_DECRYPT_STR_0("\57\168\167\223\65\182\173\35\21\173\135\219\74\171\176\101", "\86\123\201\196\180\38\196\194")]=Color3.new(1 + 0, 3 - 2, 338 - (258 + 79))});
+cookLbl = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\195\237\193\187\219\233\219\170\251", "\207\151\136\185"), cook, {[LUAOBFUSACTOR_DECRYPT_STR_0("\156\134\48\150\67\106\112\184\147\45\134", "\17\200\227\72\226\20\24")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\131\72\1\210", "\159\208\33\123\183\169\145\143")]=UDim2.new(0.6 + 0, 0 - 0, 1471 - (1219 + 251), 1671 - (1231 + 440)),[LUAOBFUSACTOR_DECRYPT_STR_0("\198\95\32\34", "\86\146\58\88")]=LUAOBFUSACTOR_DECRYPT_STR_0("\123\208\229\203", "\154\56\191\138\160\206\137\86"),[LUAOBFUSACTOR_DECRYPT_STR_0("\178\92\237\147\79\51\155\201", "\172\230\57\149\231\28\90\225")]=(72 - (34 + 24)),[LUAOBFUSACTOR_DECRYPT_STR_0("\54\175\158\198\16\250\14\163\129\220\37\222\12\190", "\187\98\202\230\178\72")]=LUAOBFUSACTOR_DECRYPT_STR_0("\13\228\162\36", "\42\65\129\196\80"),[LUAOBFUSACTOR_DECRYPT_STR_0("\36\69\83\206", "\142\98\42\61\186\119\103\98")]=LUAOBFUSACTOR_DECRYPT_STR_0("\11\176\23\26\59\186\49\9\54\172", "\104\88\223\98"),[LUAOBFUSACTOR_DECRYPT_STR_0("\102\246\225\197\5\255\75\226\236\202\54\255\69\249\241\222\3\255\65\249\225\215", "\141\36\151\130\174\98")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\180\117\209\4\144\115\205\3", "\109\228\26\162")]=UDim2.new(0.4 - 0, 0 + 0, 0 - 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\106\224\229\108\195\233\82\234\239\43", "\134\62\133\157\24\128")]=Color3.new(2 - 1, 3 - 2, 2 - 1),[LUAOBFUSACTOR_DECRYPT_STR_0("\51\160\2\205\28\178\215\11\160\30", "\182\103\197\122\185\79\209")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\209\134\226\124\7\90\252\146\239\115\35\71\255\136\243\36", "\40\147\231\129\23\96")]=Color3.new(1590 - (877 + 712), 1 + 0, 755 - (242 + 512))});
+cookBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\92\245\141\66\190\142\201\97\236\131\75", "\188\21\152\236\37\219\204"), cook, {[LUAOBFUSACTOR_DECRYPT_STR_0("\110\232\58\9", "\108\32\137\87")]=LUAOBFUSACTOR_DECRYPT_STR_0("\169\231\15\173\13\237\69", "\57\202\136\96\198\79\153\43"),[LUAOBFUSACTOR_DECRYPT_STR_0("\130\46\171\160\136\147\234\170\45\185\183\140\181\253\165\32\179", "\152\203\67\202\199\237\199")]=(1 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\216\76\178\11\26\103\74\239\224\70\144\6\7\112\117", "\134\154\35\192\111\127\21\25")]=(627 - (92 + 535)),[LUAOBFUSACTOR_DECRYPT_STR_0("\139\47\19\15", "\178\216\70\105\106\64")]=UDim2.new(0.38 + 0, 0 - 0, 1 + 0, 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\29\42\121\253\206\199\219\149\49\47\89\249\197\218\198\211", "\224\95\75\26\150\169\181\180")]=Color3.new(0.392 + 0, 0.392 + 0, 0.392 + 0)});
+cookSlider = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\45\200\217\37\65", "\22\107\186\184\72\36\204"), cookBtn, {[LUAOBFUSACTOR_DECRYPT_STR_0("\201\188\41\75", "\110\135\221\68\46")]=LUAOBFUSACTOR_DECRYPT_STR_0("\240\58\5\239\203\161", "\91\131\86\108\139\174\211"),[LUAOBFUSACTOR_DECRYPT_STR_0("\200\34\162\18", "\61\155\75\216\119")]=UDim2.new(0.5 - 0, -(5 - 1), 1786 - (1476 + 309), -(1288 - (299 + 985))),[LUAOBFUSACTOR_DECRYPT_STR_0("\52\164\161\53\76\0\210\10", "\189\100\203\210\92\56\105")]=UDim2.new((v3 and (0.5 + 0)) or (0 - 0), 95 - (86 + 7), 0 - 0, 1 + 1),[LUAOBFUSACTOR_DECRYPT_STR_0("\13\94\239\44\42\67\206\33\53\84\205\33\55\84\241", "\72\79\49\157")]=(880 - (672 + 208)),[LUAOBFUSACTOR_DECRYPT_STR_0("\170\177\50\183\143\162\62\169\134\180\18\179\132\191\35\239", "\220\232\208\81")]=Color3.new(0.784 + 0, 132.784 - (14 + 118), 445.784 - (339 + 106))});
+toggleAll = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\211\172\228\61\41", "\193\149\222\133\80\76\58"), settings_1, {[LUAOBFUSACTOR_DECRYPT_STR_0("\232\92\66\215", "\178\166\61\47")]=LUAOBFUSACTOR_DECRYPT_STR_0("\239\69\239\125\198\59\218\70\228", "\94\155\42\136\26\170"),[LUAOBFUSACTOR_DECRYPT_STR_0("\168\62\63\186\145\43\9\167\128\58\52", "\213\228\95\70")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\8\186\193\143\112\56\180\215\138\115\30\169\195\138\100\58\186\208\129\121\41\162", "\23\74\219\162\228")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\10\239\92\170", "\91\89\134\38\207")]=UDim2.new(1395 - (440 + 955), 99 + 1, 0 - 0, 34 + 66),[LUAOBFUSACTOR_DECRYPT_STR_0("\102\239\203\61\20\194\40\81\224\204\21\28\220\40\86\189", "\71\36\142\168\86\115\176")]=Color3.new(2 - 1, 1 + 0, 354 - (260 + 93))});
+switch = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\249\179\115\178\6", "\41\191\193\18\223\99\222\54"), toggleAll, {[LUAOBFUSACTOR_DECRYPT_STR_0("\133\39\202\47", "\202\203\70\167\74")]=LUAOBFUSACTOR_DECRYPT_STR_0("\63\22\213\39\114\36", "\17\76\97\188\83"),[LUAOBFUSACTOR_DECRYPT_STR_0("\167\38\218\60\55\145\68\182\139\35\237\37\49\141\88\179\132\53\220\57\51\154", "\195\229\71\185\87\80\227\43")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\211\245\26\85", "\143\128\156\96\48")]=UDim2.new(0.75 - 0, 0 - 0, 1975 - (1181 + 793), 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\154\208\243\25\16\170\222\229\28\19\155\222\252\29\5\235", "\119\216\177\144\114")]=Color3.new(308 - (105 + 202), 1 + 0, 811 - (352 + 458))});
+allOffBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\224\36\248\69\204\11\236\86\221\38\247", "\34\169\73\153"), switch, {[LUAOBFUSACTOR_DECRYPT_STR_0("\132\237\6\142", "\235\202\140\107")]=LUAOBFUSACTOR_DECRYPT_STR_0("\13\120\56\135\239\33\213\209\2", "\165\108\20\84\200\137\71\151"),[LUAOBFUSACTOR_DECRYPT_STR_0("\83\185\42\143\127\128\57\137\116\167\59\137\104\177\37\139\99", "\232\26\212\75")]=(3 - 2),[LUAOBFUSACTOR_DECRYPT_STR_0("\21\70\96\236\242\37\122\123\242\242\7\64\106\237\251", "\151\87\41\18\136")]=(0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\104\166\208\213", "\158\59\207\170\176")]=UDim2.new(0.5 + 0, 0 - 0, 950 - (438 + 511), 1383 - (1262 + 121)),[LUAOBFUSACTOR_DECRYPT_STR_0("\109\95\48\66\139\93\81\38\71\136\108\81\63\70\158\28", "\236\47\62\83\41")]=Color3.new(1068.235 - (728 + 340), 1790.235 - (816 + 974), 0.235 - 0)});
+allOnBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\211\164\33\60\175\160\239\189\52\52\164", "\226\154\201\64\91\202"), switch, {[LUAOBFUSACTOR_DECRYPT_STR_0("\239\72\16\29", "\220\161\41\125\120\42")]=LUAOBFUSACTOR_DECRYPT_STR_0("\189\125\172\33\178\83\180\0", "\110\220\17\192"),[LUAOBFUSACTOR_DECRYPT_STR_0("\93\116\53\29\238\3\227\166\122\106\36\27\249\50\255\164\109", "\199\20\25\84\122\139\87\145")]=(3 - 2),[LUAOBFUSACTOR_DECRYPT_STR_0("\101\6\207\170\30\248\116\0\199\171\43\227\95\12\209", "\138\39\105\189\206\123")]=(339 - (163 + 176)),[LUAOBFUSACTOR_DECRYPT_STR_0("\44\14\147\40", "\159\127\103\233\77\147\153\175")]=UDim2.new(0.5 - 0, 0 - 0, 1 + 0, 1810 - (1564 + 246)),[LUAOBFUSACTOR_DECRYPT_STR_0("\55\255\247\163\84\194\8\254", "\171\103\144\132\202\32")]=UDim2.new(345.5 - (124 + 221), 0 + 0, 451 - (115 + 336), 0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\50\46\234\7\23\61\230\25\30\43\202\3\28\32\251\95", "\108\112\79\137")]=Color3.new(0.333 + 0, 46.333 - (45 + 1), 0.333 + 0)});
+toggleAllSlider = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\25\208\117\37\168", "\85\95\162\20\72\205\97\137"), switch, {[LUAOBFUSACTOR_DECRYPT_STR_0("\217\252\39\217", "\173\151\157\74\188\109\152")]=LUAOBFUSACTOR_DECRYPT_STR_0("\55\4\49\217\217\70", "\147\68\104\88\189\188\52\181"),[LUAOBFUSACTOR_DECRYPT_STR_0("\41\129\145\213", "\176\122\232\235")]=UDim2.new(1990.1 - (1282 + 708), 1212 - (583 + 629), 1 + 0, 10 - 6),[LUAOBFUSACTOR_DECRYPT_STR_0("\176\122\41\70\250\137\122\52", "\142\224\21\90\47")]=UDim2.new(0.45 + 0, 1170 - (943 + 227), 0 + 0, -(1633 - (1539 + 92))),[LUAOBFUSACTOR_DECRYPT_STR_0("\86\219\53\82\161\153\182\125\206\34\102\173\147\128\120", "\229\20\180\71\54\196\235")]=(1946 - (706 + 1240)),[LUAOBFUSACTOR_DECRYPT_STR_0("\11\127\194\232\242\184\143\60\112\197\192\250\166\143\59\45", "\224\73\30\161\131\149\202")]=Color3.new(258.784 - (81 + 177), 0.784 - 0, 257.784 - (212 + 45))});
+messageLbl = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\197\224\233\68\221\228\243\85\253", "\48\145\133\145"), topbar, {[LUAOBFUSACTOR_DECRYPT_STR_0("\116\77\184\235", "\76\58\44\213\142\177")]=LUAOBFUSACTOR_DECRYPT_STR_0("\198\33\1\62\121\204\33\62\47\116", "\24\171\68\114\77"),[LUAOBFUSACTOR_DECRYPT_STR_0("\220\20\74\87", "\205\143\125\48\50\231\190\100")]=UDim2.new(0.5 - 0, 1946 - (708 + 1238), 1 + 0, 0 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\245\162\12\17", "\194\161\199\116\101\129\131\191")]=LUAOBFUSACTOR_DECRYPT_STR_0("\223\37\222\173\243\236", "\194\140\68\168\200\151"),[LUAOBFUSACTOR_DECRYPT_STR_0("\118\254\205\49\198\75\225\208", "\149\34\155\181\69")]=(1681 - (586 + 1081)),[LUAOBFUSACTOR_DECRYPT_STR_0("\37\242\219\238", "\154\99\157\181")]=LUAOBFUSACTOR_DECRYPT_STR_0("\170\0\248\168\237\128\60\233\173\229\143\0\224\164", "\140\237\111\140\192"),[LUAOBFUSACTOR_DECRYPT_STR_0("\36\24\126\19\1\11\114\13\8\29\73\10\7\23\110\8\7\11\120\22\5\0", "\120\102\121\29")]=(512 - (348 + 163)),[LUAOBFUSACTOR_DECRYPT_STR_0("\156\236\170\50\184\234\182\53", "\91\204\131\217")]=UDim2.new(0.07 + 0, 280 - (215 + 65), 0 - 0, 1859 - (1541 + 318)),[LUAOBFUSACTOR_DECRYPT_STR_0("\250\250\77\192\144\210\242\193\237\6", "\158\174\159\53\180\211\189")]=Color3.new(1 + 0, 1 + 0, 1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\100\244\254\212\117\185\87", "\213\50\157\141\189\23")]=false,[LUAOBFUSACTOR_DECRYPT_STR_0("\202\35\156\180\74\133\242\47\131\174\127\161\240\50", "\196\158\70\228\192\18")]=LUAOBFUSACTOR_DECRYPT_STR_0("\102\90\23\90", "\185\42\63\113\46")});
+camframe = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\242\207\32\52\30", "\123\180\189\65\89"), gui, {[LUAOBFUSACTOR_DECRYPT_STR_0("\236\141\253\225", "\233\162\236\144\132")]=LUAOBFUSACTOR_DECRYPT_STR_0("\177\197\243\28\171\247\82\183", "\63\210\164\158\122\217\150"),[LUAOBFUSACTOR_DECRYPT_STR_0("\17\202\245\231\78\234\60\222\248\232\125\234\50\197\229\252\72\234\54\197\245\245", "\152\83\171\150\140\41")]=(1751 - (1036 + 714)),[LUAOBFUSACTOR_DECRYPT_STR_0("\177\236\153\54", "\104\226\133\227\83\180\123")]=UDim2.new(0 + 0, 67 + 53, 1280 - (883 + 397), 630 - (563 + 27)),[LUAOBFUSACTOR_DECRYPT_STR_0("\51\4\48\89\23\2\44\94", "\48\99\107\67")]=UDim2.new(0.5 - 0, -(2306 - (1369 + 617)), 1487 - (85 + 1402), -(14 + 24)),[LUAOBFUSACTOR_DECRYPT_STR_0("\252\167\126\219\42\105\209\179\115\212\14\116\210\169\111\131", "\27\190\198\29\176\77")]=Color3.new(0.118 - 0, 403.118 - (274 + 129), 217.118 - (12 + 205))});
+rightCamBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\198\70\252\51\172\108\250\95\233\59\167", "\46\143\43\157\84\201"), camframe, {[LUAOBFUSACTOR_DECRYPT_STR_0("\121\121\91\199", "\168\55\24\54\162\63\115")]=LUAOBFUSACTOR_DECRYPT_STR_0("\5\243\39\136\198\237\22\247\2\148\220", "\174\119\154\64\224\178"),[LUAOBFUSACTOR_DECRYPT_STR_0("\3\115\196\124\0", "\132\74\30\165\27\101\199\122")]=LUAOBFUSACTOR_DECRYPT_STR_0("\61\229\231\166\180\166\177\59\238\251\253\232\250\229\123\179\174\241\255\228\226\124", "\212\79\135\159\199\199\213"),[LUAOBFUSACTOR_DECRYPT_STR_0("\74\169\175\66", "\120\25\192\213\39\60\183")]=UDim2.new(0.333 + 0, 0 - 0, 1 + 0, 384 - (27 + 357)),[LUAOBFUSACTOR_DECRYPT_STR_0("\42\79\43\73\12\73\48\70", "\40\120\32\95")]=(660 - (91 + 389)),[LUAOBFUSACTOR_DECRYPT_STR_0("\10\164\42\115\187\22\53\165", "\127\90\203\89\26\207")]=UDim2.new(297.666 - (90 + 207), 0 + 0, 861 - (706 + 155), 1795 - (730 + 1065)),[LUAOBFUSACTOR_DECRYPT_STR_0("\255\52\172\192\14\239\210\32\161\207\61\239\220\59\188\219\8\239\216\59\172\210", "\157\189\85\207\171\105")]=(1564 - (1339 + 224)),[LUAOBFUSACTOR_DECRYPT_STR_0("\228\160\219\190\4\212\174\205\187\7\229\174\212\186\17\149", "\99\166\193\184\213")]=Color3.new(1 + 0, 1 + 0, 1 - 0)});
+leftCamBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\255\186\129\188\9\168\195\163\148\180\2", "\234\182\215\224\219\108"), camframe, {[LUAOBFUSACTOR_DECRYPT_STR_0("\238\128\182\48", "\85\160\225\219")]=LUAOBFUSACTOR_DECRYPT_STR_0("\80\0\133\221\21\221\70\126\17\141", "\43\60\101\227\169\86\188"),[LUAOBFUSACTOR_DECRYPT_STR_0("\89\197\208\184\95", "\87\16\168\177\223\58\172\217")]=LUAOBFUSACTOR_DECRYPT_STR_0("\38\207\65\220\40\39\200\77\212\63\110\130\22\140\111\96\156\15\133\106\98\158", "\91\84\173\57\189"),[LUAOBFUSACTOR_DECRYPT_STR_0("\35\176\22\249", "\182\112\217\108\156\192")]=UDim2.new(843.333 - (268 + 575), 1294 - (919 + 375), 2 - 1, 971 - (180 + 791)),[LUAOBFUSACTOR_DECRYPT_STR_0("\136\9\75\228\140\184\7\93\225\143\158\26\73\225\152\186\9\90\234\133\169\17", "\235\202\104\40\143")]=(1806 - (323 + 1482)),[LUAOBFUSACTOR_DECRYPT_STR_0("\47\138\24\178\10\153\20\172\3\143\56\182\1\132\9\234", "\217\109\235\123")]=Color3.new(1919 - (1177 + 741), 1 + 0, 3 - 2)});
+centerCamBtn = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\14\132\127\81\117\242\216\169\51\134\112", "\221\71\233\30\54\16\176\173"), camframe, {[LUAOBFUSACTOR_DECRYPT_STR_0("\26\253\83\186", "\223\84\156\62")]=LUAOBFUSACTOR_DECRYPT_STR_0("\213\249\236\201\178\41\245\253\239\255\163\53", "\91\182\156\130\189\215"),[LUAOBFUSACTOR_DECRYPT_STR_0("\87\126\173\82\123", "\53\30\19\204")]=LUAOBFUSACTOR_DECRYPT_STR_0("\235\226\104\133\180\234\229\100\141\163\163\175\63\209\255\171\184\34\213\254\171", "\199\153\128\16\228"),[LUAOBFUSACTOR_DECRYPT_STR_0("\226\35\255\28", "\199\177\74\133\121")]=UDim2.new(0.333 + 0, 0 - 0, 1 + 0, 109 - (96 + 13)),[LUAOBFUSACTOR_DECRYPT_STR_0("\136\198\175\247\35\207\37\182", "\74\216\169\220\158\87\166")]=UDim2.new(1921.333 - (962 + 959), 0 - 0, 0 + 0, 1351 - (461 + 890)),[LUAOBFUSACTOR_DECRYPT_STR_0("\202\34\16\39\93\250\44\6\34\94\220\49\18\34\73\248\34\1\41\84\235\58", "\58\136\67\115\76")]=(1 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\211\171\219\82\130\50\164\72\255\174\251\86\137\47\185\14", "\61\145\202\184\57\229\64\203")]=Color3.new(3 - 2, 244 - (19 + 224), 1 + 0)});
+creditLbl = Create(LUAOBFUSACTOR_DECRYPT_STR_0("\104\87\145\83\112\83\139\66\80", "\39\60\50\233"), main, {[LUAOBFUSACTOR_DECRYPT_STR_0("\42\60\176\37\150\33\189\173", "\195\122\83\195\76\226\72\210")]=UDim2.new(198 - (37 + 161), 0 + 0, 1 + 0, 5 + 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\215\221\33\251", "\65\132\180\91\158")]=UDim2.new(61 - (60 + 1), 1023 - (826 + 97), 0 + 0, 53 - 38),[LUAOBFUSACTOR_DECRYPT_STR_0("\39\125\210\37\2\110\222\59\11\120\229\60\4\114\194\62\4\110\212\32\6\101", "\78\101\28\177")]=(1 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\17\177\248\69\6\187\236\94\55\231", "\49\69\212\128")]=Color3.new(686 - (375 + 310), 2000 - (1864 + 135), 2 - 1),[LUAOBFUSACTOR_DECRYPT_STR_0("\35\9\200\230", "\129\119\108\176\146")]=LUAOBFUSACTOR_DECRYPT_STR_0("\62\214\71\204\48\9\25\47\221\8\207", "\124\92\175\103\173\69\110"),[LUAOBFUSACTOR_DECRYPT_STR_0("\245\61\27\35\242\59\2\59\196\60", "\87\161\88\99")]=true,[LUAOBFUSACTOR_DECRYPT_STR_0("\38\252\247\216\132\196\49\29\242\234\248\165\209\45\1\233\238\222\178\222\32\11", "\67\114\153\143\172\215\176")]=(0.8 + 0)});
+local function v13(v58)
+	local v59 = 0 + 0;
+	while true do
+		if (v59 == (0 - 0)) then
+			if (v58 ~= nil) then
+				v1 = v58;
+			else
+				v1 = not v1;
 			end
-			if fullBox then
-				if fullBox.Name=="BoxOpen" then
-					didsomething=true
-					if (root.Position-Vector3.new(58.74, 3.80, 12.400)).magnitude>9 then  smoothTP(CFrame.new(58.74, 3.80, 12.40))wait(.1) continue end
-					network:FireServer("CloseBox", fullBox)
-					--will be moved next loop
-				elseif tick()-boxPtick>0.8 then
-					didsomething=true
-					if (root.Position-Vector3.new(58.74, 3.80, 12.400)).magnitude>9 then  smoothTP(CFrame.new(58.74, 3.80, 12.40))wait(.1) continue end
-					network:FireServer("UpdateProperty", fullBox, "CFrame", CFrame.new(68.2,4.4,RNG:NextNumber(-3,-2),-1,0,0,0,1,0,0,0,-1))
-					boxPtick=tick()
-				end
-			end
-			if closedBox and not openBox then
-				didsomething=true
-				if (root.Position-Vector3.new(58.74, 3.80, 12.400)).magnitude>9 then  smoothTP(CFrame.new(58.74, 3.80, 12.40))wait(.1) continue end
-				network:FireServer("UpdateProperty", closedBox, "CFrame", CFrame.new(RNG:NextNumber(62.5,70.5),3.5,RNG:NextNumber(11,25)))
-				wait()
-				network:FireServer("OpenBox", closedBox)
-			end
-			if openBox and boxP then
-				didsomething=true
-				if (root.Position-Vector3.new(58.74, 3.80, 12.400)).magnitude>9 then  smoothTP(CFrame.new(58.74, 3.80, 12.40))wait(.1) continue end
-				network:FireServer("UpdateProperty", boxP, "Anchored", true)
-				network:FireServer("UpdateProperty", openBox, "Anchored", true)
-				wait()
-				network:FireServer("UpdateProperty", boxP, "CFrame", openBox.CFrame+Vector3.new(0,-2,0))
-				wait()
-				network:FireServer("AssignPizzaToBox", openBox, boxP)
-			end
-			if didsomething then wait(0.5) else break end
-		else
-			break
+			cashierSlider:TweenPosition(UDim2.new((v1 and (1131.5 - (314 + 817))) or (0 + 0), 216 - (32 + 182), 0 + 0, 6 - 4), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\141\171\224\11", "\110\222\194\142"), 65.1 - (39 + 26), true);
+			break;
 		end
 	end
-	if doDelivery then
-		local wstools = FindAllDeliveryTools(workspace)
-		if #wstools > 1 or (wstools[1] and ffc(wstools[1].Handle,"X10")) then
-			--get tools
-			if (root.Position-Vector3.new(54.45, 4.02, -15)).magnitude>9 then smoothTP(CFrame.new(54.45, 4.02, -15)) wait(.1) end
-			for i=1,#wstools do
-				if wstools[i].Parent == workspace then
-					humanoid:EquipTool(wstools[i])
-					wait()
-				end
+end
+local function v14(v60)
+	local v61 = 144 - (54 + 90);
+	while true do
+		if (v61 == (198 - (45 + 153))) then
+			if (v60 ~= nil) then
+				v3 = v60;
+			else
+				v3 = not v3;
 			end
-			wait(0.3)
-			local t = FindAllDeliveryTools(character)
-    		for i=1,#t do
-    			t[i].Parent = player.Backpack
-    		end
-    		wait(0.1)
-    		if ffc(character,"RightHand") and ffc(character.RightHand,"RightGrip") then
-    			character.RightHand.RightGrip:Destroy()
-    		end
+			cookSlider:TweenPosition(UDim2.new((v3 and (0.5 + 0)) or (552 - (457 + 95)), 2 + 0, 0 - 0, 4 - 2), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\36\208\21\172", "\193\119\185\123\201\50"), 0.1 - 0, true);
+			break;
 		end
-		local bptools = FindAllDeliveryTools(player.Backpack)
-		if #bptools >= settings.deliver_at and #bptools > 0 and tick()-delTick > 30 then
-			--deliver to houses
-			table.sort(bptools,function(a,b)
-				a,b=tostring(a),tostring(b)
-				if (a:sub(1,1)=="B" and b:sub(1,1)=="B") then
-					return a < b
+	end
+end
+local function v15(v62)
+	local v63 = 0 + 0;
+	while true do
+		if (v63 == (0 - 0)) then
+			if (v62 ~= nil) then
+				v2 = v62;
+			else
+				v2 = not v2;
+			end
+			boxerSlider:TweenPosition(UDim2.new((v2 and (0.5 - 0)) or (748 - (485 + 263)), 709 - (575 + 132), 861 - (750 + 111), 1012 - (445 + 565)), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\68\1\247\35", "\127\23\104\153\70\111\25"), 0.1 + 0, true);
+			break;
+		end
+	end
+end
+local function v16(v64)
+	local v65 = 0 + 0;
+	while true do
+		if (v65 == (0 - 0)) then
+			if (v64 ~= nil) then
+				v5 = v64;
+			else
+				v5 = not v5;
+			end
+			deliverySlider:TweenPosition(UDim2.new((v5 and (0.5 + 0)) or (310 - (189 + 121)), 1 + 1, 1347 - (634 + 713), 540 - (493 + 45)), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\58\14\168\170", "\211\105\103\198\207\75\76\215"), 968.1 - (493 + 475), true);
+			break;
+		end
+	end
+end
+local function v17(v66)
+	local v67 = 0 + 0;
+	while true do
+		if (v67 == (784 - (158 + 626))) then
+			if (v66 ~= nil) then
+				v4 = v66;
+			else
+				v4 = not v4;
+			end
+			supplierSlider:TweenPosition(UDim2.new((v4 and (0.5 + 0)) or (0 - 0), 1 + 1, 0 + 0, 1093 - (1035 + 56)), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\253\174\190\234", "\214\174\199\208\143\30\108\218"), 959.1 - (114 + 845), true);
+			break;
+		end
+	end
+end
+cashierBtn.MouseButton1Click:Connect(v13);
+cookBtn.MouseButton1Click:Connect(v14);
+boxerBtn.MouseButton1Click:Connect(v15);
+deliveryBtn.MouseButton1Click:Connect(v16);
+supplierBtn.MouseButton1Click:Connect(v17);
+allOffBtn.InputBegan:Connect(function()
+	if game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\36\151\14\184\140\88\200\92\5\183\14\184\179\95\219\76", "\41\113\228\107\202\197\54\184")):IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then
+		local v169 = 0 + 0;
+		while true do
+			if (v169 == (0 - 0)) then
+				v13(false);
+				v14(false);
+				v169 = 1 + 0;
+			end
+			if (v169 == (1052 - (179 + 870))) then
+				wait(1 - 0);
+				if (toggleAllSlider.Position.X.Scale < (878.01 - (827 + 51))) then
+					toggleAllSlider:TweenPosition(UDim2.new(0.45 - 0, 0 + 0, 473 - (95 + 378), -(1 + 1)), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\73\132\54\89", "\60\26\237\88"), 0.1 - 0, true);
 				end
-				return a > b
-			end)
-			local fatass=false
-			for i=1,#bptools do
-				if not doDelivery then
-					break
+				break;
+			end
+			if (v169 == (2 + 0)) then
+				v17(false);
+				toggleAllSlider:TweenPosition(UDim2.new(1011 - (334 + 677), 0 - 0, 1056 - (1049 + 7), -(8 - 6)), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\235\35\122\227", "\206\184\74\20\134"), 0.1 - 0, true);
+				v169 = 1 + 2;
+			end
+			if (v169 == (2 - 1)) then
+				v15(false);
+				v16(false);
+				v169 = 3 - 1;
+			end
+		end
+	end
+end);
+allOnBtn.InputBegan:Connect(function()
+	if game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\13\247\235\163\218\68\40\217\44\215\235\163\229\67\59\201", "\172\88\132\142\209\147\42\88")):IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then
+		local v170 = 0 + 0;
+		while true do
+			if (v170 == (1422 - (1004 + 416))) then
+				v17(true);
+				toggleAllSlider:TweenPosition(UDim2.new(1957.9 - (1621 + 336), 1939 - (337 + 1602), 1517 - (1014 + 503), -(1017 - (446 + 569))), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\180\131\194\8", "\222\231\234\172\109\86\149"), 0.1 + 0, true);
+				v170 = 8 - 5;
+			end
+			if (v170 == (0 + 0)) then
+				v13(true);
+				v14(true);
+				v170 = 1 - 0;
+			end
+			if (v170 == (1 + 2)) then
+				wait(506 - (223 + 282));
+				if (toggleAllSlider.Position.X.Scale > (0.88 + 0)) then
+					toggleAllSlider:TweenPosition(UDim2.new(0.45 - 0, 0 - 0, 670 - (623 + 47), -(47 - (32 + 13))), nil, LUAOBFUSACTOR_DECRYPT_STR_0("\222\230\206\29", "\120\141\143\160"), 0.1 + 0, true);
 				end
-				humanoid.Sit=false
-				local tool = bptools[i]
-				local giver = getHousePart(tool.Name)
-				local ogp = giver.Position
-				if giver then
-					if (giver.Position-root.Position).Magnitude > 9 then
-						smoothTP(giver.CFrame+Vector3.new(0,7,0))
-						if giver.Parent==nil or (giver.Position-ogp).Magnitude>1 then
-							giver = getHousePart(tool.Name) or giver
-							smoothTP(giver.CFrame+Vector3.new(0,7,0))
-						end
-						pcall(function() tool.Parent = character end)
-						wait(1.2)
-						local t = FindAllDeliveryTools(character)
-                		for i=1,#t do
-                		    if t[i] ~= tool then
-                			    t[i].Parent = player.Backpack
-                			end
-                		end
-						wait(2)
-						fatass=false
-					else
-						if fatass then
-							wait(0.2)
-						else
-							wait(0.7)
-						end
-						pcall(function() tool.Parent = character end)
-						wait()
-						fatass=true
+				break;
+			end
+			if (v170 == (1 + 0)) then
+				v15(true);
+				v16(true);
+				v170 = 1803 - (1070 + 731);
+			end
+		end
+	end
+end);
+local v18 = refillAtBox.Text;
+refillAtBox:GetPropertyChangedSignal(LUAOBFUSACTOR_DECRYPT_STR_0("\116\169\174\70", "\50\32\204\214")):Connect(function()
+	local v68 = 0 + 0;
+	while true do
+		if (v68 == (1404 - (1257 + 147))) then
+			if ((#refillAtBox.Text > (1 + 1)) or refillAtBox.Text:match(LUAOBFUSACTOR_DECRYPT_STR_0("\195\99", "\113\230\39\85\25\211"))) then
+				refillAtBox.Text = v18;
+			end
+			v18 = refillAtBox.Text;
+			break;
+		end
+	end
+end);
+refillAtBox.FocusLost:Connect(function()
+	local v69 = 0 - 0;
+	while true do
+		if (v69 == (133 - (98 + 35))) then
+			if tonumber(refillAtBox.Text) then
+				v0.refill_at = tonumber(refillAtBox.Text);
+			end
+			refillAtBox.Text = tostring(v0.refill_at);
+			break;
+		end
+	end
+end);
+local v19 = refillEndBox.Text;
+refillEndBox:GetPropertyChangedSignal(LUAOBFUSACTOR_DECRYPT_STR_0("\234\190\30\252", "\43\190\219\102\136\71\171\203")):Connect(function()
+	local v70 = 0 + 0;
+	while true do
+		if ((0 - 0) == v70) then
+			if ((#refillEndBox.Text > (6 - 4)) or refillEndBox.Text:match(LUAOBFUSACTOR_DECRYPT_STR_0("\103\90", "\57\66\30\80"))) then
+				refillEndBox.Text = v19;
+			end
+			v19 = refillEndBox.Text;
+			break;
+		end
+	end
+end);
+refillEndBox.FocusLost:Connect(function()
+	local v71 = 0 + 0;
+	while true do
+		if ((0 + 0) == v71) then
+			if tonumber(refillEndBox.Text) then
+				v0.refill_end = tonumber(refillEndBox.Text);
+			end
+			refillEndBox.Text = tostring(v0.refill_end);
+			break;
+		end
+	end
+end);
+local v20 = deliverAtBox.Text;
+deliverAtBox:GetPropertyChangedSignal(LUAOBFUSACTOR_DECRYPT_STR_0("\29\221\184\1", "\228\73\184\192\117\228\89\148")):Connect(function()
+	local v72 = 0 + 0;
+	while true do
+		if (v72 == (557 - (395 + 162))) then
+			if ((#deliverAtBox.Text > (2 + 0)) or deliverAtBox.Text:match(LUAOBFUSACTOR_DECRYPT_STR_0("\138\173", "\116\175\233\21"))) then
+				deliverAtBox.Text = v20;
+			end
+			v20 = deliverAtBox.Text;
+			break;
+		end
+	end
+end);
+deliverAtBox.FocusLost:Connect(function()
+	local v73 = 1941 - (816 + 1125);
+	while true do
+		if (v73 == (0 - 0)) then
+			if tonumber(deliverAtBox.Text) then
+				v0.deliver_at = tonumber(deliverAtBox.Text);
+			end
+			deliverAtBox.Text = tostring(v0.deliver_at);
+			break;
+		end
+	end
+end);
+closeBtn.MouseButton1Click:Connect(function()
+	local v74 = 1148 - (701 + 447);
+	while true do
+		if (v74 == (0 - 0)) then
+			gui:Destroy();
+			v1, v2, v3, v4, v5 = false, false, false, false, false;
+			break;
+		end
+	end
+end);
+closeBtn.MouseEnter:Connect(function()
+	closeBtn.TextColor3 = Color3.new(0.9 - 0, 1341 - (391 + 950), 0 - 0);
+end);
+closeBtn.MouseLeave:Connect(function()
+	closeBtn.TextColor3 = Color3.new(2 - 1, 2 - 1, 1 + 0);
+end);
+saveBtn.MouseButton1Click:Connect(function()
+	if (writefile and (messageLbl.Visible == false)) then
+		local v171 = 0 + 0;
+		while true do
+			if (v171 == (3 - 2)) then
+				wait(1524 - (251 + 1271));
+				messageLbl.Visible = false;
+				break;
+			end
+			if ((0 + 0) == v171) then
+				writefile(LUAOBFUSACTOR_DECRYPT_STR_0("\206\241\164\92\218\23\62\236\245\240\82\195\37", "\95\158\152\222\38\187\81"), game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\208\169\33\162\144\205\234\171\60\177\166", "\168\152\221\85\210\195")):JSONEncode(v0));
+				messageLbl.Visible = true;
+				v171 = 2 - 1;
+			end
+		end
+	end
+end);
+local v21 = {CFrame.new(37 - 14, 1273 - (1147 + 112), 17 + 48, 0.629 - 0, 0.386 + 0, -(697.674 - (335 + 362)), LUAOBFUSACTOR_DECRYPT_STR_0("\230\142", "\231\203\190\149"), 0.867 + 0, 0.497 - 0, 0.777 - 0, -(0.313 - 0), 0.545 - 0),CFrame.new(605 - (237 + 329), 53 - 38, 55 + 28, -(0.571 + 0), 1124.392 - (408 + 716), -(0.72 - 0), LUAOBFUSACTOR_DECRYPT_STR_0("\128\109", "\123\173\93\131\145\220\149"), 821.878 - (344 + 477), 0.478 + 0, 1761.82 - (1188 + 573), 0.273 - 0, -(0.502 + 0)),CFrame.new(61 - 21, 49 - 29, -(1567 - (508 + 1021)), -(0.801 + 0), -(1166.229 - (228 + 938)), 685.552 - (332 + 353), LUAOBFUSACTOR_DECRYPT_STR_0("\91\148", "\153\118\164\141\65\20"), 0.923 - 0, 0.384 - 0, -(0.598 + 0), 0.307 + 0, -(0.739 - 0)),CFrame.new(24 + 27, 8 + 7, -(37 - 12), -(978.707 - (194 + 784)), 1770.338 - (694 + 1076), -(1904.62 - (122 + 1782)), 0 + 0, 0.878 + 0, 0.478 + 0, 0.707 + 0, 0.338 - 0, -(0.62 + 0)),CFrame.new(227 - 180, 2 + 10, 2 + 19, 585.026 - (217 + 368), 0.323 - 0, -(0.945 + 0), LUAOBFUSACTOR_DECRYPT_STR_0("\163\98", "\96\142\82\230\130\151"), 0.946 + 0, 0.323 + 0, 889.999 - (844 + 45), -(284.008 - (242 + 42)), 0.024 - 0)};
+local v22 = 0 - 0;
+centerCamBtn.MouseButton1Click:Connect(function()
+	local v77 = 1200 - (132 + 1068);
+	while true do
+		if (v77 == (0 - 0)) then
+			v22 = 1623 - (214 + 1409);
+			workspace.CurrentCamera.CameraType = LUAOBFUSACTOR_DECRYPT_STR_0("\108\165\92\86\235\227", "\142\47\208\47\34\132");
+			break;
+		end
+	end
+end);
+leftCamBtn.MouseButton1Click:Connect(function()
+	local v78 = 0 + 0;
+	while true do
+		if ((1634 - (497 + 1137)) == v78) then
+			v22 = v22 - (941 - (9 + 931));
+			if (v22 < (289 - (181 + 108))) then
+				v22 = #v21;
+			end
+			v78 = 1 + 0;
+		end
+		if (v78 == (2 - 1)) then
+			if (v22 == (0 - 0)) then
+				workspace.CurrentCamera.CameraType = LUAOBFUSACTOR_DECRYPT_STR_0("\213\171\23\22\84\81", "\60\150\222\100\98\59");
+			else
+				local v258 = 0 + 0;
+				local v259;
+				while true do
+					if ((0 + 0) == v258) then
+						v259 = v21[v22];
+						workspace.CurrentCamera.CameraType = LUAOBFUSACTOR_DECRYPT_STR_0("\118\63\69\95\203\174\48\71\48\82", "\81\37\92\55\54\187\218");
+						v258 = 477 - (296 + 180);
+					end
+					if (v258 == (1404 - (1183 + 220))) then
+						workspace.CurrentCamera:Interpolate(v259, v259 + (v259.lookVector * (1275 - (1037 + 228))), 0.5 - 0);
+						break;
 					end
 				end
 			end
-			delTick = tick()
+			break;
 		end
 	end
-	tryCook()
-	if doSupplier then
-		local refill=false
-		for s,c in pairs(supplyCounts) do
-			if c <= settings.refill_at then
-				refill=true
-				break
+end);
+rightCamBtn.MouseButton1Click:Connect(function()
+	local v79 = 0 - 0;
+	while true do
+		if (v79 == (0 - 0)) then
+			v22 = v22 + (735 - (527 + 207));
+			if (v22 > #v21) then
+				local v260 = 527 - (187 + 340);
+				while true do
+					if (v260 == (1870 - (1298 + 572))) then
+						v22 = 0 - 0;
+						workspace.CurrentCamera.CameraType = LUAOBFUSACTOR_DECRYPT_STR_0("\35\81\190\35\142\13", "\225\96\36\205\87");
+						break;
+					end
+				end
+			else
+				local v261 = 170 - (144 + 26);
+				local v262;
+				while true do
+					if (v261 == (0 - 0)) then
+						v262 = v21[v22];
+						workspace.CurrentCamera.CameraType = LUAOBFUSACTOR_DECRYPT_STR_0("\218\165\80\112\108\91\8\235\170\71", "\105\137\198\34\25\28\47");
+						v261 = 2 - 1;
+					end
+					if (v261 == (1 + 0)) then
+						workspace.CurrentCamera:Interpolate(v262, v262 + (v262.lookVector * (27 - 17)), 0.5 - 0);
+						break;
+					end
+				end
 			end
+			break;
 		end
-		if refill then
-			local oldcf = root.CFrame
-			local waiting = false
-			local waitingTick = 0
-			local lastBox
-			while doSupplier do
-				--check if refill is done otherwise hit buttons
-				local fulfilled=true
-				local boxes = workspace.AllSupplyBoxes:GetChildren()
-				for yy=1,2 do
-				local needtp=true
-				local realc = 0
-				for _,btn in ipairs(supplyButtons) do
-				    local s = bcolorToSupply[btn.BrickColor.Name]
-					if supplyCounts[s] < settings.refill_end then
-						local count = 0
-						if #boxes > 30 then
-							for i=1,#boxes do
-								local box = boxes[i]
-								if bcolorToSupply[box.BrickColor.Name]==s and box.Anchored==false and box.Position.Z < -940 then
-									count=count+1
+	end
+end);
+local v23 = {[LUAOBFUSACTOR_DECRYPT_STR_0("\37\166\76\119\212\30\154\64\99\195\20", "\160\113\201\33\22")]=(479 - 380),[LUAOBFUSACTOR_DECRYPT_STR_0("\247\80\169\162\186\168", "\205\180\56\204\199\201")]=(51 + 48),[LUAOBFUSACTOR_DECRYPT_STR_0("\176\223\41\11\130\217\57", "\120\227\190\92")]=(133 - 34),[LUAOBFUSACTOR_DECRYPT_STR_0("\13\89\15\107\38\78\214\236\52", "\130\93\60\127\27\67\60\185")]=(93 + 6),[LUAOBFUSACTOR_DECRYPT_STR_0("\108\61\45\73\232", "\29\40\82\88\46\128\35")]=(38 + 61),[LUAOBFUSACTOR_DECRYPT_STR_0("\25\74\204", "\216\91\37\180\125\97")]=(301 - (5 + 197)),[LUAOBFUSACTOR_DECRYPT_STR_0("\1\115\11", "\55\69\22\124\163")]=(785 - (339 + 347))};
+for v80 in pairs(v23) do
+	local v81 = 0 - 0;
+	local v82;
+	while true do
+		if (v81 == (3 - 2)) then
+			v82.Changed:Connect(function()
+				v23[v80] = tonumber(v82.Text);
+			end);
+			break;
+		end
+		if (v81 == (376 - (365 + 11))) then
+			v82 = workspace.SupplyCounters.Model[((v80 == LUAOBFUSACTOR_DECRYPT_STR_0("\92\214\75", "\148\24\179\60\136\191\17\48")) and LUAOBFUSACTOR_DECRYPT_STR_0("\145\37\236\174\226\183\56\212\175\227\188\62\248\169\248\150\47\238", "\150\210\74\153\192")) or (LUAOBFUSACTOR_DECRYPT_STR_0("\192\199\45\132\97\127\166", "\212\131\168\88\234\21\26") .. v80)].a.SG.Counter;
+			v23[v80] = tonumber(v82.Text);
+			v81 = 1 + 0;
+		end
+	end
+end
+local function v24()
+	local v83 = 0 - 0;
+	local v84;
+	while true do
+		if (v83 == (0 - 0)) then
+			v84 = workspace.Customers:GetChildren();
+			for v209 = 925 - (837 + 87), #v84 do
+				local v210 = v84[v209];
+				if (v7(v210, LUAOBFUSACTOR_DECRYPT_STR_0("\109\113\136\136", "\71\37\20\233\236\88")) and v7(v210, LUAOBFUSACTOR_DECRYPT_STR_0("\229\83\189\23\78\227\69\88", "\60\173\38\208\118\32\140\44")) and (v210.Head.CFrame.Z < (172 - 70)) and v7(v210.Head, LUAOBFUSACTOR_DECRYPT_STR_0("\101\59\224\223\47\200", "\175\33\82\129\179\64")) and v7(v210.Head.Dialog, LUAOBFUSACTOR_DECRYPT_STR_0("\205\224\34\221\57\177\250", "\210\142\143\80\175\92")) and ((v210.Humanoid.SeatPart and v210.Humanoid.SeatPart.Anchored) or ((v210.Humanoid.SeatPart == nil) and (((v210.Head.Velocity.Z ^ (1672 - (837 + 833))) ^ (0.5 + 0)) < (1387.0001 - (356 + 1031)))))) then
+					local v278 = 0 + 0;
+					local v279;
+					local v280;
+					while true do
+						if (v278 == (1648 - (73 + 1573))) then
+							return v210, v280;
+						end
+						if ((1389 - (1307 + 81)) == v278) then
+							if (v279:sub(-(242 - (7 + 227))) == LUAOBFUSACTOR_DECRYPT_STR_0("\176\231\224\210\188\232\247\136", "\166\217\137\147")) then
+								v279 = v279:sub(-(49 - 19));
+							end
+							if v279:find(LUAOBFUSACTOR_DECRYPT_STR_0("\243\166\98\182\244\84\236\173\123", "\38\131\195\18\198\145"), 167 - (90 + 76), true) then
+								v280 = LUAOBFUSACTOR_DECRYPT_STR_0("\99\211\42\251\61\70\92\216\51\219\49\78\73\215", "\52\51\182\90\139\88");
+							elseif v279:find(LUAOBFUSACTOR_DECRYPT_STR_0("\229\184\197\244\66\241\188", "\35\150\217\176\135"), 3 - 2, true) then
+								v280 = LUAOBFUSACTOR_DECRYPT_STR_0("\202\81\30\31\118\68\115\201\89\17\22\118", "\22\153\48\107\108\23\35");
+							elseif v279:find(LUAOBFUSACTOR_DECRYPT_STR_0("\13\141\190\31\108\112", "\137\110\229\219\122\31\21\33"), 1 + 0, true) then
+								v280 = LUAOBFUSACTOR_DECRYPT_STR_0("\57\181\61\126\37\78\20\119\0\167\57", "\30\122\221\88\27\86\43\68");
+							end
+							v278 = 2 + 0;
+						end
+						if (v278 == (0 + 0)) then
+							v279 = v210.Head.Dialog.Correct.ResponseDialog or "";
+							v280 = LUAOBFUSACTOR_DECRYPT_STR_0("\21\39\254\136\44\41\226\136\28\45\252", "\230\88\72\139");
+							v278 = 3 - 2;
+						end
+					end
+				end
+			end
+			break;
+		end
+	end
+end
+local v25 = 260 - (197 + 63);
+local v26 = 0 + 0;
+local function v27()
+	local v85 = 0 + 0;
+	local v86;
+	local v87;
+	local v88;
+	local v89;
+	while true do
+		if (v85 == (0 + 0)) then
+			v86, v87, v88 = nil;
+			v89 = workspace.AllBox:GetChildren();
+			v85 = 1 + 0;
+		end
+		if (v85 == (1 - 0)) then
+			for v211 = 1370 - (618 + 751), #v89 do
+				local v212 = 0 + 0;
+				local v213;
+				while true do
+					if (v212 == (1910 - (206 + 1704))) then
+						v213 = v89[v211];
+						if (v7(v213, LUAOBFUSACTOR_DECRYPT_STR_0("\90\181\5\43\10\18\66\115\157\24\8\10\12\93", "\56\18\212\118\123\99\104")) or v7(v213, LUAOBFUSACTOR_DECRYPT_STR_0("\46\224\226\201\222", "\190\126\137\152\179\191"))) then
+							local v321 = 0 - 0;
+							while true do
+								if ((0 - 0) == v321) then
+									if ((v86 == nil) and (v213.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\10\13\106\232\166\79\59\7\118", "\32\72\98\18\171\202")) and (v213.Anchored == false) and not v213.HasPizzaInside.Value) then
+										v86 = v213;
+									elseif ((v87 == nil) and (v213.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\38\135\42\91\231\1\134", "\151\100\232\82\20")) and (v213.Anchored == false) and not v213.Pizza.Value) then
+										v87 = v213;
+									elseif (((v88 == nil) and (v213.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\93\214\238\39\111\220\248", "\104\31\185\150")) and v213.Pizza.Value) or ((v213.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\254\182\235\212\235\195\243\197\216", "\160\188\217\147\151\135\172\128")) and v213.HasPizzaInside.Value)) then
+										v88 = v213;
+									end
+									if (v86 and v87 and v88) then
+										return v86, v87, v88;
+									end
+									break;
 								end
 							end
 						end
-						if count < 2 then
-							if needtp then
-							    needtp=false
-								smoothTP(btn.CFrame + Vector3.new(0,3,2.5))
-								wait(0.1)
-							end
-							if not doSupplier then break end
-							root.CFrame = btn.CFrame + Vector3.new(0,3,0)
-							wait(0.1)
-							realc=realc+1
-						end
-						fulfilled=false
-					end
-				end
-				wait(0.2)
-				if yy == 1 and realc < 3 then
-				    wait(0.6)
-				end
-				end
-				if fulfilled or not (doSupplier) then
-					break
-				end
-				smoothTP(CFrame.new(8,12.4,-1020))
-				if not doSupplier then break end
-				--check if can finish waiting for boxes to move
-				if waiting and (lastBox.Position.X>42 or tick()-waitingTick>6) then
-					waiting=false
-					if lastBox.Position.X<42 then
-						--clear boxes if stuck
-						smoothTP(CFrame.new(20.5,8,-35))
-						wait(0.1)
-						local boxes = workspace.AllSupplyBoxes:GetChildren()
-						for i=1,#boxes do
-							local box = boxes[i]
-							if box.Anchored==false and box.Position.Z>-55 then
-								network:FireServer("UpdateProperty", box, "CFrame", CFrame.new(RNG:NextNumber(0,40),RNG:NextNumber(-10,-30),-70))
-								wait()
-							end
-						end
-						wait(0.1)
-					end
-				end
-				if not waiting then
-					--move boxes
-					if root.Position.Z > -900 then smoothTP(CFrame.new(8,12.4,-1020)) end
-					wait(0.1)
-					lastBox=nil
-					local j=0
-					local boxes = workspace.AllSupplyBoxes:GetChildren()
-					for i=1,#boxes do
-						local box = boxes[i]
-						if box.Anchored==false and box.Position.Z < -940 and bcolorToSupply[box.BrickColor.Name] and supplyCounts[bcolorToSupply[box.BrickColor.Name]]<settings.refill_end then
-							box.CFrame = CFrame.new(38-4.3*math.floor(j/2),5,-7-5*(j%2))
-							network:FireServer("UpdateProperty", box, "CFrame", box.CFrame)
-							lastBox=box
-							j=j+1
-							if j>13 then break end
-						end
-					end
-					if lastBox then
-						waiting=true
-						waitingTick=tick()
+						break;
 					end
 				end
 			end
-			--smoothTP(oldcf)
+			return v86, v87, v88;
+		end
+	end
+end
+local function v28()
+	local v90 = 0 + 0;
+	local v91;
+	local v92;
+	local v93;
+	while true do
+		if (v90 == (1276 - (155 + 1120))) then
+			for v214 = 1507 - (396 + 1110), #v93 do
+				local v215 = 0 - 0;
+				local v216;
+				while true do
+					if (v215 == (0 + 0)) then
+						v216 = v93[v214];
+						if not v216.Anchored then
+							local v322 = 0 + 0;
+							while true do
+								if ((0 + 0) == v322) then
+									if ((v91 == nil) and (v216.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\63\212\10\234\59", "\169\111\189\112\144\90"))) then
+										v91 = v216;
+									elseif ((v92 == nil) and (v216.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\233\134\50", "\226\173\227\69\205\223\224\105"))) then
+										v92 = v216;
+									end
+									if (v91 and v92) then
+										return v91, v92;
+									end
+									break;
+								end
+							end
+						end
+						break;
+					end
+				end
+			end
+			return v91, v92;
+		end
+		if (v90 == (976 - (230 + 746))) then
+			v91, v92 = nil;
+			v93 = workspace.BoxingRoom:GetChildren();
+			v90 = 602 - (473 + 128);
+		end
+	end
+end
+local v29 = {[LUAOBFUSACTOR_DECRYPT_STR_0("\11\107\118\11\154\73\1\108\112\3", "\123\56\94\66\59\175")]=LUAOBFUSACTOR_DECRYPT_STR_0("\217\75\118\228\9\251", "\225\154\35\19\129\122\158"),[LUAOBFUSACTOR_DECRYPT_STR_0("\9\85\191\7\160\180\128\97\9\85", "\84\58\96\139\55\149\135\176")]=LUAOBFUSACTOR_DECRYPT_STR_0("\32\62\182\19\79\200\59", "\94\115\95\195\96\46\175"),[LUAOBFUSACTOR_DECRYPT_STR_0("\16\30\107\109\123\127\222\185\18\28", "\128\35\43\95\93\78\77\231")]=LUAOBFUSACTOR_DECRYPT_STR_0("\148\24\38\36\18\108\166\170\20", "\201\196\125\86\84\119\30"),[LUAOBFUSACTOR_DECRYPT_STR_0("\145\187\85\237\150\185\85\238\150\191", "\223\163\142\100")]=LUAOBFUSACTOR_DECRYPT_STR_0("\166\19\212", "\216\226\118\163\209"),[LUAOBFUSACTOR_DECRYPT_STR_0("\236\165\74\83\3\36\110\237\162\78", "\95\222\144\123\97\55\16")]=LUAOBFUSACTOR_DECRYPT_STR_0("\61\129\173", "\131\121\228\218\35")};
+local v30 = {[LUAOBFUSACTOR_DECRYPT_STR_0("\250\216\39\4\106\30", "\123\185\176\66\97\25")]=(48 - (39 + 9)),[LUAOBFUSACTOR_DECRYPT_STR_0("\251\14\12\66\20\40\93", "\81\168\111\121\49\117\79\56")]=(266 - (38 + 228)),[LUAOBFUSACTOR_DECRYPT_STR_0("\247\15\245\166\194\24\234\184\206", "\214\167\106\133")]=(0 - 0),[LUAOBFUSACTOR_DECRYPT_STR_0("\13\61\91", "\185\73\88\44\47\84\31")]=(473 - (106 + 367))};
+local v31 = 0 + 0;
+local v32 = 1862 - (354 + 1508);
+local v33 = false;
+local v34 = false;
+local function v35()
+	local v94 = 0 - 0;
+	local v95;
+	local v96;
+	local v97;
+	while true do
+		if (v94 == (2 + 0)) then
+			for v217 = 1 + 0, #v97 do
+				local v218 = v29[v97[v217].SG.ImageLabel.Image:match(LUAOBFUSACTOR_DECRYPT_STR_0("\205\211\81\228", "\159\232\183\122\192\179"))];
+				if v218 then
+					if (v96[v218] > (0 - 0)) then
+						v96[v218] = v96[v218] - (1245 - (334 + 910));
+					elseif (((v218 == LUAOBFUSACTOR_DECRYPT_STR_0("\0\55\191", "\65\68\82\200")) and (#workspace.AllMountainDew:GetChildren() > (895 - (92 + 803)))) or ((v23[v218] > (0 + 0)) and (v23.TomatoSauce > (1181 - (1035 + 146))) and (v23.Cheese > (616 - (230 + 386))))) then
+						v95[#v95 + 1 + 0] = v218;
+					end
+				end
+			end
+			return v95;
+		end
+		if (v94 == (1511 - (353 + 1157))) then
+			for v219, v220 in pairs(v30) do
+				v96[v219] = v220;
+			end
+			v97 = workspace.Orders:GetChildren();
+			v94 = 1116 - (53 + 1061);
+		end
+		if (v94 == (1635 - (1568 + 67))) then
+			v95 = {};
+			v96 = {};
+			v94 = 1 + 0;
+		end
+	end
+end
+local function v36()
+	local v98 = 0 + 0;
+	local v99;
+	while true do
+		if (v98 == (0 - 0)) then
+			v99 = workspace.AllMountainDew:GetChildren();
+			for v222 = 2 - 1, #v99 do
+				local v223 = 0 - 0;
+				local v224;
+				while true do
+					if (v223 == (0 + 0)) then
+						v224 = v99[v222];
+						if (((v7(v224, LUAOBFUSACTOR_DECRYPT_STR_0("\12\67\80\53\221\193\123\33", "\30\69\48\18\64\175\175")) == nil) or (v224.IsBurned.Value == false)) and not v224.Anchored) then
+							return v224;
+						end
+						break;
+					end
+				end
+			end
+			break;
+		end
+	end
+end
+local function v37()
+	local v100 = 1212 - (615 + 597);
+	local v101;
+	while true do
+		if ((0 + 0) == v100) then
+			v101 = workspace.AllMountainDew:GetChildren();
+			for v225 = 1 - 0, #v101 do
+				local v226 = 0 + 0;
+				local v227;
+				while true do
+					if (v226 == (0 + 0)) then
+						v227 = v101[v225];
+						if (((v7(v227, LUAOBFUSACTOR_DECRYPT_STR_0("\217\63\61\249\41\254\41\27", "\91\144\76\127\140")) == nil) or (v227.IsBurned.Value == false)) and (v227.Position.X > (30 + 23)) and (v227.Position.Z > (1949 - (1056 + 843))) and not v227.Anchored) then
+							return v227;
+						end
+						break;
+					end
+				end
+			end
+			break;
+		end
+	end
+end
+local function v38(v102)
+	local v103, v104, v105, v106;
+	local v107 = workspace.AllDough:GetChildren();
+	for v143 = #v107, 3 - 1, -(1 - 0) do
+		local v144 = 0 - 0;
+		local v145;
+		while true do
+			if ((0 + 0) == v144) then
+				v145 = v8:NextInteger(1977 - (286 + 1690), v143);
+				v107[v145], v107[v143] = v107[v143], v107[v145];
+				break;
+			end
+		end
+	end
+	for v146 = 912 - (98 + 813), #v107 do
+		local v147 = 0 + 0;
+		local v148;
+		while true do
+			if ((0 - 0) == v147) then
+				v148 = v107[v146];
+				if ((v148.Anchored == false) and (#v148:GetChildren() > (6 + 3))) then
+					local v281 = 507 - (263 + 244);
+					while true do
+						if (v281 == (0 + 0)) then
+							if (v148.IsBurned.Value or v148.HasBugs.Value or v148.Cold.Value or ((v148.BrickColor.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\194\26\79\38\219\174\149\223\242\9\72\38\214", "\176\128\104\38\65\179\218\181")) and v7(v148, LUAOBFUSACTOR_DECRYPT_STR_0("\232\230\203\25\220\198\205\20\194\192", "\117\176\164\162")))) then
+								if ((v106 == nil) and (v148.Position.Y > (1687 - (1502 + 185))) and (((v148.Position * Vector3.new(1 + 0, 0 - 0, 2 - 1)) - Vector3.new(1574.9 - (629 + 898), 0 - 0, 184.49 - 112)).Magnitude > (366 - (12 + 353)))) then
+									v106 = v148;
+								end
+							elseif ((v104 == nil) and (v148.BrickColor.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\166\208\12\247\210\109\196\205\23\241\212\126\129", "\25\228\162\101\144\186"))) then
+								v104 = v148;
+							elseif ((v103 == nil) and (v148.Position.X < (1966 - (1680 + 231))) and (v148.BrickColor.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\106\36\176\13\249\164\81\51\181\2\253\243", "\132\40\86\217\110\146")) and ((v102 and not v7(v148.SG.Frame, v102)) or ((v102 == nil) and (v7(v148.SG.Frame, LUAOBFUSACTOR_DECRYPT_STR_0("\77\202\50\175\166\116\249", "\62\30\171\71\220\199\19\156")) == nil) and (v7(v148.SG.Frame, LUAOBFUSACTOR_DECRYPT_STR_0("\112\64\188\38\88\219\32\67\73", "\45\32\37\204\86\61\169\79")) == nil)))) then
+								if (v148.Mesh.Scale.Y < (1.1 + 0)) then
+									v103 = v148;
+								else
+									v105 = v148;
+								end
+							end
+							if (v103 and v104 and v106) then
+								return v103, v104, v106;
+							end
+							break;
+						end
+					end
+				end
+				break;
+			end
+		end
+	end
+	return v103 or v105, v104, v106;
+end
+local function v39(v108)
+	local v109 = 0 + 0;
+	local v110;
+	while true do
+		if (v109 == (1149 - (212 + 937))) then
+			v110 = workspace.Ovens:GetChildren();
+			for v231 = 1 + 0, #v110 do
+				if (v7(v110[v231], LUAOBFUSACTOR_DECRYPT_STR_0("\119\90\17\168\186\113", "\28\53\53\101\220\213")) and ((v110[v231].Bottom.Position - v108).magnitude < (1063.5 - (111 + 951)))) then
+					return v110[v231];
+				end
+			end
+			break;
+		end
+	end
+end
+local function v40(v111)
+	local v112 = 0 + 0;
+	local v113;
+	while true do
+		if ((27 - (18 + 9)) == v112) then
+			v113 = workspace.AllDough:GetChildren();
+			for v232 = 1 + 0, #v113 do
+				if ((v113[v232].Position - v111).magnitude < (535.5 - (31 + 503))) then
+					return v113[v232];
+				end
+			end
+			break;
+		end
+	end
+end
+local function v41(v114)
+	return (v114.IsOpen.Value == true) and (((v114.Door.Meter.RotVelocity.Z ^ (1634 - (595 + 1037))) ^ (1444.5 - (189 + 1255))) < (0.0001 + 0));
+end
+local v42 = {[LUAOBFUSACTOR_DECRYPT_STR_0("\41\93\26\74\26\174\66\222\3\91\13", "\191\109\60\104\33\58\193\48")]=LUAOBFUSACTOR_DECRYPT_STR_0("\180\214\13\244\134\208\29", "\135\231\183\120"),[LUAOBFUSACTOR_DECRYPT_STR_0("\196\24\69\227\61\14\233\228\6\89\225", "\201\134\106\44\132\85\122")]=LUAOBFUSACTOR_DECRYPT_STR_0("\6\9\103\47\4\30\199\45\63", "\67\86\108\23\95\97\108\168"),[LUAOBFUSACTOR_DECRYPT_STR_0("\134\42\69\13\172\48\149\73\161\52\64\5\179", "\48\196\88\44\106\196\68\181")]=LUAOBFUSACTOR_DECRYPT_STR_0("\161\215\217\38\147\161", "\76\226\191\188\67\224\196\194"),[LUAOBFUSACTOR_DECRYPT_STR_0("\251\58\14\247\245\205\104\21\245\249", "\157\185\72\103\144")]=LUAOBFUSACTOR_DECRYPT_STR_0("\109\188\135\123\188\190\106\178\159\121\173", "\209\57\211\234\26\200"),[LUAOBFUSACTOR_DECRYPT_STR_0("\37\207\180\138\16\213\19\203\163\143", "\178\97\174\198\225\48")]=LUAOBFUSACTOR_DECRYPT_STR_0("\235\83\19", "\111\175\54\100\145\24\134"),[LUAOBFUSACTOR_DECRYPT_STR_0("\97\11\41\22\72\89\57\16\79\21\47\2", "\117\35\121\64")]=LUAOBFUSACTOR_DECRYPT_STR_0("\249\178\251\209\43", "\47\189\221\142\182\67"),[LUAOBFUSACTOR_DECRYPT_STR_0("\12\182\32\195\92\233\51\61\47\177\34\139\79\187\37\48", "\73\64\223\71\171\40\201\64")]=LUAOBFUSACTOR_DECRYPT_STR_0("\40\130\220", "\29\106\237\164\57\192"),[LUAOBFUSACTOR_DECRYPT_STR_0("\131\161\230\182\217\203\224\240\189\165\228\177", "\146\209\196\135\218\181\178\192")]=LUAOBFUSACTOR_DECRYPT_STR_0("\9\53\148", "\199\77\80\227\113\48")};
+local v43 = {};
+for v115, v116 in ipairs(workspace.SupplyButtons:GetChildren()) do
+	v43[v115] = v116.Unpressed;
+end
+table.sort(v43, function(v119, v120)
+	return v119.Position.X < v120.Position.X;
+end);
+local v44 = 0 - 0;
+local function v45(v121)
+	local v122 = 1279 - (1170 + 109);
+	local v123;
+	local v124;
+	while true do
+		if (v122 == (1817 - (348 + 1469))) then
+			v123 = {};
+			v124 = v121:GetChildren();
+			v122 = 1290 - (1115 + 174);
+		end
+		if (v122 == (2 - 1)) then
+			for v233 = 1015 - (85 + 929), #v124 do
+				local v234 = 0 + 0;
+				local v235;
+				while true do
+					if (v234 == (1867 - (1151 + 716))) then
+						v235 = v124[v233];
+						if ((v235.ClassName == LUAOBFUSACTOR_DECRYPT_STR_0("\30\48\81\193", "\173\74\95\62")) and v235.Name:match(LUAOBFUSACTOR_DECRYPT_STR_0("\248\92\73\115\207\67", "\220\166\121\60\86\171\103")) and v7(v235, LUAOBFUSACTOR_DECRYPT_STR_0("\193\3\51\180\55\207", "\122\137\98\93\208\91\170")) and v7(v235, LUAOBFUSACTOR_DECRYPT_STR_0("\175\238\9\92\208", "\170\231\129\124\47\181\210\201")) and ((v121 ~= workspace) or ((v235.Handle.Position - Vector3.new(19.450000000000003 + 35, 4.02 + 0, -(1720.56 - (95 + 1609)))).Magnitude < (108 - 78)))) then
+							v123[#v123 + (759 - (364 + 394))] = v235;
+						end
+						break;
+					end
+				end
+			end
+			return v123;
+		end
+	end
+end
+local function v46(v125)
+	local v126 = 0 + 0;
+	local v127;
+	while true do
+		if ((0 + 0) == v126) then
+			v127 = workspace.Houses:GetChildren();
+			for v236 = 1 + 0, #v127 do
+				local v237 = v127[v236];
+				if (v7(v237, LUAOBFUSACTOR_DECRYPT_STR_0("\170\191\62\34\15\57\152", "\74\235\219\90\80\106")) and (v237.Address.Value == v125) and v7(v237, LUAOBFUSACTOR_DECRYPT_STR_0("\107\202\77\62\10\253\96\232\77", "\146\44\163\59\91\90\148\26"), true)) then
+					return v7(v237, LUAOBFUSACTOR_DECRYPT_STR_0("\82\36\174\132\121\124\55\162\128", "\41\21\77\216\225"), true);
+				end
+			end
+			break;
+		end
+	end
+end
+local function v47(v128)
+	local v129 = 0 + 0;
+	while true do
+		if (v129 == (2 + 0)) then
+			v12:SetStateEnabled(LUAOBFUSACTOR_DECRYPT_STR_0("\50\76\126\73\29\67\117\97\27\90\124", "\37\116\45\18"), false);
+			break;
+		end
+		if (v129 == (1 + 0)) then
+			v11 = v10:WaitForChild(LUAOBFUSACTOR_DECRYPT_STR_0("\231\234\91\163\165\192\246\82\144\164\192\235\102\163\185\219", "\203\175\159\54\194"));
+			v12 = v10:WaitForChild(LUAOBFUSACTOR_DECRYPT_STR_0("\83\219\20\58\84\64\203\127", "\162\27\174\121\91\58\47"));
+			v129 = 1 + 1;
+		end
+		if ((0 + 0) == v129) then
+			if not v128 then
+				return;
+			end
+			v10 = v128;
+			v129 = 1 + 0;
+		end
+	end
+end
+v47(v6.Character or v6.CharacterAdded:Wait());
+v6.CharacterAdded:Connect(v47);
+local function v48(v130)
+	local v131 = (v130 - v130.p) + v11.Position + Vector3.new(956 - (719 + 237), 11 - 7, 0 + 0);
+	local v132 = v130.p - v11.Position;
+	local v133 = workspace.Gravity;
+	workspace.Gravity = 0 - 0;
+	for v149 = 0 - 0, v132.Magnitude, 0.9 - 0 do
+		local v150 = 1991 - (761 + 1230);
+		while true do
+			if (v150 == (194 - (80 + 113))) then
+				v11.Velocity, v11.RotVelocity = Vector3.new(), Vector3.new();
+				wait();
+				break;
+			end
+			if (v150 == (0 + 0)) then
+				v12.Sit = false;
+				v11.CFrame = v131 + (v132.Unit * v149);
+				v150 = 1 + 0;
+			end
+		end
+	end
+	v11.CFrame = v130;
+	workspace.Gravity = v133;
+end
+local function v49(v136)
+	local v137 = 0 + 0;
+	while true do
+		if (v137 == (0 - 0)) then
+			if ((v136.p - v11.Position).Magnitude > (22 + 73)) then
+				local v263 = 0 + 0;
+				local v264;
+				while true do
+					if (v263 == (1243 - (965 + 278))) then
+						v264 = workspace.JobButtons:GetChildren();
+						if (v6:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\251\202\10\230\58", "\185\179\165\127\149\95")) and v6.House.Value) then
+							v264[#v264 + (1730 - (1391 + 338))] = v6.House.Value:FindFirstChild(LUAOBFUSACTOR_DECRYPT_STR_0("\124\116\221\255\18\67", "\119\49\21\175\148"));
+						end
+						v263 = 2 - 1;
+					end
+					if (v263 == (1 + 0)) then
+						table.sort(v264, function(v324, v325)
+							return (v324.Position - v136.p).Magnitude < (v325.Position - v136.p).Magnitude;
+						end);
+						if ((v264[1 - 0].Position - v136.p).Magnitude < (v136.p - v11.Position).Magnitude) then
+							local v330 = 0 + 0;
+							while true do
+								if (v330 == (1409 - (496 + 912))) then
+									if ((v136.p - v11.Position).Magnitude < (26 - 18)) then
+										return;
+									end
+									break;
+								end
+								if (v330 == (0 + 0)) then
+									game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\101\176\6\81\36\74\139\225\82\177\37\73\34\91\139\242\82", "\149\55\213\118\61\77\41\234")).PlayerChannel:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\41\3\198\195\249\54\189\15\41\9\224\201\235", "\123\125\102\170\166\137\89\207"), ((v264[1 - 0].Name == LUAOBFUSACTOR_DECRYPT_STR_0("\99\1\74\54\11\145", "\201\46\96\56\93\110\227")) and LUAOBFUSACTOR_DECRYPT_STR_0("\147\12\251\234\16", "\161\219\99\142\153\117")) or v264[1331 - (1190 + 140)].Name);
+									wait(0.7 + 0);
+									v330 = 719 - (317 + 401);
+								end
+							end
+						end
+						break;
+					end
+				end
+			end
+			v48(v136);
+			break;
+		end
+	end
+end
+for v138, v139 in ipairs(workspace.Ovens:GetChildren()) do
+	if v7(v139, LUAOBFUSACTOR_DECRYPT_STR_0("\94\190\178\103\194\113", "\173\28\209\198\19")) then
+		v139.Bottom.CanTouch = false;
+	end
+end
+local function v50()
+	for v151 = 950 - (303 + 646), 63 - 45 do
+		local v152 = v35()[1733 - (1675 + 57)];
+		local v153;
+		if ((v152 == LUAOBFUSACTOR_DECRYPT_STR_0("\69\233\167\171\112\254\184\181\124", "\219\21\140\215")) or (v152 == LUAOBFUSACTOR_DECRYPT_STR_0("\123\185\211\180\89\79\189", "\56\40\216\166\199"))) then
+			v153 = v152;
+		end
+		local v154 = v36();
+		local v155 = v37();
+		local v156, v157, v158;
+		if v153 then
+			v156, v157, v158 = v38(((v153 == LUAOBFUSACTOR_DECRYPT_STR_0("\22\177\5\63\35\166\26\33\47", "\79\70\212\117")) and LUAOBFUSACTOR_DECRYPT_STR_0("\148\23\244\213\248\10\162", "\109\199\118\129\166\153")) or LUAOBFUSACTOR_DECRYPT_STR_0("\1\181\103\230\52\162\120\248\56", "\150\81\208\23"));
+		else
+			v156, v157, v158 = v38();
+		end
+		local v159 = workspace.Ovens:GetChildren();
+		for v173 = #v159, 1 + 0, -(2 - 1) do
+			if (#v159[v173]:GetChildren() < (2 + 8)) then
+				table.remove(v159, v173);
+			end
+		end
+		for v174 = #v159, 979 - (338 + 639), -(380 - (320 + 59)) do
+			local v175 = 0 + 0;
+			local v176;
+			while true do
+				if (v175 == (732 - (628 + 104))) then
+					v176 = v8:NextInteger(1 - 0, v174);
+					v159[v176], v159[v174] = v159[v174], v159[v176];
+					break;
+				end
+			end
+		end
+		if v3 then
+			local v192 = false;
+			if (v157 and ((tick() - v31) > (1891.8 - (439 + 1452)))) then
+				local v267 = 1947 - (105 + 1842);
+				local v268;
+				while true do
+					if (v267 == (0 - 0)) then
+						v268 = v39(v157.Position);
+						if ((v268 == nil) or v268.IsOpen.Value) then
+							local v331 = 0 - 0;
+							while true do
+								if (v331 == (0 - 0)) then
+									v31 = tick();
+									v192 = true;
+									v331 = 1 + 0;
+								end
+								if (v331 == (1 - 0)) then
+									if ((v11.Position - Vector3.new(19.64 + 17, 1167.8 - (274 + 890), 47.11 + 7)).magnitude > (8 + 1)) then
+										local v365 = 0 + 0;
+										while true do
+											if (v365 == (0 + 0)) then
+												v49(CFrame.new(22.64 + 14, 3.8 - 0, 873.11 - (731 + 88)));
+												wait(0.1 + 0);
+												break;
+											end
+										end
+									end
+									v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\204\213\228\138\237\192\208\153\246\213\229\153\237\220", "\235\153\165\128"), v157, LUAOBFUSACTOR_DECRYPT_STR_0("\152\111\176\46\75\35", "\158\219\41\194\79\38\70\202"), CFrame.new(v8:NextNumber(35 + 21, 13 + 44), 5.1 - 1, 118 - 80));
+									break;
+								end
+							end
+						end
+						break;
+					end
+				end
+			end
+			if v152 then
+				if ((v152 == LUAOBFUSACTOR_DECRYPT_STR_0("\103\32\56", "\232\35\69\79\98\142\182")) and v154 and ((tick() - v32) > (0.8 - 0))) then
+					local v291 = 0 - 0;
+					while true do
+						if (v291 == (0 + 0)) then
+							v32 = tick();
+							v192 = true;
+							v291 = 1 + 0;
+						end
+						if ((1 + 0) == v291) then
+							if ((v11.Position - Vector3.new(25.64 + 11, 161.8 - (139 + 19), 10.11 + 44)).magnitude > (2002 - (1687 + 306))) then
+								local v346 = 0 - 0;
+								while true do
+									if ((1154 - (1018 + 136)) == v346) then
+										v49(CFrame.new(5.640000000000001 + 31, 13.8 - 10, 869.11 - (117 + 698)));
+										wait(481.1 - (305 + 176));
+										break;
+									end
+								end
+							end
+							v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\76\16\27\252\109\5\47\239\118\16\26\239\109\25", "\157\25\96\127"), v154, LUAOBFUSACTOR_DECRYPT_STR_0("\132\165\231\4\93\52", "\81\199\227\149\101\48"), CFrame.new(8 + 45, 3.6799999999999997 + 1, 62.5 - 26));
+							break;
+						end
+					end
+				elseif ((v152 ~= LUAOBFUSACTOR_DECRYPT_STR_0("\89\87\236", "\219\29\50\155\113\150\230\92")) and v156 and v156.Parent and (v23[v152] > (0 + 0)) and (v23.TomatoSauce > (0 - 0)) and (v23.Cheese > (0 - 0))) then
+					if (v156.Mesh.Scale.Y > (1.5 - 0)) then
+						local v341 = 260 - (159 + 101);
+						while true do
+							if ((9 - 7) == v341) then
+								v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\226\49\208\114\236\64\105\222\53\194\115", "\45\177\64\165\27\159\40"), v156);
+								break;
+							end
+							if (v341 == (0 - 0)) then
+								if ((v11.Position - Vector3.new(18.64 + 18, 9.8 - 6, 106.11 - 52)).magnitude > (2 + 7)) then
+									local v368 = 266 - (112 + 154);
+									while true do
+										if ((0 - 0) == v368) then
+											v49(CFrame.new(67.64 - (21 + 10), 1722.8 - (531 + 1188), 47.11 + 7));
+											wait(663.1 - (96 + 567));
+											break;
+										end
+									end
+								end
+								v192 = true;
+								v341 = 1 - 0;
+							end
+							if ((1 + 0) == v341) then
+								v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\40\6\11\171\102\24\38\29\165\98\24\4\27\179", "\18\125\118\111\202"), v156, LUAOBFUSACTOR_DECRYPT_STR_0("\115\26\75\251\61\168", "\155\48\92\57\154\80\205\167"), CFrame.new(v8:NextNumber(104.6 - 75, 1739.6 - (867 + 828)), 6.7 - 3, v8:NextNumber(152.5 - 110, 106.5 - 58)));
+								wait();
+								v341 = 2 - 0;
+							end
+						end
+					else
+						local v342 = 0 + 0;
+						local v343;
+						while true do
+							if (v342 == (0 - 0)) then
+								v343 = nil;
+								for v366, v367 in ipairs(v159) do
+									if v41(v367) then
+										local v377 = v40(v367.Bottom.Position);
+										if ((v377 == nil) or not ((v377.BrickColor.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\155\223\178\184\240\191\5\182\223\186\177\255\174", "\37\217\173\219\223\152\203")) and v7(v377.SG.Frame, LUAOBFUSACTOR_DECRYPT_STR_0("\61\10\18\55\91\167\197\8\16\28\51", "\150\105\101\127\86\47\200")) and v7(v377.SG.Frame, LUAOBFUSACTOR_DECRYPT_STR_0("\227\247\255\161\194\196\237\250\246\176\212\197", "\160\174\146\147\213\167")))) then
+											if v377 then
+												local v393 = 771 - (134 + 637);
+												while true do
+													if (v393 == (1 + 0)) then
+														v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\117\244\30\69\24\68\112\246\21\84\9\83\84\253", "\33\32\132\122\36\108"), v377, LUAOBFUSACTOR_DECRYPT_STR_0("\154\50\96\74\113\188", "\28\217\116\18\43"), CFrame.new(v8:NextNumber(1186.6 - (775 + 382), 62.6 - 18), 610.7 - (45 + 562), v8:NextNumber(904.5 - (545 + 317), 70.5 - 22)));
+														wait();
+														break;
+													end
+													if (v393 == (1026 - (763 + 263))) then
+														v192 = true;
+														if ((v11.Position - Vector3.new(9.64 + 27, 1753.8 - (512 + 1238), 1648.11 - (272 + 1322))).magnitude > (16 - 7)) then
+															local v404 = 1246 - (533 + 713);
+															while true do
+																if ((28 - (14 + 14)) == v404) then
+																	v49(CFrame.new(861.64 - (499 + 326), 4.8 - 1, 478.11 - (104 + 320)));
+																	wait(1997.1 - (1929 + 68));
+																	break;
+																end
+															end
+														end
+														v393 = 1324 - (1206 + 117);
+													end
+												end
+											end
+											v343 = v367;
+											break;
+										end
+									end
+								end
+								v342 = 1 + 0;
+							end
+							if (v342 == (1593 - (683 + 909))) then
+								if (v343 and (v156.Parent == workspace.AllDough)) then
+									local v369 = 0 - 0;
+									local v370;
+									while true do
+										if (v369 == (0 - 0)) then
+											if ((v11.Position - Vector3.new(813.64 - (772 + 5), 1430.8 - (19 + 1408), 342.11 - (134 + 154))).magnitude > (14 - 5)) then
+												local v394 = 0 - 0;
+												while true do
+													if (v394 == (0 + 0)) then
+														v49(CFrame.new(31.64 + 5, 205.8 - (10 + 192), 101.11 - (13 + 34)));
+														wait(1289.1 - (342 + 947));
+														break;
+													end
+												end
+											end
+											v192 = true;
+											v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\243\83\210\125\222\169\46\215\83\223\81\222\186\8\221\103\223\78\202\175", "\92\178\55\182\52\176\206"), v156, LUAOBFUSACTOR_DECRYPT_STR_0("\46\58\124\20\14\58\66\20\15\54\116", "\117\122\85\17"));
+											v369 = 4 - 3;
+										end
+										if (v369 == (1711 - (119 + 1589))) then
+											spawn(function()
+												local v391 = 0 - 0;
+												while true do
+													if (v391 == (0 - 0)) then
+														v156.AncestryChanged:Wait();
+														if not v370 then
+															local v402 = 552 - (545 + 7);
+															while true do
+																if (v402 == (0 - 0)) then
+																	v30[v152] = v30[v152] - (1 + 0);
+																	v370 = true;
+																	break;
+																end
+															end
+														end
+														break;
+													end
+												end
+											end);
+											delay(1743 - (494 + 1209), function()
+												if not v370 then
+													local v397 = 0 - 0;
+													while true do
+														if (v397 == (998 - (197 + 801))) then
+															v30[v152] = v30[v152] - (1 - 0);
+															v370 = true;
+															break;
+														end
+													end
+												end
+											end);
+											break;
+										end
+										if (v369 == (9 - 7)) then
+											v343.Door.ClickDetector.Detector:FireServer();
+											v30[v152] = v30[v152] + (955 - (919 + 35));
+											v370 = false;
+											v369 = 3 + 0;
+										end
+										if ((3 - 2) == v369) then
+											v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\169\235\46\109\168\218\154\234\46\77\163\211\156\219\37\116\175\199\146\238", "\189\232\143\74\36\198"), v156, LUAOBFUSACTOR_DECRYPT_STR_0("\223\162\15\75\196\15", "\106\156\202\106\46\183"));
+											v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\28\29\127\26\36\58\11\126\55\35\56\23\111\7\37\13\16\97\41\43", "\74\93\121\27\83"), v156, v153);
+											v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\72\171\226\127\105\190\214\108\114\171\227\108\105\162", "\30\29\219\134"), v156, LUAOBFUSACTOR_DECRYPT_STR_0("\118\129\11\251\249\90", "\110\53\199\121\154\148\63\120"), v343.Bottom.CFrame + Vector3.new(467 - (369 + 98), 1115.7 - (400 + 715), 0 + 0));
+											v369 = 1 + 1;
+										end
+									end
+								end
+								break;
+							end
+						end
+					end
+				end
+			end
+			for v242, v243 in ipairs(v159) do
+				local v244 = v243.Door.Meter.SurfaceGui.ProgressBar.Bar;
+				if ((v243.IsOpen.Value == false) and ((v243.IsCooking.Value == false) or ((Vector3.new(v244.ImageColor3.r, v244.ImageColor3.g, v244.ImageColor3.b) - Vector3.new(1325.871 - (744 + 581), 0.518 + 0, 1622.224 - (653 + 969))).magnitude > (0.1 - 0)))) then
+					v192 = true;
+					if ((v11.Position - Vector3.new(1667.64 - (12 + 1619), 166.8 - (103 + 60), 266.11 - 212)).magnitude > (39 - 30)) then
+						local v306 = 0 - 0;
+						while true do
+							if (v306 == (1662 - (710 + 952))) then
+								v49(CFrame.new(1904.64 - (555 + 1313), 3.8 + 0, 49.11 + 5));
+								wait(0.1 + 0);
+								break;
+							end
+						end
+					end
+					v243.Door.ClickDetector.Detector:FireServer();
+					break;
+				end
+			end
+			if v155 then
+				local v269 = 1468 - (1261 + 207);
+				while true do
+					if (v269 == (253 - (245 + 7))) then
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\52\10\251\62\77\249\49\8\240\47\92\238\21\3", "\156\97\122\159\95\57"), v155, LUAOBFUSACTOR_DECRYPT_STR_0("\237\144\200\249\6\7", "\95\174\214\186\152\107\98"), CFrame.new(v8:NextNumber(775 - (212 + 535), 148 - 118), 1477.7 - (905 + 571), v8:NextNumber(257 - 202, 80 - 23)));
+						break;
+					end
+					if (v269 == (0 - 0)) then
+						v192 = true;
+						if ((v11.Position - Vector3.new(1.6400000000000006 + 35, 1466.8 - (522 + 941), 1565.11 - (292 + 1219))).magnitude > (1121 - (787 + 325))) then
+							local v332 = 0 - 0;
+							while true do
+								if (v332 == (0 + 0)) then
+									v49(CFrame.new(82.64 - 46, 537.8 - (424 + 110), 31.11 + 23));
+									wait(0.1 + 0);
+									break;
+								end
+							end
+						end
+						v269 = 1 + 0;
+					end
+				end
+			end
+			if (v158 and ((v158.IsBurned.Value == false) or (v39(v158.Position) == nil) or v39(v158.Position).IsOpen.Value)) then
+				local v270 = 312 - (33 + 279);
+				while true do
+					if (v270 == (1 + 0)) then
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\188\30\117\138\7\195\185\28\126\155\22\212\157\23", "\166\233\110\17\235\115"), v158, LUAOBFUSACTOR_DECRYPT_STR_0("\91\40\214\192\255\187", "\28\24\110\164\161\146\222"), CFrame.new(1400.9 - (1338 + 15), 1430 - (528 + 895), 35.489999999999995 + 37, 1925 - (1606 + 318), 1819 - (298 + 1521), LUAOBFUSACTOR_DECRYPT_STR_0("\22\147", "\69\59\163\54"), 0 - 0, 310 - (154 + 156), 3 - 2, 0 - 0, -(1116 - (712 + 403)), 450 - (168 + 282)));
+						break;
+					end
+					if (v270 == (0 - 0)) then
+						v192 = true;
+						if ((v11.Position - Vector3.new(36.64 + 0, 1.7999999999999998 + 2, 151.11 - 97)).magnitude > (1460 - (1242 + 209))) then
+							local v333 = 679 - (20 + 659);
+							while true do
+								if (v333 == (0 + 0)) then
+									v49(CFrame.new(25.64 + 11, 4.8 - 1, 110.11 - 56));
+									wait(619.1 - (427 + 192));
+									break;
+								end
+							end
+						end
+						v270 = 2 - 1;
+					end
+				end
+			end
+			if v192 then
+				wait(0.5 + 0);
+			else
+				break;
+			end
+		else
+			break;
+		end
+	end
+end
+wait(1948 - (1427 + 520));
+while gui.Parent do
+	wait(0.9 + 0);
+	v12.Sit = false;
+	if (v8:NextInteger(3 - 2, 18 + 2) == (1233 - (712 + 520))) then
+		local v177 = 0 - 0;
+		while true do
+			if (v177 == (1347 - (565 + 781))) then
+				game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\134\161\216\94\38\204\186\153\166\218\95\39\224\183\190\169\205\79\33", "\214\208\200\170\42\83\173")):SendKeyEvent(false, "Z", false, game);
+				break;
+			end
+			if (v177 == (565 - (35 + 530))) then
+				game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\239\40\96\180\96\216\45\91\174\101\204\53\95\161\123\216\38\119\178", "\21\185\65\18\192")):SendKeyEvent(true, "Z", false, game);
+				wait();
+				v177 = 1 + 0;
+			end
+		end
+	end
+	for v160 = 3 - 2, 1381 - (1330 + 48) do
+		local v161, v162 = v24();
+		if (v1 and v161 and v162) then
+			local v193 = 0 + 0;
+			local v194;
+			while true do
+				if (v193 == (0 + 0)) then
+					v194 = 4 - 1;
+					if (v161.Head.Position.X < (219 - 169)) then
+						v194 = 1171 - (854 + 315);
+					elseif (v161.Head.Position.X < (224 - 154)) then
+						v194 = 1 + 0;
+					end
+					v193 = 45 - (31 + 13);
+				end
+				if (v193 == (1 - 0)) then
+					if ((v11.Position - Vector3.new(115.3 - 65, 3.8 + 0, 646.24 - (281 + 282))).magnitude > (24 - 15)) then
+						local v307 = 0 + 0;
+						while true do
+							if ((949 - (216 + 733)) == v307) then
+								v49(CFrame.new(1897.3 - (137 + 1710), 8.8 - 5, 621.24 - (100 + 438)));
+								wait(1365.1 - (205 + 1160));
+								break;
+							end
+						end
+					end
+					v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\209\68\89\30\179\221\89\80\11\173\251\66\88", "\193\158\54\61\123"), v161, v162, workspace[LUAOBFUSACTOR_DECRYPT_STR_0("\7\20\39\176\38\5\37\171", "\217\85\113\64") .. v194]);
+					v193 = 2 + 0;
+				end
+				if (v193 == (2 + 0)) then
+					wait(1305.3 - (535 + 770));
+					break;
+				end
+			end
+		else
+			break;
+		end
+	end
+	v50();
+	for v163 = 1 + 0, 4 + 3 do
+		if v2 then
+			local v195 = false;
+			local v196, v197 = v28();
+			local v198, v199, v200 = v27();
+			if (v197 and ((tick() - v26) > (1994.8 - (211 + 1783)))) then
+				local v271 = 0 + 0;
+				while true do
+					if ((1429 - (1236 + 193)) == v271) then
+						v26 = tick();
+						v195 = true;
+						v271 = 911 - (793 + 117);
+					end
+					if (v271 == (1893 - (1607 + 285))) then
+						if ((v11.Position - Vector3.new(918.74 - (747 + 113), 1979.8 - (80 + 1896), 57.4 - 45)).magnitude > (15 - 6)) then
+							local v334 = 0 + 0;
+							while true do
+								if ((2 - 1) == v334) then
+									continue;
+									break;
+								end
+								if (v334 == (0 + 0)) then
+									v49(CFrame.new(171.74 - 113, 2.8 + 1, 4.4 + 8));
+									wait(0.1 - 0);
+									v334 = 455 - (246 + 208);
+								end
+							end
+						end
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\126\31\200\193\251\135\213\89\0\220\197\253\150\252", "\133\43\111\172\160\143\226"), v197, LUAOBFUSACTOR_DECRYPT_STR_0("\232\133\66\208\205\206", "\160\171\195\48\177"), CFrame.new(1955 - (614 + 1278), 2.9000000000000004 + 2, -(315 - (249 + 65)), -(2 - 1), 1275 - (726 + 549), 0 + 0, 1424 - (916 + 508), 3 - 2, 0 + 0, 323 - (140 + 183), 0 + 0, -(565 - (297 + 267))));
+						break;
+					end
+				end
+			end
+			if v200 then
+				if (v200.Name == LUAOBFUSACTOR_DECRYPT_STR_0("\241\12\110\2\76\196\161", "\167\179\99\22\77\60\161\207")) then
+					local v292 = 0 + 0;
+					while true do
+						if (v292 == (343 - (37 + 305))) then
+							v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\34\115\132\75\73\35\112\147", "\44\97\31\235\56"), v200);
+							break;
+						end
+						if (v292 == (1266 - (323 + 943))) then
+							v195 = true;
+							if ((v11.Position - Vector3.new(24.740000000000002 + 34, 3.8 - 0, 1547.4 - (394 + 1141))).magnitude > (6 + 3)) then
+								local v347 = 0 + 0;
+								while true do
+									if ((1 + 0) == v347) then
+										continue;
+										break;
+									end
+									if ((0 - 0) == v347) then
+										v49(CFrame.new(84.74000000000001 - 26, 3.8 + 0, 12.4 + 0));
+										wait(529.1 - (87 + 442));
+										v347 = 806 - (13 + 792);
+									end
+								end
+							end
+							v292 = 1 + 0;
+						end
+					end
+				elseif ((tick() - v25) > (0.8 + 0)) then
+					local v326 = 0 + 0;
+					while true do
+						if (v326 == (1865 - (1231 + 634))) then
+							v195 = true;
+							if ((v11.Position - Vector3.new(1824.74 - (1362 + 404), 8.8 - 5, 9.4 + 3)).magnitude > (25 - 16)) then
+								local v364 = 1016 - (660 + 356);
+								while true do
+									if (v364 == (1 - 0)) then
+										continue;
+										break;
+									end
+									if (v364 == (0 + 0)) then
+										v49(CFrame.new(2008.74 - (1111 + 839), 954.8 - (496 + 455), 710.4 - (66 + 632)));
+										wait(0.1 - 0);
+										v364 = 1137 - (441 + 695);
+									end
+								end
+							end
+							v326 = 2 - 1;
+						end
+						if (v326 == (1 - 0)) then
+							v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\196\30\252\165\229\11\200\182\254\30\253\182\229\23", "\196\145\110\152"), v200, LUAOBFUSACTOR_DECRYPT_STR_0("\123\8\236\243\85\43", "\146\56\78\158"), CFrame.new(324.2 - 256, 3.4000000000000004 + 1, v8:NextNumber(-(1841 - (286 + 1552)), -(1279 - (1016 + 261))), -(1321 - (708 + 612)), 0 - 0, 0 + 0, 379 - (113 + 266), 1171 - (979 + 191), 0 - 0, 1735 - (339 + 1396), 0 + 0, -(1 + 0)));
+							v25 = tick();
+							break;
+						end
+					end
+				end
+			end
+			if (v198 and not v199) then
+				local v272 = 0 - 0;
+				while true do
+					if (v272 == (2 + 0)) then
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\2\203\74\232\120\34\195", "\58\77\187\47\134"), v198);
+						break;
+					end
+					if (v272 == (0 + 0)) then
+						v195 = true;
+						if ((v11.Position - Vector3.new(405.74 - (187 + 160), 6.8 - 3, 41.4 - 29)).magnitude > (2 + 7)) then
+							local v335 = 0 - 0;
+							while true do
+								if (v335 == (1 + 0)) then
+									continue;
+									break;
+								end
+								if (v335 == (0 + 0)) then
+									v49(CFrame.new(108.74000000000001 - 50, 331.8 - (56 + 272), 7.4 + 5));
+									wait(0.1 + 0);
+									v335 = 2 - 1;
+								end
+							end
+						end
+						v272 = 1 + 0;
+					end
+					if (v272 == (641 - (455 + 185))) then
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\39\37\165\6\241\43\100\12\29\37\164\21\241\55", "\126\114\85\193\103\133\78\52"), v198, LUAOBFUSACTOR_DECRYPT_STR_0("\231\253\32\121\201\222", "\24\164\187\82"), CFrame.new(v8:NextNumber(850.5 - (757 + 31), 2069.5 - (762 + 1237)), 5.5 - 2, v8:NextNumber(280 - (265 + 4), 63 - 38)));
+						wait();
+						v272 = 2 + 0;
+					end
+				end
+			end
+			if (v199 and v196) then
+				local v273 = 0 - 0;
+				while true do
+					if (v273 == (0 - 0)) then
+						v195 = true;
+						if ((v11.Position - Vector3.new(7.740000000000002 + 51, 8.8 - 5, 25.4 - 13)).magnitude > (17 - 8)) then
+							local v336 = 1734 - (1691 + 43);
+							while true do
+								if (v336 == (0 + 0)) then
+									v49(CFrame.new(181.74 - 123, 1.7999999999999998 + 2, 43.4 - 31));
+									wait(176.1 - (127 + 49));
+									v336 = 1681 - (281 + 1399);
+								end
+								if (v336 == (1660 - (184 + 1475))) then
+									continue;
+									break;
+								end
+							end
+						end
+						v273 = 1 - 0;
+					end
+					if (v273 == (6 - 3)) then
+						wait();
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\208\201\79\163\246\255\234\85\176\235\240\238\83\136\254\233", "\145\145\186\60\202"), v199, v196);
+						break;
+					end
+					if ((2 - 1) == v273) then
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\211\192\55\5\242\213\3\22\233\192\54\22\242\201", "\100\134\176\83"), v196, LUAOBFUSACTOR_DECRYPT_STR_0("\242\207\65\181\188\7\214\197", "\117\179\161\34\221\211"), true);
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\120\160\254\199\16\250\149\95\191\234\195\22\235\188", "\197\45\208\154\166\100\159"), v199, LUAOBFUSACTOR_DECRYPT_STR_0("\8\250\133\180\60\59\241\130", "\83\73\148\230\220"), true);
+						v273 = 2 + 0;
+					end
+					if ((2 + 0) == v273) then
+						wait();
+						v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\6\207\242\225\251\140\3\205\249\240\234\155\39\198", "\233\83\191\150\128\143"), v196, LUAOBFUSACTOR_DECRYPT_STR_0("\212\160\221\115\0\242", "\109\151\230\175\18"), v199.CFrame + Vector3.new(1291 - (260 + 1031), -(1179 - (313 + 864)), 692 - (655 + 37)));
+						v273 = 3 + 0;
+					end
+				end
+			end
+			if v195 then
+				wait(0.5 - 0);
+			else
+				break;
+			end
+		else
+			break;
+		end
+	end
+	if v5 then
+		local v178 = v45(workspace);
+		if ((#v178 > (2 - 1)) or (v178[1 + 0] and v7(v178[1 + 0].Handle, LUAOBFUSACTOR_DECRYPT_STR_0("\152\171\17", "\224\192\154\33\36")))) then
+			local v245 = 0 - 0;
+			local v246;
+			while true do
+				if (v245 == (770 - (383 + 387))) then
+					if ((v11.Position - Vector3.new(16.450000000000003 + 38, 1.0199999999999996 + 3, -(46 - 31))).magnitude > (3 + 6)) then
+						local v327 = 0 + 0;
+						while true do
+							if (v327 == (510 - (304 + 206))) then
+								v49(CFrame.new(279.45 - (182 + 43), 779.02 - (264 + 511), -(3 + 12)));
+								wait(0.1 - 0);
+								break;
+							end
+						end
+					end
+					for v308 = 982 - (128 + 853), #v178 do
+						if (v178[v308].Parent == workspace) then
+							local v337 = 1702 - (1635 + 67);
+							while true do
+								if (v337 == (0 + 0)) then
+									v12:EquipTool(v178[v308]);
+									wait();
+									break;
+								end
+							end
+						end
+					end
+					v245 = 1 + 0;
+				end
+				if (v245 == (200 - (131 + 66))) then
+					if (v7(v10, LUAOBFUSACTOR_DECRYPT_STR_0("\177\93\31\138\151\124\25\140\135", "\226\227\52\120")) and v7(v10.RightHand, LUAOBFUSACTOR_DECRYPT_STR_0("\55\226\235\172\94\152\197\176\21", "\217\101\139\140\196\42\223\183"))) then
+						v10.RightHand.RightGrip:Destroy();
+					end
+					break;
+				end
+				if (v245 == (3 - 2)) then
+					wait(0.3 - 0);
+					v246 = v45(v10);
+					v245 = 1 + 1;
+				end
+				if (v245 == (2 + 0)) then
+					for v309 = 1 - 0, #v246 do
+						v246[v309].Parent = v6.Backpack;
+					end
+					wait(0.1 - 0);
+					v245 = 1608 - (306 + 1299);
+				end
+			end
+		end
+		local v179 = v45(v6.Backpack);
+		if ((#v179 >= v0.deliver_at) and (#v179 > (0 + 0)) and ((tick() - v44) > (77 - 47))) then
+			local v247 = 789 - (671 + 118);
+			local v248;
+			while true do
+				if (v247 == (0 - 0)) then
+					table.sort(v179, function(v312, v313)
+						local v314 = 76 - (73 + 3);
+						while true do
+							if (v314 == (0 - 0)) then
+								v312, v313 = tostring(v312), tostring(v313);
+								if ((v312:sub(4 - 3, 2 - 1) == "B") and (v313:sub(1756 - (1668 + 87), 1 + 0) == "B")) then
+									return v312 < v313;
+								end
+								v314 = 1900 - (296 + 1603);
+							end
+							if (v314 == (107 - (79 + 27))) then
+								return v312 > v313;
+							end
+						end
+					end);
+					v248 = false;
+					v247 = 1 + 0;
+				end
+				if (v247 == (1008 - (700 + 307))) then
+					for v315 = 1 + 0, #v179 do
+						if not v5 then
+							break;
+						end
+						v12.Sit = false;
+						local v317 = v179[v315];
+						local v318 = v46(v317.Name);
+						local v319 = v318.Position;
+						if v318 then
+							if ((v318.Position - v11.Position).Magnitude > (1808 - (1477 + 322))) then
+								local v348 = 0 + 0;
+								local v349;
+								while true do
+									if (v348 == (2 - 1)) then
+										pcall(function()
+											v317.Parent = v10;
+										end);
+										wait(1.2 + 0);
+										v348 = 6 - 4;
+									end
+									if (v348 == (0 + 0)) then
+										v49(v318.CFrame + Vector3.new(0 - 0, 18 - 11, 0 + 0));
+										if ((v318.Parent == nil) or ((v318.Position - v319).Magnitude > (2 - 1))) then
+											local v378 = 0 - 0;
+											while true do
+												if (v378 == (0 - 0)) then
+													v318 = v46(v317.Name) or v318;
+													v49(v318.CFrame + Vector3.new(1786 - (20 + 1766), 13 - 6, 809 - (88 + 721)));
+													break;
+												end
+											end
+										end
+										v348 = 1 + 0;
+									end
+									if (v348 == (1 + 2)) then
+										wait(1 + 1);
+										v248 = false;
+										break;
+									end
+									if (v348 == (1 + 1)) then
+										v349 = v45(v10);
+										for v372 = 2 - 1, #v349 do
+											if (v349[v372] ~= v317) then
+												v349[v372].Parent = v6.Backpack;
+											end
+										end
+										v348 = 5 - 2;
+									end
+								end
+							else
+								local v350 = 437 - (93 + 344);
+								while true do
+									if (v350 == (1214 - (960 + 253))) then
+										wait();
+										v248 = true;
+										break;
+									end
+									if ((0 + 0) == v350) then
+										if v248 then
+											wait(0.2 - 0);
+										else
+											wait(0.7 - 0);
+										end
+										pcall(function()
+											v317.Parent = v10;
+										end);
+										v350 = 1417 - (74 + 1342);
+									end
+								end
+							end
+						end
+					end
+					v44 = tick();
+					break;
+				end
+			end
+		end
+	end
+	v50();
+	if v4 then
+		local v180 = 0 + 0;
+		local v181;
+		while true do
+			if (v180 == (474 - (33 + 441))) then
+				v181 = false;
+				for v282, v283 in pairs(v23) do
+					if (v283 <= v0.refill_at) then
+						v181 = true;
+						break;
+					end
+				end
+				v180 = 2 - 1;
+			end
+			if (v180 == (1420 - (64 + 1355))) then
+				if v181 then
+					local v293 = 0 - 0;
+					local v294;
+					local v295;
+					local v296;
+					local v297;
+					while true do
+						if ((11 - (5 + 6)) == v293) then
+							v294 = v11.CFrame;
+							v295 = false;
+							v293 = 1 + 0;
+						end
+						if (v293 == (1 + 1)) then
+							while v4 do
+								local v344 = true;
+								local v345 = workspace.AllSupplyBoxes:GetChildren();
+								for v351 = 447 - (369 + 77), 1 + 1 do
+									local v352 = 738 - (438 + 300);
+									local v353;
+									local v354;
+									while true do
+										if (v352 == (295 - (50 + 244))) then
+											for v374, v375 in ipairs(v43) do
+												local v376 = v42[v375.BrickColor.Name];
+												if (v23[v376] < v0.refill_end) then
+													local v385 = 1201 - (95 + 1106);
+													if (#v345 > (56 - 26)) then
+														for v395 = 4 - 3, #v345 do
+															local v396 = v345[v395];
+															if ((v42[v396.BrickColor.Name] == v376) and (v396.Anchored == false) and (v396.Position.Z < -(2836 - (1741 + 155)))) then
+																v385 = v385 + (2 - 1);
+															end
+														end
+													end
+													if (v385 < (2 - 0)) then
+														if v353 then
+															local v398 = 0 - 0;
+															while true do
+																if (v398 == (0 + 0)) then
+																	v353 = false;
+																	v49(v375.CFrame + Vector3.new(0 + 0, 2 + 1, 4.5 - 2));
+																	v398 = 2 - 1;
+																end
+																if (v398 == (1778 - (1263 + 514))) then
+																	wait(497.1 - (73 + 424));
+																	break;
+																end
+															end
+														end
+														if not v4 then
+															break;
+														end
+														v11.CFrame = v375.CFrame + Vector3.new(0 - 0, 311 - (93 + 215), 0 - 0);
+														wait(1935.1 - (1756 + 179));
+														v354 = v354 + (1680 - (550 + 1129));
+													end
+													v344 = false;
+												end
+											end
+											wait(107.2 - (57 + 50));
+											v352 = 631 - (30 + 599);
+										end
+										if (v352 == (0 + 0)) then
+											v353 = true;
+											v354 = 0 - 0;
+											v352 = 919 - (794 + 124);
+										end
+										if (v352 == (1 + 1)) then
+											if ((v351 == (1 + 0)) and (v354 < (5 - 2))) then
+												wait(1927.6 - (1299 + 628));
+											end
+											break;
+										end
+									end
+								end
+								if (v344 or not v4) then
+									break;
+								end
+								v49(CFrame.new(17 - 9, 33.4 - 21, -(936 + 84)));
+								if not v4 then
+									break;
+								end
+								if (v295 and ((v297.Position.X > (121 - 79)) or ((tick() - v296) > (1451 - (335 + 1110))))) then
+									local v357 = 0 + 0;
+									while true do
+										if (v357 == (0 - 0)) then
+											v295 = false;
+											if (v297.Position.X < (74 - 32)) then
+												local v386 = 332 - (268 + 64);
+												local v387;
+												while true do
+													if (v386 == (1 + 0)) then
+														v387 = workspace.AllSupplyBoxes:GetChildren();
+														for v399 = 1279 - (243 + 1035), #v387 do
+															local v400 = v387[v399];
+															if ((v400.Anchored == false) and (v400.Position.Z > -(132 - 77))) then
+																local v401 = 0 - 0;
+																while true do
+																	if ((0 - 0) == v401) then
+																		v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\47\31\171\27\80\31\63\189\21\84\31\29\187\3", "\36\122\111\207\122"), v400, LUAOBFUSACTOR_DECRYPT_STR_0("\47\46\246\185\181\49", "\84\108\104\132\216\216"), CFrame.new(v8:NextNumber(0 + 0, 36 + 4), v8:NextNumber(-(12 - 2), -(130 - (90 + 10))), -(874 - (209 + 595))));
+																		wait();
+																		break;
+																	end
+																end
+															end
+														end
+														v386 = 807 - (603 + 202);
+													end
+													if (v386 == (2 + 0)) then
+														wait(0.1 - 0);
+														break;
+													end
+													if (v386 == (0 + 0)) then
+														v49(CFrame.new(56.5 - 36, 1 + 7, -(96 - 61)));
+														wait(0.1 - 0);
+														v386 = 280 - (174 + 105);
+													end
+												end
+											end
+											break;
+										end
+									end
+								end
+								if not v295 then
+									local v358 = 0 - 0;
+									local v359;
+									local v360;
+									while true do
+										if (v358 == (915 - (532 + 381))) then
+											v360 = workspace.AllSupplyBoxes:GetChildren();
+											for v379 = 1 + 0, #v360 do
+												local v380 = v360[v379];
+												if ((v380.Anchored == false) and (v380.Position.Z < -(1779 - (137 + 702))) and v42[v380.BrickColor.Name] and (v23[v42[v380.BrickColor.Name]] < v0.refill_end)) then
+													v380.CFrame = CFrame.new((102 - 64) - ((1.2999999999999998 + 3) * math.floor(v359 / (7 - 5))), 1891 - (1819 + 67), -(5 + 2) - ((2 + 3) * (v359 % (1359 - (259 + 1098)))));
+													v9:FireServer(LUAOBFUSACTOR_DECRYPT_STR_0("\249\11\194\89\244\161\114\222\20\214\93\242\176\91", "\34\172\123\166\56\128\196"), v380, LUAOBFUSACTOR_DECRYPT_STR_0("\135\143\186\202\71\118", "\116\196\201\200\171\42\19\181"), v380.CFrame);
+													v297 = v380;
+													v359 = v359 + 1 + 0;
+													if (v359 > (3 + 10)) then
+														break;
+													end
+												end
+											end
+											v358 = 1 + 2;
+										end
+										if (v358 == (3 - 2)) then
+											v297 = nil;
+											v359 = 0 + 0;
+											v358 = 2 + 0;
+										end
+										if (v358 == (0 - 0)) then
+											if (v11.Position.Z > -(2606 - (667 + 1039))) then
+												v49(CFrame.new(1027 - (274 + 745), 10.4 + 2, -(413 + 607)));
+											end
+											wait(430.1 - (288 + 142));
+											v358 = 1307 - (301 + 1005);
+										end
+										if (v358 == (2 + 1)) then
+											if v297 then
+												local v388 = 0 - 0;
+												while true do
+													if (v388 == (1873 - (674 + 1199))) then
+														v295 = true;
+														v296 = tick();
+														break;
+													end
+												end
+											end
+											break;
+										end
+									end
+								end
+							end
+							break;
+						end
+						if (v293 == (1 + 0)) then
+							v296 = 0 + 0;
+							v297 = nil;
+							v293 = 5 - 3;
+						end
+					end
+				end
+				break;
+			end
 		end
 	end
 end
